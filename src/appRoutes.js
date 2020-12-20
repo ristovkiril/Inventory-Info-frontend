@@ -1,3 +1,4 @@
+/* eslint-disable */
 import $ from 'jquery';
 import React, { Component, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
@@ -42,6 +43,7 @@ export default class AppRoutes extends Component {
           <TopHeader />
           <Switch>
             <Route path={`${this.state.match.url}`} exact component={Home} />
+            {console.log(this.state.match.url)}
             <Route path={`${this.state.match.url}/inbox`} exact component={WaitingComponent(Inbox)} />
             <Route path={`${this.state.match.url}/compose`} exact component={WaitingComponent(Compose)} />
             <Route path={`${this.state.match.url}/contacts`} exact component={WaitingComponent(Contacts)} />

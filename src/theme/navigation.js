@@ -82,20 +82,8 @@ class Navigation extends Component {
 
   profile = () => {
     return (
-      <div className="dropdown profile-element">
-        <img alt="" className="img-circle logo" src={logo}/>
-        <span data-toggle="dropdown" className="dropdown-toggle" style={{ cursor: 'pointer' }}>
-          <span className="block m-t-xs font-bold">Mir Nawaz</span>
-          <span className="text-muted text-xs block">Software Dev <b className="caret" /></span>
-        </span>
-        <ul className="dropdown-menu animated fadeInRight m-t-xs">
-          {this.state.navMenu.map((menu, index) => {
-            if (menu.divider) {
-              return (<li key={index} className="dropdown-divider" />);
-            }
-            return (<li key={index}><Link className="dropdown-item" to={menu.path}>{menu.label}</Link></li>);
-          })}
-        </ul>
+      <div className="dropdown profile-element form-group">
+
       </div>
     );
   };

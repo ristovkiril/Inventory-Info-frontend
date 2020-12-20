@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { Component, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
@@ -28,6 +30,7 @@ export default class Routes extends Component {
           <PublicRoute path="/activate" component={WaitingComponent(Activate)} />
           <PrivateRoute path="/app" component={WaitingComponent(AppRoutes)} />
           <PublicRoute path="/register" component={WaitingComponent(Register)} />
+
           <Route component={NotFound}/>
         </Switch>
       </div>

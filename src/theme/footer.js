@@ -6,7 +6,7 @@ export default class Footer extends Component {
     return (
       <div className="footer">
         <div className="pull-right">
-                    10GB of <strong>250GB</strong> Free.
+                    {/*EMT - Invertory Info*/}
         </div>
         <CopyRight/>
       </div>
