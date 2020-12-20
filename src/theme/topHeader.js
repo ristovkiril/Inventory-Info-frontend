@@ -17,11 +17,10 @@ class TopHeader extends Component {
         <nav className="navbar navbar-static-top" role="navigation" style={{ marginBottom: 0 }}>
           <div className="navbar-header">
             <span className="navbar-minimalize minimalize-styl-2 btn btn-primary" onClick={(e) => this.toggleNavigation(e)} style={{ cursor: 'pointer' }}><i className="fa fa-bars"/> </span>
-
           </div>
           <ul className="nav navbar-top-links navbar-right">
             <li>
-              <a onClick={this.logout}> <i className="fa fa-sign-out"/> Logout</a>
+              <a onClick={this.logout}> <i className="fa fa-sign-in"/>Најавете се</a>
             </li>
           </ul>
         </nav>

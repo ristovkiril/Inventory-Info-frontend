@@ -2032,13 +2032,13 @@ button.dim:active:before {
   box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-  content: "ON";
+  content: "Годишна";
   padding-left: 10px;
   background-color: #1ab394;
   color: #FFFFFF;
 }
 .onoffswitch-inner:after {
-  content: "OFF";
+  content: "Меѓугодишна";
   padding-right: 10px;
   background-color: #FFFFFF;
   color: #999999;
@@ -2865,82 +2865,55 @@ select.form-control:not([size]):not([multiple]) {
 }
 /* SWITCHES */
 .onoffswitch {
-  position: relative;
-  width: 54px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  position: relative; width: 110px;
+  -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 .onoffswitch-checkbox {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 .onoffswitch-label {
-  display: block;
-  overflow: hidden;
-  cursor: pointer;
-  border: 2px solid #1AB394;
-  border-radius: 3px;
+  display: block; overflow: hidden; cursor: pointer;
+  border: 2px solid #1AB394; border-radius: 0px;
 }
+
 .onoffswitch-inner {
-  display: block;
-  width: 200%;
-  margin-left: -100%;
-  -moz-transition: margin 0.3s ease-in 0s;
-  -webkit-transition: margin 0.3s ease-in 0s;
-  -o-transition: margin 0.3s ease-in 0s;
+  display: block; width: 200%; margin-left: -100%;
   transition: margin 0.3s ease-in 0s;
 }
-.onoffswitch-inner:before,
-.onoffswitch-inner:after {
-  display: block;
-  float: left;
-  width: 50%;
-  height: 16px;
-  padding: 0;
-  line-height: 16px;
-  font-size: 10px;
-  color: white;
-  font-family: Trebuchet, Arial, sans-serif;
-  font-weight: bold;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+  font-size: 11px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
   box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-  content: "ON";
-  padding-left: 7px;
-  background-color: #1AB394;
-  color: #FFFFFF;
+  content: "Годишна";
+  padding-left: 5px;
+  background-color: #1AB394; color: #FFFFFF;
 }
 .onoffswitch-inner:after {
-  content: "OFF";
-  padding-right: 7px;
-  background-color: #FFFFFF;
-  color: #919191;
+  content: "Меѓугодишна";
+  padding-right: 4px;
+  background-color: #FFFFFF; color: #999999;
   text-align: right;
 }
 .onoffswitch-switch {
-  display: block;
-  width: 18px;
-  margin: 0;
+  display: block; width: 26px; margin: 0px;
   background: #FFFFFF;
-  border: 2px solid #1AB394;
-  border-radius: 3px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 36px;
-  -moz-transition: all 0.3s ease-in 0s;
-  -webkit-transition: all 0.3s ease-in 0s;
-  -o-transition: all 0.3s ease-in 0s;
+  position: absolute; top: 0; bottom: 0;
+  right: 81px;
+  border: 2px solid #1AB394; border-radius: 3px;
   transition: all 0.3s ease-in 0s;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
   margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-  right: 0;
+  right: 0px;
 }
+
+
 /* jqGrid */
 .ui-jqgrid {
   -moz-box-sizing: content-box;

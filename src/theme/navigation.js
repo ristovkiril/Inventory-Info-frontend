@@ -12,6 +12,8 @@ import $ from 'jquery';
 import list from '../constants/list';
 import { getTreeMenu } from '../helpers/permissions';
 import axios from '../axios/axios-repository';
+import ToogleSwitch from "./toogleSwitch";
+import Dropdown from "./dropdown";
 
 class Navigation extends Component {
   constructor(props) {
@@ -82,8 +84,9 @@ class Navigation extends Component {
 
   profile = () => {
     return (
-      <div className="dropdown profile-element form-group">
-
+      <div className="form-group">
+        <ToogleSwitch/>
+        <Dropdown />
       </div>
     );
   };
