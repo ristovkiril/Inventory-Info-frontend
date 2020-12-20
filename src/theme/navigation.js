@@ -11,6 +11,7 @@ import { smoothlyMenu } from './helpers/helpers';
 import $ from 'jquery';
 import list from '../constants/list';
 import { getTreeMenu } from '../helpers/permissions';
+import axios from '../axios/axios-repository';
 
 class Navigation extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class Navigation extends Component {
 
   componentDidMount() {
     const { menu } = this.refs;
+    // this.loadCategories();
     // eslint-disable-next-line func-names
     $(function() {
       $(menu).metisMenu({
@@ -35,6 +37,32 @@ class Navigation extends Component {
     $('body').toggleClass('mini-navbar');
     smoothlyMenu();
   }
+
+  // eslint-disable-next-line react/sort-comp
+  loadCategories = () => {
+    axios.getCategories().then((response) => {
+      this.setState((prevState) => {
+        const data = response.data;
+        // eslint-disable-next-line no-console
+        console.log(response.data);
+        for (let el in data) {
+          el = { id: el.id, path: '/app/home', icon: 'home', label: 'Home', parent: el.subcategory.id };
+        }
+        const newValue = {
+          'categories': getTreeMenu(response.data)
+        };
+
+        return {
+          ...prevState,
+          ...newValue
+        };
+      }, [], (err) => {
+        // eslint-disable-next-line no-console
+        console.log(err);
+        alert(err);
+      });
+    });
+  };
 
   render() {
     return (

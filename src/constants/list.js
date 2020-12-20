@@ -8,7 +8,9 @@ export default {
     { id: '4', path: '/app/permissions', icon: 'lock', label: 'Permissions', parent: '6' },
     { id: '5', path: '/app/contacts', icon: 'address-book', label: 'Contacts', parent: '6' },
     { id: '6', path: '', icon: 'pie-chart', label: 'User', parent: '0' },
-    { id: '7', path: '/app/profile', icon: 'user', label: 'Profile', parent: '6' }
+    { id: '7', path: '/app/profile', icon: 'user', label: 'Profile', parent: '6' },
+    { id: '8', path: '/app/profile', icon: 'user', label: 'Profile', parent: '7' },
+    { id: '9', path: '/app/profile', icon: 'user', label: 'Profile', parent: '7' }
   ],
   navMenu: [
     { path: '/app/profile', label: 'Profile' },

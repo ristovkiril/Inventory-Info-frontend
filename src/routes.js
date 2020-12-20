@@ -3,9 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 
 import PublicRoute from './components/common/publicRoute';
 import PrivateRoute from './components/common/privateRoute';
-import Landing from './components/common/landing';
+// import Landing from './components/common/landing';
 import NotFound from './components/common/notFound';
 import WaitingComponent from './theme/waiting';
+import Home from './components/pages/home';
+import Main from './theme/main';
+import Menu from './theme/topHeader';
 import './assets/dependencies';
 
 const Login = lazy(() => import('./components/common/login'));
@@ -19,7 +22,7 @@ export default class Routes extends Component {
     return (
       <div>
         <Switch>
-          <PublicRoute path="/" exact component={Landing} />
+          <PublicRoute path="/" exact component={Main} />
           <PublicRoute path="/login" component={WaitingComponent(Login)} />
           <PublicRoute path="/lock" component={WaitingComponent(Lock)} />
           <PublicRoute path="/activate" component={WaitingComponent(Activate)} />
