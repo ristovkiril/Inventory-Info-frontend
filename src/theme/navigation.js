@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 
+import NewMenuItem from './newMenuItem';
+import NewMenuTree from './newMenuTree';
 import MenuItem from './menuItem';
 import MenuTree from './menuTree';
 import logo from '../assets/img/logo.png';
@@ -26,7 +28,8 @@ class Navigation extends Component {
 
   componentDidMount() {
     const { menu } = this.refs;
-    // this.loadCategories();
+    console.log(this.state.menu)
+    this.loadCategories();
     // eslint-disable-next-line func-names
     $(function() {
       $(menu).metisMenu({
@@ -44,21 +47,19 @@ class Navigation extends Component {
   loadCategories = () => {
     axios.getCategories().then((response) => {
       this.setState((prevState) => {
-        const data = response.data;
-        // eslint-disable-next-line no-console
-        console.log(response.data);
-        for (let el in data) {
-          el = { id: el.id, path: '/app/home', icon: 'home', label: 'Home', parent: el.subcategory.id };
-        }
+        console.log(response.data)
         const newValue = {
-          'categories': getTreeMenu(response.data)
+          'categories': getTreeMenu(response.data, -1)
         };
 
         return {
           ...prevState,
           ...newValue
         };
-      }, [], (err) => {
+      }, () => {
+        console.log(this.state)
+        console.log(this.state.categories)
+      }, (err) => {
         // eslint-disable-next-line no-console
         console.log(err);
         alert(err);
@@ -76,6 +77,9 @@ class Navigation extends Component {
               <div className="logo-element"> <img alt="" className="img-circle logo" src={logo}/> </div>
             </li>
             {this.menu()}
+            {
+              this.state.categories ? this.categories(): " "
+            }
           </ul>
         </div>
       </nav>
@@ -90,6 +94,37 @@ class Navigation extends Component {
       </div>
     );
   };
+  
+  categories = () => {
+    
+    return this.state.categories.map((item, index) => {
+      if (item.mkName != null || item.enName != null) {
+        if (isEmpty(item.tree)) {
+          return (<NewMenuItem key={index} id={item.id} label={item.mkName} checked={item.checked}/>)
+        } else {
+          return (
+              <NewMenuTree key={index} id={item.id} label={item.mkName} checked={item.checked}>
+                {
+                  item.tree.map((treeItem, treeIndex) => {
+                    if (isEmpty(treeItem.tree)){
+                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.mkName} checked={treeItem.checked}/>)
+                    }
+                    return (
+                        <NewMenuTree id={treeItem.id} label={treeItem.mkName} checked={treeItem.checked} >
+                          {treeItem.tree.map((subItem, subIndex) => {
+                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.mkName} checked={subItem.checked}/>);
+                          })}
+                        </NewMenuTree>
+                    )
+                  })
+                }
+              </NewMenuTree>
+          )
+        }
+      }
+    })
+
+  }
 
   menu = () => {
     return this.state.menu.map((item, index) => {
