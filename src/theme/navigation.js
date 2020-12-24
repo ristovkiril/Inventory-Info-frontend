@@ -74,7 +74,6 @@ class Navigation extends Component {
           <ul className="nav metismenu" id="side-menu" ref="menu" style={{ zIndex: 2000 }}>
             <li className="nav-header">
               {this.profile()}
-              <div className="logo-element"> <img alt="" className="img-circle logo" src={logo}/> </div>
             </li>
             {this.menu()}
             {
@@ -110,7 +109,7 @@ class Navigation extends Component {
                       return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.mkName} checked={treeItem.checked}/>)
                     }
                     return (
-                        <NewMenuTree id={treeItem.id} label={treeItem.mkName} checked={treeItem.checked} >
+                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.mkName} checked={treeItem.checked} >
                           {treeItem.tree.map((subItem, subIndex) => {
                             return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.mkName} checked={subItem.checked}/>);
                           })}
@@ -124,7 +123,7 @@ class Navigation extends Component {
       }
     })
 
-  }
+  };
 
   menu = () => {
     return this.state.menu.map((item, index) => {

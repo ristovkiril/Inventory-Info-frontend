@@ -12,6 +12,7 @@ const NewMenuTree = (props) => (
         </a>
         <ul className="nav nav-second-level collapse">
             {props.children}
+            {console.log(props.children + " aaaa")}
         </ul>
     </li>
 );

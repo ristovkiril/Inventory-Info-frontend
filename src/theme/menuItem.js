@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const MenuItem = (props) => (
   <li>
     <Link to={props.path}>
+        {console.log(props.path + " path")}
       { props.icon && <i className={`fa fa-${props.icon}`} /> }
       { props.tree ? props.label : <span className="nav-label">{props.label}</span> }
     </Link>
