@@ -69,7 +69,7 @@ class Navigation extends Component {
 
   render() {
     return (
-      <nav className="navbar-default navbar-static-side" role="navigation">
+      <nav id="leftCol" className="navbar-default navbar-static-side h-100" role="navigation">
         <div className="sidebar-collapse">
           <ul className="nav metismenu" id="side-menu" ref="menu" style={{ zIndex: 2000 }}>
             <li className="nav-header">
@@ -87,7 +87,7 @@ class Navigation extends Component {
 
   profile = () => {
     return (
-      <div className="form-group">
+      <div className="form-group nav-label">
         <ToogleSwitch/>
         <Dropdown />
       </div>
