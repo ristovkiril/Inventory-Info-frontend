@@ -97,21 +97,21 @@ class Navigation extends Component {
   categories = () => {
     
     return this.state.categories.map((item, index) => {
-      if (item.mkName != null || item.enName != null) {
+      if (item.name != null || item.enName != null) {
         if (isEmpty(item.tree)) {
-          return (<NewMenuItem key={index} id={item.id} label={item.mkName} checked={item.checked}/>)
+          return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} />)
         } else {
           return (
-              <NewMenuTree key={index} id={item.id} label={item.mkName} checked={item.checked}>
+              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked}>
                 {
                   item.tree.map((treeItem, treeIndex) => {
                     if (isEmpty(treeItem.tree)){
-                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.mkName} checked={treeItem.checked}/>)
+                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name} checked={treeItem.checked}/>)
                     }
                     return (
-                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.mkName} checked={treeItem.checked} >
+                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} >
                           {treeItem.tree.map((subItem, subIndex) => {
-                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.mkName} checked={subItem.checked}/>);
+                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name} checked={subItem.checked}/>);
                           })}
                         </NewMenuTree>
                     )

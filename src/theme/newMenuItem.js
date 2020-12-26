@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 
 const NewMenuItem = (props) => (
     <li>
-        <input id={props.id} type="checkbox" name={props.id} checked={props.checked} />
-        <label htmlFor={props.id}>
-            { props.tree ? props.label : <span className="nav-label">{props.label}</span> }
-        </label>
+        <a href="#">
+            <input id={props.id} type="checkbox" name={props.id} checked={props.checked} />
+            <label htmlFor={props.id}>
+                <span className="nav-label">{props.label}</span>
+            </label>
+        </a>
     </li>
 );
 
