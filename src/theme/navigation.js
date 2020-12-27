@@ -75,7 +75,7 @@ class Navigation extends Component {
             <li className="nav-header">
               {this.profile()}
             </li>
-            {this.menu()}
+            {/*{this.menu()}*/}
             {
               this.state.categories ? this.categories(): " "
             }
