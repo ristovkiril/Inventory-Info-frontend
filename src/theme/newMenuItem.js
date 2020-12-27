@@ -7,7 +7,7 @@ const NewMenuItem = (props) => (
         <a href="#" className="nav-link">
             <input id={props.id} type="checkbox" name={props.id} checked={props.checked} />
             <label htmlFor={props.id}>
-                <span className="nav-label p-0 m-0">{props.label}</span>
+                <span className="nav-label p-1 m-0">{props.label}</span>
             </label>
         </a>
     </li>

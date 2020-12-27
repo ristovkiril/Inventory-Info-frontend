@@ -9569,7 +9569,7 @@ body.md-skin {
 }
 
 .active{
-  border-top: 6px solid #1ab394 !important;
+  border-top: 0 solid #1ab394 !important;
 }
 
 button:disabled {
