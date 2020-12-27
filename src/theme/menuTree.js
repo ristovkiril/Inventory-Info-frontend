@@ -8,14 +8,14 @@ const MenuTree = (props) => (
       <span className="nav-label">{props.label}</span>
       <span className="fa arrow"/>
     </a>
-    <ul className="nav nav-second-level collapse">
+    <ul className="nav collapse">
       {props.children}
     </ul>
   </li>
 );
 
 MenuTree.propTypes = {
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
   label: PropTypes.string.isRequired,
   children: PropTypes.array.isRequired
 };

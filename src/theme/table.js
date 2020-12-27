@@ -4,7 +4,7 @@ export default class Table extends Component {
 
     render() {
         return (
-            <table className="table">
+            <table className="table table-hover">
                 <thead className="">
                 <tr>
                     <th>Категории</th>

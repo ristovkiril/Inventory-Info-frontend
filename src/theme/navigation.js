@@ -48,6 +48,7 @@ class Navigation extends Component {
     axios.getCategories().then((response) => {
       this.setState((prevState) => {
         console.log(response.data)
+
         const newValue = {
           'categories': getTreeMenu(response.data, -1)
         };
@@ -69,15 +70,17 @@ class Navigation extends Component {
 
   render() {
     return (
-      <nav className="navbar-default navbar-static-side" role="navigation">
+      <nav id="leftCol" className="navbar-default navbar-static-side h-100" role="navigation">
         <div className="sidebar-collapse">
-          <ul className="nav metismenu" id="side-menu" ref="menu" style={{ zIndex: 2000 }}>
+          <ul className="nav nav-header metismenu p-1" id="side-menu" ref="menu" style={{ zIndex: 2000 }}>
             <li className="nav-header">
               {this.profile()}
             </li>
             {/*{this.menu()}*/}
             {
-              this.state.categories ? this.categories(): " "
+              <MenuTree key={-1} label="Category">
+                {this.state.categories ? this.categories(): " "}
+              </MenuTree>
             }
           </ul>
         </div>
@@ -87,7 +90,7 @@ class Navigation extends Component {
 
   profile = () => {
     return (
-      <div className="form-group">
+      <div className="form-group nav-label">
         <ToogleSwitch/>
         <Dropdown />
       </div>
@@ -102,14 +105,14 @@ class Navigation extends Component {
           return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} />)
         } else {
           return (
-              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked}>
+              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked} level={2}>
                 {
                   item.tree.map((treeItem, treeIndex) => {
                     if (isEmpty(treeItem.tree)){
                       return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name} checked={treeItem.checked}/>)
                     }
                     return (
-                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} >
+                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} level={3} >
                           {treeItem.tree.map((subItem, subIndex) => {
                             return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name} checked={subItem.checked}/>);
                           })}

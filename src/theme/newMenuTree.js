@@ -10,9 +10,19 @@ const NewMenuTree = (props) => (
         </label>
         <span className="fa arrow"/>
         </a>
-        <ul className="nav nav-second-level collapse">
-            {props.children}
-        </ul>
+        {
+            props.level === 2 ?
+                <ul className="nav nav-second-level collapse">
+                    {props.children}
+                    {console.log(props.children + " aaaa")}
+                </ul>
+            :
+                <ul className="nav nav-third-level collapse">
+                    {props.children}
+                    {console.log(props.children + " aaaa")}
+                </ul>
+        }
+
     </li>
 );
 
@@ -20,7 +30,8 @@ NewMenuTree.propTypes = {
     id: PropTypes.number.isRequired,
     label: PropTypes.string.isRequired,
     checked: PropTypes.bool,
-    children: PropTypes.array.isRequired
+    children: PropTypes.array.isRequired,
+    level: PropTypes.number
 };
 
 export default NewMenuTree;
