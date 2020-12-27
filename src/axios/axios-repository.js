@@ -10,6 +10,12 @@ const service = {
   },
   getYears: () => {
     return axios.get('/api/analysis');
+  },
+  getYearsByGas: (id) => {
+    return axios.get(`/api/analysis/gas/${id}`)
+  },
+  getGasByYear: (id) => {
+    return axios.get(`api/gas/year/${id}`)
   }
 };
 
