@@ -14,8 +14,12 @@ import $ from 'jquery';
 import list from '../constants/list';
 import { getTreeMenu } from '../helpers/permissions';
 import axios from '../axios/axios-repository';
-import ToggleSwitch from "./toggleSwitch";
+import ToogleSwitch from "./toogleSwitch";
 import Dropdown from "./dropdown";
+
+const CATEGORY_PARENT = -1;
+const YEAR_PARENT = -2;
+const GAS_PARENT = -3;
 
 class Navigation extends Component {
   constructor(props) {
@@ -25,7 +29,7 @@ class Navigation extends Component {
       navMenu: list.navMenu,
       gasses: [],
       years: [],
-      isYearly: true
+      isYearly: false
     };
   }
 
@@ -48,6 +52,7 @@ class Navigation extends Component {
     });
   }
 
+
   componentWillUpdate() {
     $('body').toggleClass('mini-navbar');
     smoothlyMenu();
@@ -61,7 +66,7 @@ class Navigation extends Component {
         //posledniot gas go pravime aktiven koga se bira od select menu
         data[data.length - 1].checked = true;
 
-        const gasChecked = data[data.length-1];
+        const gasChecked = data[0];
 
         this.setState((prevState) => {
           const newValue = {
@@ -73,7 +78,7 @@ class Navigation extends Component {
             ...newValue
           }
         }, () => {
-          console.log(this.state);
+          console.log(gasChecked);
           this.loadYears(gasChecked.id);
         })
       })
@@ -81,17 +86,17 @@ class Navigation extends Component {
     else {
       axios.getGasByYear(yearId).then((response) => {
         const data = response.data;
-        console.log(data);
+
         //site gasovi da bidat checked vo menito
         for (const el of data) {
           el.checked = true;
-          el.parent = -1;
+          el.parent = GAS_PARENT;
         }
 
         this.setState((prevState)=>{
           const newValue = {
             'gasses': data
-          }
+          };
 
           return {
             ...prevState,
@@ -108,8 +113,8 @@ class Navigation extends Component {
       axios.getYears().then((response) => {
         const data = response.data;
         for (const el of data) {
-          el.checked = true;
-          el.parent = -1;
+          el.checked = false;
+          el.parent = YEAR_PARENT;
         }
         data[data.length -1].checked = true;
         const yearChecked = data[data.length-1];
@@ -132,9 +137,14 @@ class Navigation extends Component {
     } else {
       axios.getYearsByGas(gasId).then((response) => {
         const data = response.data;
+        console.log("YEARS");
+        console.log(gasId);
+        console.log(data);
         //site godini da bidat vkluceni, moze da go promenime
         for (const el of data) {
           el.checked = true;
+          el.name = el.year;
+          el.parent = YEAR_PARENT;
         }
 
         this.setState((prevState) => {
@@ -159,7 +169,7 @@ class Navigation extends Component {
         // console.log(response.data)
 
         const newValue = {
-          'categories': getTreeMenu(response.data, -1)
+          'categories': getTreeMenu(response.data, CATEGORY_PARENT)
         };
 
         return {
@@ -177,6 +187,13 @@ class Navigation extends Component {
     });
   };
 
+  setAnalysis = () => {
+    this.setState({
+      isYearly: !this.state.isYearly
+    })
+  };
+
+
   render() {
     return (
         <nav id="leftCol" className="navbar-default navbar-static-side h-100" role="navigation">
@@ -188,17 +205,17 @@ class Navigation extends Component {
               {/*{this.menu()}*/}
               {
                 this.state.isYearly ?
-                    <MenuTree key={-1} label="Gasses">
+                    <MenuTree key={GAS_PARENT} label="Gasses">
                       {this.state.gasses ? this.categories(this.state.gasses): " "}
                     </MenuTree>
                     :
-                    <MenuTree key={-1} label="Years">
+                    <MenuTree key={YEAR_PARENT} label="Years">
                       {this.state.years ? this.categories(this.state.years): " "}
                     </MenuTree>
               }
 
               {
-                <MenuTree key={-1} label="Category">
+                <MenuTree key={CATEGORY_PARENT} label="Category">
                   {this.state.categories ? this.categories(this.state.categories): " "}
                 </MenuTree>
               }
@@ -211,27 +228,10 @@ class Navigation extends Component {
   profile = () => {
     return (
         <div className="form-group nav-label">
-          <div className="onoffswitch">
-            <input type="checkbox"
-                   name="onoffswitch"
-                   className="onoffswitch-checkbox"
-                   id="myonoffswitch"
-                   onClick={this.changeAnalysis}
-            />
-            <label className="onoffswitch-label" htmlFor="myonoffswitch">
-              <span className="onoffswitch-inner"/>
-              <span className="onoffswitch-switch"/>
-            </label>
-          </div>
-          <Dropdown />
+          <ToogleSwitch isChecked={this.state.isYearly} onClick={this.setAnalysis}/>
+          <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses} isYearly={this.state.isYearly} />
         </div>
     );
-  };
-
-  changeAnalysis= () => {
-    this.setState({
-      isYearly: !this.state.isYearly
-    })
   };
 
   //3 types 'Category', 'Gas', 'Year'
