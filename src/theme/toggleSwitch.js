@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ToogleSwitch = () => {
+const ToggleSwitch = () => {
     return (
                <div className="onoffswitch">
                    <input type="checkbox"
@@ -16,4 +16,4 @@ const ToogleSwitch = () => {
     );
 };
 
-export default ToogleSwitch
+export default ToggleSwitch
