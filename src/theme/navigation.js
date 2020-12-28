@@ -22,7 +22,10 @@ class Navigation extends Component {
     super(props);
     this.state = {
       menu: getTreeMenu(list.menu),
-      navMenu: list.navMenu
+      navMenu: list.navMenu,
+      gasses: [],
+      years: [],
+      isYearly: true
     };
   }
 
@@ -30,6 +33,13 @@ class Navigation extends Component {
     const { menu } = this.refs;
     console.log(this.state.menu)
     this.loadCategories();
+    if (this.state.isYearly){
+      this.loadYears();
+    }else {
+      this.loadGas();
+    }
+
+    console.log(this.state);
     // eslint-disable-next-line func-names
     $(function() {
       $(menu).metisMenu({
@@ -43,11 +53,110 @@ class Navigation extends Component {
     smoothlyMenu();
   }
 
+  loadGas(yearId = null){
+    console.log(yearId);
+    if (yearId === null){
+      axios.getGasses().then((response) => {
+        const data = response.data;
+        //posledniot gas go pravime aktiven koga se bira od select menu
+        data[data.length - 1].checked = true;
+
+        const gasChecked = data[data.length-1];
+
+        this.setState((prevState) => {
+          const newValue = {
+            'gasses': data
+          };
+
+          return {
+            ...prevState,
+            ...newValue
+          }
+        }, () => {
+          console.log(this.state);
+          this.loadYears(gasChecked.id);
+        })
+      })
+    }
+    else {
+      axios.getGasByYear(yearId).then((response) => {
+        const data = response.data;
+        console.log(data);
+        //site gasovi da bidat checked vo menito
+        for (const el of data) {
+          el.checked = true;
+          el.parent = -1;
+        }
+
+        this.setState((prevState)=>{
+          const newValue = {
+            'gasses': data
+          }
+
+          return {
+            ...prevState,
+            ...newValue
+          }
+        }, () => {console.log(this.state)})
+
+      })
+    }
+  }
+
+  loadYears(gasId = null){
+    if (gasId === null){
+      axios.getYears().then((response) => {
+        const data = response.data;
+        for (const el of data) {
+          el.checked = true;
+          el.parent = -1;
+        }
+        data[data.length -1].checked = true;
+        const yearChecked = data[data.length-1];
+        console.log(data);
+        this.setState((prevState) => {
+          const newValue = {
+            'years': data
+          }
+          console.log(newValue);
+
+          return {
+            ...prevState,
+            ...newValue
+          }
+        }, () => {
+          this.loadGas(yearChecked.id);
+        })
+
+      })
+    } else {
+      axios.getYearsByGas(gasId).then((response) => {
+        const data = response.data;
+        //site godini da bidat vkluceni, moze da go promenime
+        for (const el of data) {
+          el.checked = true;
+        }
+
+        this.setState((prevState) => {
+          const newValue = {
+            'years': data
+          }
+
+          return {
+            ...prevState,
+            ...newValue
+          }
+        }, () => {console.log(this.state)})
+
+      })
+    }
+  }
+
   // eslint-disable-next-line react/sort-comp
   loadCategories = () => {
     axios.getCategories().then((response) => {
       this.setState((prevState) => {
-        console.log(response.data)
+        // console.log(response.data)
 
         const newValue = {
           'categories': getTreeMenu(response.data, -1)
@@ -58,13 +167,13 @@ class Navigation extends Component {
           ...newValue
         };
       }, () => {
-        console.log(this.state)
-        console.log(this.state.categories)
-      }, (err) => {
-        // eslint-disable-next-line no-console
-        console.log(err);
-        alert(err);
+        // console.log(this.state)
+        // console.log(this.state.categories)
       });
+    }, (err) => {
+      // eslint-disable-next-line no-console
+      console.log(err);
+      alert(err);
     });
   };
 
@@ -76,10 +185,21 @@ class Navigation extends Component {
             <li className="nav-header">
               {this.profile()}
             </li>
-            {this.menu()}
+            {/*{this.menu()}*/}
+            {
+              this.state.isYearly ?
+                  <MenuTree key={-1} label="Gasses">
+                    {this.state.gasses ? this.categories(this.state.gasses): " "}
+                  </MenuTree>
+                  :
+                  <MenuTree key={-1} label="Years">
+                    {this.state.gasses ? this.categories(this.state.years): " "}
+                  </MenuTree>
+            }
+
             {
               <MenuTree key={-1} label="Category">
-                {this.state.categories ? this.categories(): " "}
+                {this.state.categories ? this.categories(this.state.categories): " "}
               </MenuTree>
             }
           </ul>
@@ -96,11 +216,12 @@ class Navigation extends Component {
       </div>
     );
   };
-  
-  categories = () => {
-    
-    return this.state.categories.map((item, index) => {
-      if (item.name != null || item.enName != null) {
+
+  //3 types 'Category', 'Gas', 'Year'
+  categories = (data) => {
+
+    return data.map((item, index) => {
+      if (item.name != null) {
         if (isEmpty(item.tree)) {
           return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} />)
         } else {

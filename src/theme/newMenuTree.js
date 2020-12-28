@@ -14,12 +14,10 @@ const NewMenuTree = (props) => (
             props.level === 2 ?
                 <ul className="nav nav-second-level collapse">
                     {props.children}
-                    {console.log(props.children + " aaaa")}
                 </ul>
             :
                 <ul className="nav nav-third-level collapse">
                     {props.children}
-                    {console.log(props.children + " aaaa")}
                 </ul>
         }
 
