@@ -29,7 +29,7 @@ class Navigation extends Component {
       navMenu: list.navMenu,
       gasses: [],
       years: [],
-      isYearly: true
+      isYearly: false
     };
   }
 
@@ -65,7 +65,7 @@ class Navigation extends Component {
         //posledniot gas go pravime aktiven koga se bira od select menu
         data[data.length - 1].checked = true;
 
-        const gasChecked = data[data.length-1];
+        const gasChecked = data[0];
 
         this.setState((prevState) => {
           const newValue = {
@@ -77,7 +77,7 @@ class Navigation extends Component {
             ...newValue
           }
         }, () => {
-          console.log(this.state);
+          console.log(gasChecked);
           this.loadYears(gasChecked.id);
         })
       })
@@ -85,7 +85,7 @@ class Navigation extends Component {
     else {
       axios.getGasByYear(yearId).then((response) => {
         const data = response.data;
-        console.log(data);
+
         //site gasovi da bidat checked vo menito
         for (const el of data) {
           el.checked = true;
@@ -136,7 +136,9 @@ class Navigation extends Component {
     } else {
       axios.getYearsByGas(gasId).then((response) => {
         const data = response.data;
-        console.log(data)
+        console.log("YEARS");
+        console.log(gasId);
+        console.log(data);
         //site godini da bidat vkluceni, moze da go promenime
         for (const el of data) {
           el.checked = true;
