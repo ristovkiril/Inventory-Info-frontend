@@ -1,15 +1,25 @@
 import React, {Component} from "react";
 
-export default class Dropdown extends Component {
+const Dropdown = (props) => {
+    return (
+            props.isYearly ?
+                <select className="form-control w-50" value={props.selected}>
+                    {
+                        props.items.map(item => {
+                            return <option value={item.id}>{item.year}</option>
+                        })
+                    }
+                </select>
+                :
+                <select className="form-control w-50" value={props.selected}>
+                    {
+                        props.items.map(item => {
+                            return <option value={item.id}>{item.name}</option>
+                        })
+                    }
+                </select>
 
-    render() {
-        return(
-            <select className="form-control w-50">
-                <option defaultValue={""}>Group 1</option>
-                <option>Group 2</option>
-                <option>Group 3</option>
-                <option>Group 4</option>
-            </select>
-        )
-    }
+    )
 }
+
+export default Dropdown;

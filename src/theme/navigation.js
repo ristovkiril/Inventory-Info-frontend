@@ -17,6 +17,10 @@ import axios from '../axios/axios-repository';
 import ToogleSwitch from "./toogleSwitch";
 import Dropdown from "./dropdown";
 
+const CATEGORY_PARENT = -1;
+const YEAR_PARENT = -2;
+const GAS_PARENT = -3;
+
 class Navigation extends Component {
   constructor(props) {
     super(props);
@@ -85,7 +89,7 @@ class Navigation extends Component {
         //site gasovi da bidat checked vo menito
         for (const el of data) {
           el.checked = true;
-          el.parent = -1;
+          el.parent = GAS_PARENT;
         }
 
         this.setState((prevState)=>{
@@ -108,8 +112,8 @@ class Navigation extends Component {
       axios.getYears().then((response) => {
         const data = response.data;
         for (const el of data) {
-          el.checked = true;
-          el.parent = -1;
+          el.checked = false;
+          el.parent = YEAR_PARENT;
         }
         data[data.length -1].checked = true;
         const yearChecked = data[data.length-1];
@@ -132,9 +136,12 @@ class Navigation extends Component {
     } else {
       axios.getYearsByGas(gasId).then((response) => {
         const data = response.data;
+        console.log(data)
         //site godini da bidat vkluceni, moze da go promenime
         for (const el of data) {
           el.checked = true;
+          el.name = el.year;
+          el.parent = YEAR_PARENT;
         }
 
         this.setState((prevState) => {
@@ -159,7 +166,7 @@ class Navigation extends Component {
         // console.log(response.data)
 
         const newValue = {
-          'categories': getTreeMenu(response.data, -1)
+          'categories': getTreeMenu(response.data, CATEGORY_PARENT)
         };
 
         return {
@@ -188,17 +195,17 @@ class Navigation extends Component {
             {/*{this.menu()}*/}
             {
               this.state.isYearly ?
-                  <MenuTree key={-1} label="Gasses">
+                  <MenuTree key={GAS_PARENT} label="Gasses">
                     {this.state.gasses ? this.categories(this.state.gasses): " "}
                   </MenuTree>
                   :
-                  <MenuTree key={-1} label="Years">
-                    {this.state.gasses ? this.categories(this.state.years): " "}
+                  <MenuTree key={YEAR_PARENT} label="Years">
+                    {this.state.years ? this.categories(this.state.years): " "}
                   </MenuTree>
             }
 
             {
-              <MenuTree key={-1} label="Category">
+              <MenuTree key={CATEGORY_PARENT} label="Category">
                 {this.state.categories ? this.categories(this.state.categories): " "}
               </MenuTree>
             }
@@ -211,8 +218,8 @@ class Navigation extends Component {
   profile = () => {
     return (
       <div className="form-group nav-label">
-        <ToogleSwitch/>
-        <Dropdown />
+        <ToogleSwitch isChecked={this.state.isYearly} />
+        <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses} isYearly={this.state.isYearly} />
       </div>
     );
   };
