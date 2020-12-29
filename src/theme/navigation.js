@@ -177,7 +177,7 @@ class Navigation extends Component {
     });
   };
 
-  setCategories(data, id) {
+  setCategories = (data, id) => {
     for (const el of data) {
       if (el.id == id){
         el.checked = !el.checked;
@@ -266,7 +266,7 @@ class Navigation extends Component {
   }
 
   onCategoriesChange = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const id = e.target.id;
     const data = this.setCategories(this.state.categories, id);
     console.log(data);
