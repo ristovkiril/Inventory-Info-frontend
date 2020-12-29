@@ -23,8 +23,7 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu: getTreeMenu(list.menu),
-      navMenu: list.navMenu,
+      categories: [],
       gasses: [],
       years: [],
       isYearly: false
@@ -54,7 +53,7 @@ class Navigation extends Component {
     // smoothlyMenu();
   }
 
-  loadGas(yearId = null){
+  loadGas = (yearId = null) => {
     if (yearId === null){
       axios.getGasses().then((response) => {
         const data = response.data;
@@ -106,7 +105,7 @@ class Navigation extends Component {
     }
   }
 
-  loadYears(gasId = null){
+  loadYears = (gasId = null) => {
     if (gasId === null){
       axios.getYears().then((response) => {
         const data = response.data;
@@ -177,6 +176,19 @@ class Navigation extends Component {
       alert(err);
     });
   };
+
+  setCategories(data, id) {
+    for (const el of data) {
+      if (el.id == id){
+        el.checked = !el.checked;
+        break;
+      } else if (!isEmpty(el.tree)) {
+        this.setCategories(el.tree, id);
+      }
+    }
+
+    return data;
+  }
 
   setAnalysis = (e) => {
     e.preventDefault();
@@ -253,6 +265,24 @@ class Navigation extends Component {
     }
   }
 
+  onCategoriesChange = (e) => {
+    e.preventDefault();
+    const id = e.target.id;
+    const data = this.setCategories(this.state.categories, id);
+    console.log(data);
+
+    this.setState((prevState) => {
+      const newValue = {
+        'categories': data
+      }
+
+      return {
+        ...prevState,
+        ...newValue
+      }
+    })
+
+  }
 
   render() {
     return (
@@ -275,7 +305,7 @@ class Navigation extends Component {
               }
 
               {
-                <MenuTree key={CATEGORY_PARENT} show={true} label="Category">
+                <MenuTree key={CATEGORY_PARENT} show={true} label="Category" >
                   {this.state.categories ? this.categories(this.state.categories): " "}
                 </MenuTree>
               }
@@ -300,19 +330,19 @@ class Navigation extends Component {
     return data.map((item, index) => {
       if (item.name != null) {
         if (isEmpty(item.tree)) {
-          return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} />)
+          return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} onChange={this.onCategoriesChange} />)
         } else {
           return (
-              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked} level={2}>
+              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked} level={2} onChange={this.onCategoriesChange} >
                 {
                   item.tree.map((treeItem, treeIndex) => {
                     if (isEmpty(treeItem.tree)){
-                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name} checked={treeItem.checked}/>)
+                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} onChange={this.onCategoriesChange} />)
                     }
                     return (
-                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} level={3} >
+                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} level={3}  onChange={this.onCategoriesChange} >
                           {treeItem.tree.map((subItem, subIndex) => {
-                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name} checked={subItem.checked}/>);
+                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name} checked={subItem.checked} onChange={this.onCategoriesChange} />);
                           })}
                         </NewMenuTree>
                     )

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const NewMenuTree = (props) => (
     <li>
-        <a href="#">
-            <input id={props.id} type="checkbox" name={props.id} checked={props.checked} />
+        <a href="#" className="nav-link">
+            <input id={props.id} type="checkbox" name={props.id} checked={props.checked} onChange={props.onChange} />
             <label htmlFor={props.id}>
                 <span className="nav-label">{props.label}</span>
             </label>
