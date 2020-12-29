@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
 import { isEmpty } from 'lodash';
 
 import NewMenuItem from './newMenuItem';
 import NewMenuTree from './newMenuTree';
 import MenuItem from './menuItem';
 import MenuTree from './menuTree';
-import logo from '../assets/img/logo.png';
 import { smoothlyMenu } from './helpers/helpers';
 import $ from 'jquery';
 import list from '../constants/list';
@@ -25,8 +23,7 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menu: getTreeMenu(list.menu),
-      navMenu: list.navMenu,
+      categories: [],
       gasses: [],
       years: [],
       isYearly: false
@@ -35,7 +32,7 @@ class Navigation extends Component {
 
   componentDidMount() {
     const { menu } = this.refs;
-    console.log(this.state.menu)
+
     this.loadCategories();
     if (this.state.isYearly){
       this.loadYears();
@@ -43,7 +40,6 @@ class Navigation extends Component {
       this.loadGas();
     }
 
-    console.log(this.state);
     // eslint-disable-next-line func-names
     $(function() {
       $(menu).metisMenu({
@@ -52,20 +48,22 @@ class Navigation extends Component {
     });
   }
 
-
   componentWillUpdate() {
-    $('body').toggleClass('mini-navbar');
-    smoothlyMenu();
+    // $('body').toggleClass('mini-navbar');
+    // smoothlyMenu();
   }
 
-  loadGas(yearId = null){
-    console.log(yearId);
+  loadGas = (yearId = null) => {
     if (yearId === null){
       axios.getGasses().then((response) => {
         const data = response.data;
         //posledniot gas go pravime aktiven koga se bira od select menu
-        data[data.length - 1].checked = true;
-
+        //site gasovi da bidat checked vo menito
+        for (const el of data) {
+          el.checked = false;
+          el.parent = GAS_PARENT;
+        }
+        data[0].checked = true;
         const gasChecked = data[0];
 
         this.setState((prevState) => {
@@ -78,7 +76,6 @@ class Navigation extends Component {
             ...newValue
           }
         }, () => {
-          console.log(gasChecked);
           this.loadYears(gasChecked.id);
         })
       })
@@ -102,28 +99,28 @@ class Navigation extends Component {
             ...prevState,
             ...newValue
           }
-        }, () => {console.log(this.state)})
+        })
 
       })
     }
   }
 
-  loadYears(gasId = null){
+  loadYears = (gasId = null) => {
     if (gasId === null){
       axios.getYears().then((response) => {
         const data = response.data;
         for (const el of data) {
           el.checked = false;
+          el.name = el.year;
           el.parent = YEAR_PARENT;
         }
-        data[data.length -1].checked = true;
-        const yearChecked = data[data.length-1];
-        console.log(data);
+        data[0].checked = true;
+        const yearChecked = data[0];
+
         this.setState((prevState) => {
           const newValue = {
             'years': data
           };
-          console.log(newValue);
 
           return {
             ...prevState,
@@ -137,9 +134,6 @@ class Navigation extends Component {
     } else {
       axios.getYearsByGas(gasId).then((response) => {
         const data = response.data;
-        console.log("YEARS");
-        console.log(gasId);
-        console.log(data);
         //site godini da bidat vkluceni, moze da go promenime
         for (const el of data) {
           el.checked = true;
@@ -156,7 +150,7 @@ class Navigation extends Component {
             ...prevState,
             ...newValue
           }
-        }, () => {console.log(this.state)})
+        })
 
       })
     }
@@ -166,7 +160,6 @@ class Navigation extends Component {
   loadCategories = () => {
     axios.getCategories().then((response) => {
       this.setState((prevState) => {
-        // console.log(response.data)
 
         const newValue = {
           'categories': getTreeMenu(response.data, CATEGORY_PARENT)
@@ -177,23 +170,120 @@ class Navigation extends Component {
           ...newValue
         };
       }, () => {
-        // console.log(this.state)
-        // console.log(this.state.categories)
       });
     }, (err) => {
       // eslint-disable-next-line no-console
-      console.log(err);
       alert(err);
     });
   };
 
-  setAnalysis = () => {
-    this.setState({
-      isYearly: !this.state.isYearly
+  setCategories(data, id) {
+    for (const el of data) {
+      if (el.id == id){
+        el.checked = !el.checked;
+        break;
+      } else if (!isEmpty(el.tree)) {
+        this.setCategories(el.tree, id);
+      }
+    }
+
+    return data;
+  }
+
+  setAnalysis = (e) => {
+    e.preventDefault();
+
+    this.setState((prevState)=>{
+        const newValue = {
+          'isYearly': !prevState.isYearly
+        }
+
+        return{
+          ...prevState,
+          ...newValue
+        }
+    }, () => {
+      if (this.state.isYearly){
+        this.loadYears()
+      } else {
+        this.loadGas();
+      }
     })
     {console.log("tuka")}
   };
 
+  setSelectedItem = (e) => {
+    e.preventDefault();
+    const id = e.target.value;
+    if (this.state.isYearly) {
+      this.setState((prevState) => {
+        const data = prevState.years;
+        let selected = {}
+        for (const el of data) {
+          el.checked = false;
+          if (el.id == id){
+            selected = el;
+            el.checked = true
+          }
+        }
+
+        const newValue = {
+          'years': data,
+          'selected': selected
+        }
+
+        return {
+          ...prevState,
+          ...newValue
+        }
+      }, () => {
+        this.loadGas(this.state.selected.id)
+      })
+    } else {
+      this.setState((prevState) => {
+        const data = prevState.gasses;
+        let selected = {}
+        for (const el of data) {
+          el.checked = false;
+          if (el.id == id){
+            el.checked = true
+            selected = el;
+          }
+        }
+
+        const newValue = {
+          'gasses': data,
+          'selected': selected
+        }
+
+        return {
+          ...prevState,
+          ...newValue
+        }
+      }, () => {
+        this.loadYears(this.state.selected.id)
+      })
+    }
+  }
+
+  onCategoriesChange = (e) => {
+    e.preventDefault();
+    const id = e.target.id;
+    const data = this.setCategories(this.state.categories, id);
+    console.log(data);
+
+    this.setState((prevState) => {
+      const newValue = {
+        'categories': data
+      }
+
+      return {
+        ...prevState,
+        ...newValue
+      }
+    })
+
+  }
 
   render() {
     return (
@@ -203,20 +293,20 @@ class Navigation extends Component {
               <li className="nav-header">
                 {this.profile()}
               </li>
-              {/*{this.menu()}*/}
+
               {
-                this.state.isYearly ?
-                    <MenuTree key={GAS_PARENT} label="Gasses">
-                      {this.state.gasses ? this.categories(this.state.gasses): " "}
-                    </MenuTree>
-                    :
-                    <MenuTree key={YEAR_PARENT} label="Years">
-                      {this.state.years ? this.categories(this.state.years): " "}
-                    </MenuTree>
+                <MenuTree key={GAS_PARENT} show={this.state.isYearly} label="Gasses">
+                  {this.state.gasses ? this.categories(this.state.gasses) : " "}
+                </MenuTree>
+              }
+              {
+                <MenuTree key={YEAR_PARENT} show={!this.state.isYearly} label="Years">
+                  {this.state.years ? this.categories(this.state.years): " "}
+                </MenuTree>
               }
 
               {
-                <MenuTree key={CATEGORY_PARENT} label="Category">
+                <MenuTree key={CATEGORY_PARENT} show={true} label="Category" >
                   {this.state.categories ? this.categories(this.state.categories): " "}
                 </MenuTree>
               }
@@ -230,7 +320,7 @@ class Navigation extends Component {
     return (
         <div className="form-group nav-label">
           <ToogleSwitch isChecked={this.state.isYearly} onClick={this.setAnalysis}/>
-          <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses} isYearly={this.state.isYearly} />
+          <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses} onChange={this.setSelectedItem} isYearly={this.state.isYearly} />
         </div>
     );
   };
@@ -241,19 +331,19 @@ class Navigation extends Component {
     return data.map((item, index) => {
       if (item.name != null) {
         if (isEmpty(item.tree)) {
-          return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} />)
+          return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} onChange={this.onCategoriesChange} />)
         } else {
           return (
-              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked} level={2}>
+              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked} level={2} onChange={this.onCategoriesChange} >
                 {
                   item.tree.map((treeItem, treeIndex) => {
                     if (isEmpty(treeItem.tree)){
-                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name} checked={treeItem.checked}/>)
+                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} onChange={this.onCategoriesChange} />)
                     }
                     return (
-                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} level={3} >
+                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} level={3}  onChange={this.onCategoriesChange} >
                           {treeItem.tree.map((subItem, subIndex) => {
-                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name} checked={subItem.checked}/>);
+                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name} checked={subItem.checked} onChange={this.onCategoriesChange} />);
                           })}
                         </NewMenuTree>
                     )
