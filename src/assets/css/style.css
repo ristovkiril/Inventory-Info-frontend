@@ -2762,7 +2762,7 @@ select.form-control:not([size]):not([multiple]) {
 /* SWITCHES */
 .onoffswitch {
   position: relative;
-  width: 135px;
+  width: 125px;
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select: none;
@@ -2813,7 +2813,7 @@ select.form-control:not([size]):not([multiple]) {
   width: 19px; margin: 0px;
   background: #FFFFFF;
   position: absolute; top: 0; bottom: 0;
-  right: 118px;
+  right: 106px;
   border: 2px solid #1AB394; border-radius: 2px;
   transition: all 0.3s ease-in 0s;
 }

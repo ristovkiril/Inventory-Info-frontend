@@ -107,7 +107,7 @@ class Navigation extends Component {
 
       })
     }
-  }
+  };
 
   loadYears = (gasId = null) => {
     if (gasId === null){
@@ -158,7 +158,7 @@ class Navigation extends Component {
 
       })
     }
-  }
+  };
 
   // eslint-disable-next-line react/sort-comp
   loadCategories = () => {
@@ -192,7 +192,7 @@ class Navigation extends Component {
     }
 
     return data;
-  }
+  };
 
   setAnalysis = (e) => {
     e.preventDefault();
@@ -200,7 +200,7 @@ class Navigation extends Component {
     this.setState((prevState)=>{
         const newValue = {
           'isYearly': !prevState.isYearly
-        }
+        };
 
         return{
           ...prevState,
@@ -213,7 +213,6 @@ class Navigation extends Component {
         this.loadGas();
       }
     })
-    {console.log("tuka")}
   };
 
   setSelectedItem = (e) => {
@@ -234,7 +233,7 @@ class Navigation extends Component {
         const newValue = {
           'years': data,
           'selected': selected
-        }
+        };
 
         return {
           ...prevState,
@@ -258,7 +257,7 @@ class Navigation extends Component {
         const newValue = {
           'gasses': data,
           'selected': selected
-        }
+        };
 
         return {
           ...prevState,
@@ -268,7 +267,7 @@ class Navigation extends Component {
         this.loadYears(this.state.selected.id)
       })
     }
-  }
+  };
 
   onCategoriesChange = (e) => {
     // e.preventDefault();
@@ -278,7 +277,7 @@ class Navigation extends Component {
     this.setState((prevState) => {
       const newValue = {
         'categories': data
-      }
+      };
 
       return {
         ...prevState,
@@ -286,7 +285,7 @@ class Navigation extends Component {
       }
     })
 
-  }
+  };
 
   onGasChange = (e) => {
     const id = e.target.id;
@@ -300,14 +299,14 @@ class Navigation extends Component {
 
       const newValue = {
         'gasses': data
-      }
+      };
 
       return {
         ...prevState,
         ...newValue
       }
     }, () => {})
-  }
+  };
 
   onYearChange = (e) => {
     const id = e.target.id;
@@ -321,14 +320,14 @@ class Navigation extends Component {
 
       const newValue = {
         'years': data
-      }
+      };
 
       return {
         ...prevState,
         ...newValue
       }
     }, ()=>{})
-  }
+  };
 
   render() {
     return (
@@ -363,9 +362,20 @@ class Navigation extends Component {
 
   profile = () => {
     return (
-        <div className="form-group nav-label">
-          <ToogleSwitch isChecked={this.state.isYearly} onClick={this.setAnalysis}/>
-          <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses} onChange={this.setSelectedItem} isYearly={this.state.isYearly} />
+        <div className="row">
+          <div className="element1 col-md-pull-1">
+            <label className="nav-label">Анализа:</label><br/>
+            <ToogleSwitch isChecked={this.state.isYearly}
+                          onClick={this.setAnalysis}/>
+          </div>
+          <div className="element2 col-md-6">
+            <label className="nav-label">
+              {this.state.isYearly ? "Година:" : "Гас:"}
+            </label><br/>
+            <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses}
+                      onChange={this.setSelectedItem}
+                      isYearly={this.state.isYearly} />
+          </div>
         </div>
     );
   };
