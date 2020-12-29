@@ -15,6 +15,10 @@ import axios from '../axios/axios-repository';
 import ToogleSwitch from "./toogleSwitch";
 import Dropdown from "./dropdown";
 
+
+import jQuery from 'jquery';
+window.$ = jQuery;
+
 const CATEGORY_PARENT = -1;
 const YEAR_PARENT = -2;
 const GAS_PARENT = -3;
@@ -269,7 +273,6 @@ class Navigation extends Component {
     // e.preventDefault();
     const id = e.target.id;
     const data = this.setCategories(this.state.categories, id);
-    console.log(data);
 
     this.setState((prevState) => {
       const newValue = {
@@ -284,6 +287,48 @@ class Navigation extends Component {
 
   }
 
+  onGasChange = (e) => {
+    const id = e.target.id;
+    this.setState((prevState) => {
+      const data = prevState.gasses;
+      for (const el of data) {
+        if (el.id == id){
+          el.checked = !el.checked;
+        }
+      }
+
+      const newValue = {
+        'gasses': data
+      }
+
+      return {
+        ...prevState,
+        ...newValue
+      }
+    }, () => {})
+  }
+
+  onYearChange = (e) => {
+    const id = e.target.id;
+    this.setState((prevState) => {
+      const data = prevState.years;
+      for (const el of data) {
+        if (el.id == id){
+          el.checked = !el.checked;
+        }
+      }
+
+      const newValue = {
+        'years': data
+      }
+
+      return {
+        ...prevState,
+        ...newValue
+      }
+    }, ()=>{})
+  }
+
   render() {
     return (
         <nav id="leftCol" className="navbar-default navbar-static-side h-100" role="navigation">
@@ -295,18 +340,18 @@ class Navigation extends Component {
 
               {
                 <MenuTree key={GAS_PARENT} show={this.state.isYearly} label="Gasses">
-                  {this.state.gasses ? this.categories(this.state.gasses) : " "}
+                  {this.state.gasses ? this.categories(this.state.gasses, this.onGasChange) : " "}
                 </MenuTree>
               }
               {
                 <MenuTree key={YEAR_PARENT} show={!this.state.isYearly} label="Years">
-                  {this.state.years ? this.categories(this.state.years): " "}
+                  {this.state.years ? this.categories(this.state.years, this.onYearChange): " "}
                 </MenuTree>
               }
 
               {
                 <MenuTree key={CATEGORY_PARENT} show={true} label="Category" >
-                  {this.state.categories ? this.categories(this.state.categories): " "}
+                  {this.state.categories ? this.categories(this.state.categories, this.onCategoriesChange): " "}
                 </MenuTree>
               }
             </ul>
@@ -325,24 +370,24 @@ class Navigation extends Component {
   };
 
   //3 types 'Category', 'Gas', 'Year'
-  categories = (data) => {
+  categories = (data, onChange) => {
 
     return data.map((item, index) => {
       if (item.name != null) {
         if (isEmpty(item.tree)) {
-          return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} onChange={this.onCategoriesChange} />)
+          return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked} onChange={onChange} />)
         } else {
           return (
-              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked} level={2} onChange={this.onCategoriesChange} >
+              <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked} level={2} onChange={onChange} >
                 {
                   item.tree.map((treeItem, treeIndex) => {
                     if (isEmpty(treeItem.tree)){
-                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} onChange={this.onCategoriesChange} />)
+                      return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} onChange={onChange} />)
                     }
                     return (
-                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} level={3}  onChange={this.onCategoriesChange} >
+                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name} checked={treeItem.checked} level={3}  onChange={onChange} >
                           {treeItem.tree.map((subItem, subIndex) => {
-                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name} checked={subItem.checked} onChange={this.onCategoriesChange} />);
+                            return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name} checked={subItem.checked} onChange={onChange} />);
                           })}
                         </NewMenuTree>
                     )
