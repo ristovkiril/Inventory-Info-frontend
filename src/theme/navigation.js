@@ -199,6 +199,60 @@ class Navigation extends Component {
     })
   };
 
+  setSelectedItem = (e) => {
+    e.preventDefault();
+    const id = e.target.value;
+    if (this.state.isYearly) {
+      this.setState((prevState) => {
+        const data = prevState.years;
+        let selected = {}
+        for (const el of data) {
+          el.checked = false;
+          if (el.id == id){
+            selected = el;
+            el.checked = true
+          }
+        }
+
+        const newValue = {
+          'years': data,
+          'selected': selected
+        }
+
+        return {
+          ...prevState,
+          ...newValue
+        }
+      }, () => {
+        this.loadGas(this.state.selected.id)
+      })
+    } else {
+      this.setState((prevState) => {
+        const data = prevState.gasses;
+        let selected = {}
+        for (const el of data) {
+          el.checked = false;
+          if (el.id == id){
+            el.checked = true
+            selected = el;
+          }
+        }
+
+        const newValue = {
+          'gasses': data,
+          'selected': selected
+        }
+
+        return {
+          ...prevState,
+          ...newValue
+        }
+      }, () => {
+        this.loadYears(this.state.selected.id)
+      })
+    }
+  }
+
 
   render() {
     return (
@@ -208,27 +262,20 @@ class Navigation extends Component {
               <li className="nav-header">
                 {this.profile()}
               </li>
-              {/*{this.menu()}*/}
-
-              {/*{*/}
-              {/*  <MenuTree key={GAS_PARENT} label="Gasses">*/}
-              {/*    {this.state.gasses ? this.categories(this.state.gasses): " "}*/}
-              {/*  </MenuTree>*/}
-              {/*}*/}
 
               {
-                this.state.isYearly === true ?
-                    <MenuTree key={GAS_PARENT} label="Gasses">
-                      {this.state.gasses ? this.categories(this.state.gasses): " "}
-                    </MenuTree>
-                    :
-                    <MenuTree key={YEAR_PARENT} label="Years">
-                      {this.state.years ? this.categories(this.state.years): " "}
-                    </MenuTree>
+                <MenuTree key={GAS_PARENT} show={this.state.isYearly} label="Gasses">
+                  {this.state.gasses ? this.categories(this.state.gasses) : " "}
+                </MenuTree>
+              }
+              {
+                <MenuTree key={YEAR_PARENT} show={!this.state.isYearly} label="Years">
+                  {this.state.years ? this.categories(this.state.years): " "}
+                </MenuTree>
               }
 
               {
-                <MenuTree key={CATEGORY_PARENT} label="Category">
+                <MenuTree key={CATEGORY_PARENT} show={true} label="Category">
                   {this.state.categories ? this.categories(this.state.categories): " "}
                 </MenuTree>
               }
@@ -242,7 +289,7 @@ class Navigation extends Component {
     return (
         <div className="form-group nav-label">
           <ToogleSwitch isChecked={this.state.isYearly} onClick={this.setAnalysis}/>
-          <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses} isYearly={this.state.isYearly} />
+          <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses} onChange={this.setSelectedItem} isYearly={this.state.isYearly} />
         </div>
     );
   };
