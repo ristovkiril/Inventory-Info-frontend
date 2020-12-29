@@ -191,6 +191,7 @@ class Navigation extends Component {
     this.setState({
       isYearly: !this.state.isYearly
     })
+    {console.log("tuka")}
   };
 
 
