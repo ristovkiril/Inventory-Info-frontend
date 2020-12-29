@@ -2000,119 +2000,6 @@ button.dim:active:before {
   color: #8B91A0;
 }
 /* TOOGLE SWICH */
-.onoffswitch {
-  position: relative;
-  width: 64px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
-.onoffswitch-checkbox {
-  display: none;
-}
-.onoffswitch-label {
-  display: block;
-  overflow: hidden;
-  cursor: pointer;
-  border: 2px solid #1ab394;
-  border-radius: 2px;
-}
-.onoffswitch-inner {
-  width: 200%;
-  margin-left: -100%;
-  -moz-transition: margin 0.3s ease-in 0s;
-  -webkit-transition: margin 0.3s ease-in 0s;
-  -o-transition: margin 0.3s ease-in 0s;
-  transition: margin 0.3s ease-in 0s;
-}
-.onoffswitch-inner:before,
-.onoffswitch-inner:after {
-  float: left;
-  width: 50%;
-  height: 20px;
-  padding: 0;
-  line-height: 20px;
-  font-size: 12px;
-  color: white;
-  font-family: Trebuchet, Arial, sans-serif;
-  font-weight: bold;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.onoffswitch-inner:before {
-  content: "Годишна";
-  padding-left: 10px;
-  background-color: #1ab394;
-  color: #FFFFFF;
-}
-.onoffswitch-inner:after {
-  content: "Меѓугодишна";
-  padding-right: 10px;
-  background-color: #FFFFFF;
-  color: #999999;
-  text-align: right;
-}
-.onoffswitch-switch {
-  width: 20px;
-  margin: 0;
-  background: #FFFFFF;
-  border: 2px solid #1ab394;
-  border-radius: 2px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 44px;
-  -moz-transition: all 0.3s ease-in 0s;
-  -webkit-transition: all 0.3s ease-in 0s;
-  -o-transition: all 0.3s ease-in 0s;
-  transition: all 0.3s ease-in 0s;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-  margin-left: 0;
-}
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-  right: 0;
-}
-.onoffswitch-checkbox:disabled + .onoffswitch-label .onoffswitch-inner:before {
-  background-color: #919191;
-}
-.onoffswitch-checkbox:disabled + .onoffswitch-label,
-.onoffswitch-checkbox:disabled + .onoffswitch-label .onoffswitch-switch {
-  border-color: #919191;
-}
-/* CHOSEN PLUGIN */
-.chosen-container-single .chosen-single {
-  background: #ffffff;
-  box-shadow: none;
-  -moz-box-sizing: border-box;
-  border-radius: 2px;
-  cursor: text;
-  height: auto !important;
-  margin: 0;
-  min-height: 30px;
-  overflow: hidden;
-  padding: 4px 12px;
-  position: relative;
-  width: 100%;
-}
-.chosen-container-multi .chosen-choices li.search-choice {
-  background: #f1f1f1;
-  border: 1px solid #e5e6e7;
-  border-radius: 2px;
-  box-shadow: none;
-  color: #333333;
-  cursor: default;
-  line-height: 13px;
-  margin: 3px 0 3px 5px;
-  padding: 3px 20px 3px 5px;
-  position: relative;
-}
-/* Tags Input Plugin */
-.bootstrap-tagsinput {
-  border: 1px solid #e5e6e7;
-  box-shadow: none;
-}
 /* PAGINATIN */
 .pagination > .active > a,
 .pagination > .active > span,
@@ -2874,8 +2761,11 @@ select.form-control:not([size]):not([multiple]) {
 }
 /* SWITCHES */
 .onoffswitch {
-  position: relative; width: 110px;
-  -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+  position: relative;
+  width: 135px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
 }
 .onoffswitch-checkbox {
   position: absolute;
@@ -2884,35 +2774,47 @@ select.form-control:not([size]):not([multiple]) {
 }
 .onoffswitch-label {
   display: block; overflow: hidden; cursor: pointer;
-  border: 2px solid #1AB394; border-radius: 0px;
+  border: 2px solid #1AB394; border-radius: 4px;
 }
-
 .onoffswitch-inner {
-  display: block; width: 200%; margin-left: -100%;
+  display: block;
+  width: 200%;
+  margin-left: -100%;
   transition: margin 0.3s ease-in 0s;
 }
 .onoffswitch-inner:before, .onoffswitch-inner:after {
-  display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
-  font-size: 11px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 13px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
   box-sizing: border-box;
 }
 .onoffswitch-inner:before {
   content: "Годишна";
-  padding-left: 5px;
-  background-color: #1AB394; color: #FFFFFF;
+  padding-left: 10px;
+  background-color: #1AB394;
+  color: #FFFFFF;
 }
 .onoffswitch-inner:after {
   content: "Меѓугодишна";
-  padding-right: 4px;
-  background-color: #FFFFFF; color: #999999;
+  padding-right: 10px;
+  background-color: #FFFFFF;
+  color: #999999;
   text-align: right;
 }
 .onoffswitch-switch {
-  display: block; width: 26px; margin: 0px;
+  display: block;
+  width: 19px; margin: 0px;
   background: #FFFFFF;
   position: absolute; top: 0; bottom: 0;
-  right: 81px;
-  border: 2px solid #1AB394; border-radius: 3px;
+  right: 118px;
+  border: 2px solid #1AB394; border-radius: 2px;
   transition: all 0.3s ease-in 0s;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
@@ -2921,7 +2823,6 @@ select.form-control:not([size]):not([multiple]) {
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
 }
-
 
 /* jqGrid */
 .ui-jqgrid {
