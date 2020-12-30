@@ -364,12 +364,12 @@ class Navigation extends Component {
     return (
         <div className="row">
           <div className="element1 col-md-pull-1">
-            <label className="nav-label">Анализа:</label><br/>
+            <label className="nav-label text-light">Анализа:</label><br/>
             <ToogleSwitch isChecked={this.state.isYearly}
                           onClick={this.setAnalysis}/>
           </div>
           <div className="element2 col-md-6">
-            <label className="nav-label">
+            <label className="nav-label text-light">
               {this.state.isYearly ? "Година:" : "Гас:"}
             </label><br/>
             <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses}
