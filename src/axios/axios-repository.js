@@ -16,6 +16,9 @@ const service = {
   },
   getGasByYear: (id) => {
     return axios.get(`api/gas/year/${id}`)
+  },
+  getAnalysis: () => {
+    return axios.get('api/analysis/all')
   }
 };
 
