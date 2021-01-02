@@ -21,7 +21,12 @@ window.$ = jQuery;
 
 function App() {
 
-
+    const [isAuthenticated, userHasAuthenticated] = useState(false);
+    const [data, setData] = useState([]);
+    const [isYearly, setIsYearly] = useState(true);
+    const [gasses, setGasses] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [years, setYears] = useState([]);
 
 
     return (
@@ -29,7 +34,7 @@ function App() {
             forceRefresh={false}
             basename="/">
             <div className="body">
-                <Routes/>
+                <Routes appData={{data, setData}} appIsYearly={{isYearly, setIsYearly}} appGasses={{gasses, setGasses}} appCategories={{categories, setCategories}} />
             </div>
         </Router>
     );

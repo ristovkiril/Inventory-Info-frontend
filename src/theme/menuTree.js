@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const MenuTree = (props) => {
     return (
-        <li hidden={!props.show}>
+        <li hidden={!props.show} className={props.active ? "active" : " "}>
             <a href="#">
                 <i className={`fa fa-${props.icon}`}/>
                 <span className="nav-label">{props.label}</span>

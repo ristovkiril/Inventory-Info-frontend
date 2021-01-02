@@ -19,6 +19,9 @@ const service = {
   },
   getAnalysis: () => {
     return axios.get('api/analysis/all')
+  },
+  getAllByIds: (gasses, categories, analysis) => {
+    return axios.get(`api/analysis/all/data?gasIds=${gasses}&categoryIds=${categories}&analysisIds=${analysis}`)
   }
 };
 

@@ -32,7 +32,8 @@ class Navigation extends Component {
             categories: [],
             gasses: [],
             years: [],
-            isYearly: false
+            isYearly: false,
+            analysis: []
         };
     }
 
@@ -55,9 +56,50 @@ class Navigation extends Component {
         this.props.getAnalysis()
     }
 
+    component
+
     componentWillUpdate() {
         // $('body').toggleClass('mini-navbar');
         // smoothlyMenu();
+    }
+
+    //So vaa ce gi citame site selektirani
+    loadAllByIds = () =>{
+        let temp = this.state.categories;
+        const gasses = this.state.gasses.filter(f => f.checked).map(f => f.id);
+        const analysis = this.state.years.filter(f => f.checked).map(f => f.id);
+        const categories = (function (){
+            let data = [];
+            (function recursive(arr){
+                for (const el of arr) {
+                    if (el.checked){
+                        data.push(el.id);
+                    }
+                    if (!isEmpty(el.tree)){
+                        recursive(el.tree)
+                    }
+                }
+            }(temp))
+
+            return data;
+        }());
+
+        if (gasses.length > 0 && analysis.length > 0 && categories.length > 0) {
+            axios.getAllByIds(gasses, categories, analysis).then((response) => {
+                console.log(response.data);
+                this.setState((prevState) => {
+                    const newValue = {
+                        'analysis': response.data
+                    }
+                    return {
+                        ...prevState,
+                        ...newValue
+                    }
+                }, () => {
+                    console.log(this.state)
+                })
+            });
+        }
     }
 
     loadGas = (yearId = null) => {
@@ -105,6 +147,8 @@ class Navigation extends Component {
                         ...prevState,
                         ...newValue
                     }
+                }, ()=> {
+                    this.loadAllByIds();
                 })
 
             })
@@ -156,6 +200,8 @@ class Navigation extends Component {
                         ...prevState,
                         ...newValue
                     }
+                },() => {
+                    this.loadAllByIds()
                 })
 
             })
@@ -176,6 +222,7 @@ class Navigation extends Component {
                     ...newValue
                 };
             }, () => {
+                this.loadAllByIds();
             });
         }, (err) => {
             // eslint-disable-next-line no-console
@@ -285,6 +332,8 @@ class Navigation extends Component {
                 ...prevState,
                 ...newValue
             }
+        }, () => {
+            this.loadAllByIds();
         })
 
     };
@@ -308,6 +357,7 @@ class Navigation extends Component {
                 ...newValue
             }
         }, () => {
+            this.loadAllByIds();
         })
     };
 
@@ -330,6 +380,7 @@ class Navigation extends Component {
                 ...newValue
             }
         }, () => {
+            this.loadAllByIds();
         })
     };
 
@@ -343,18 +394,18 @@ class Navigation extends Component {
                         </li>
 
                         {
-                            <MenuTree key={GAS_PARENT} show={this.state.isYearly} label="Gasses">
+                            <MenuTree active={true} key={GAS_PARENT} show={this.state.isYearly} label="Gasses">
                                 {this.state.gasses ? this.categories(this.state.gasses, this.onGasChange) : " "}
                             </MenuTree>
                         }
                         {
-                            <MenuTree key={YEAR_PARENT} show={!this.state.isYearly} label="Years">
+                            <MenuTree active={true} key={YEAR_PARENT} show={!this.state.isYearly} label="Years">
                                 {this.state.years ? this.categories(this.state.years, this.onYearChange) : " "}
                             </MenuTree>
                         }
 
                         {
-                            <MenuTree key={CATEGORY_PARENT} show={true} label="Category">
+                            <MenuTree active={false} key={CATEGORY_PARENT} show={true} label="Category">
                                 {this.state.categories ? this.categories(this.state.categories, this.onCategoriesChange) : " "}
                             </MenuTree>
                         }
