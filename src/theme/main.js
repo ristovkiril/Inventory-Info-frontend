@@ -72,10 +72,10 @@ export class Main extends Component {
                             <div className="animated fadeInDown">
                                 <div className="body wrapper wrapper-content animated">
                                         <ul className="nav nav-tabs">
-                                            <li className="nav-item">
-                                                <a href="#" onClick={this.seTableView}><i className="fa fa-table"/>Табели</a>
+                                            <li className={this.state.tableView === true ? "nav-item active bg-white":"nav-item"}>
+                                                <a href="#" className="nav-link" onClick={this.seTableView}><i className="fa fa-table"/>Табели</a>
                                             </li>
-                                            <li className="nav-item">
+                                            <li className={this.state.tableView === false ? "nav-item active bg-white":"nav-item"}>
                                                 <a href="#" className="nav-link" onClick={this.setChartView}><i
                                                     className="fa fa-bar-chart"/>Графици</a>
                                             </li>
