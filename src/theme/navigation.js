@@ -32,7 +32,6 @@ class Navigation extends Component {
             categories: [],
             gasses: [],
             years: [],
-            isYearly: false,
             analysis: []
         };
     }
@@ -41,7 +40,7 @@ class Navigation extends Component {
         const {menu} = this.refs;
 
         this.loadCategories();
-        if (this.state.isYearly) {
+        if (this.props.isYearly) {
             this.loadYears();
         } else {
             this.loadGas();
@@ -53,10 +52,10 @@ class Navigation extends Component {
                 toggle: true
             });
         });
-        this.props.getAnalysis()
+        // this.props.getAnalysis()
+        this.props.onSelected(this.state.gasses, this.state.categories, this.state.analysis);
     }
 
-    component
 
     componentWillUpdate() {
         // $('body').toggleClass('mini-navbar');
@@ -64,18 +63,18 @@ class Navigation extends Component {
     }
 
     //So vaa ce gi citame site selektirani
-    loadAllByIds = () =>{
+    loadAllByIds = () => {
         let temp = this.state.categories;
         const gasses = this.state.gasses.filter(f => f.checked).map(f => f.id);
         const analysis = this.state.years.filter(f => f.checked).map(f => f.id);
-        const categories = (function (){
+        const categories = (function () {
             let data = [];
-            (function recursive(arr){
+            (function recursive(arr) {
                 for (const el of arr) {
-                    if (el.checked){
+                    if (el.checked) {
                         data.push(el.id);
                     }
-                    if (!isEmpty(el.tree)){
+                    if (!isEmpty(el.tree)) {
                         recursive(el.tree)
                     }
                 }
@@ -85,22 +84,25 @@ class Navigation extends Component {
         }());
 
         if (gasses.length > 0 && analysis.length > 0 && categories.length > 0) {
-            axios.getAllByIds(gasses, categories, analysis).then((response) => {
-                console.log(response.data);
-                this.setState((prevState) => {
-                    const newValue = {
-                        'analysis': response.data
-                    }
-                    return {
-                        ...prevState,
-                        ...newValue
-                    }
-                }, () => {
-                    console.log(this.state)
-                })
-            });
+            // // axios.getAllByIds(gasses, categories, analysis).then((response) => {
+            // //     console.log(response.data);
+            // //     this.setState((prevState) => {
+            // //         const newValue = {
+            // //             'analysis': response.data
+            // //         };
+            // //         return {
+            // //             ...prevState,
+            // //             ...newValue
+            // //         }
+            // //     }, () => {
+            // //         console.log(this.state)
+            // //     })
+            // });
+
+            this.props.onSelected(gasses, categories, analysis);
+
         }
-    }
+    };
 
     loadGas = (yearId = null) => {
         if (yearId === null) {
@@ -147,7 +149,7 @@ class Navigation extends Component {
                         ...prevState,
                         ...newValue
                     }
-                }, ()=> {
+                }, () => {
                     this.loadAllByIds();
                 })
 
@@ -200,7 +202,7 @@ class Navigation extends Component {
                         ...prevState,
                         ...newValue
                     }
-                },() => {
+                }, () => {
                     this.loadAllByIds()
                 })
 
@@ -246,28 +248,19 @@ class Navigation extends Component {
     setAnalysis = (e) => {
         e.preventDefault();
 
-        this.setState((prevState) => {
-            const newValue = {
-                'isYearly': !prevState.isYearly
-            };
+        this.props.setAnalysis();
 
-            return {
-                ...prevState,
-                ...newValue
-            }
-        }, () => {
-            if (this.state.isYearly) {
-                this.loadYears()
-            } else {
-                this.loadGas();
-            }
-        })
+        if (this.props.isYearly) {
+            this.loadYears()
+        } else {
+            this.loadGas();
+        }
     };
 
     setSelectedItem = (e) => {
         e.preventDefault();
         const id = e.target.value;
-        if (this.state.isYearly) {
+        if (this.props.isYearly) {
             this.setState((prevState) => {
                 const data = prevState.years;
                 let selected = {}
@@ -394,12 +387,13 @@ class Navigation extends Component {
                         </li>
 
                         {
-                            <MenuTree active={true} key={GAS_PARENT} show={this.state.isYearly} label="Gasses">
+                            <MenuTree active={true} key={GAS_PARENT} show={this.props.isYearly} label="Gasses">
                                 {this.state.gasses ? this.categories(this.state.gasses, this.onGasChange) : " "}
                             </MenuTree>
                         }
                         {
-                            <MenuTree active={true} key={YEAR_PARENT} show={!this.state.isYearly} label="Years">
+                            <MenuTree active={true} key={YEAR_PARENT} show={!this.props
+                                .isYearly} label="Years">
                                 {this.state.years ? this.categories(this.state.years, this.onYearChange) : " "}
                             </MenuTree>
                         }
@@ -420,16 +414,16 @@ class Navigation extends Component {
             <div className="row">
                 <div className="element1 col-md-pull-1">
                     <label className="nav-label text-light font-weight-bold">Анализа:</label><br/>
-                    <ToogleSwitch isChecked={this.state.isYearly}
+                    <ToogleSwitch isChecked={this.props.isYearly}
                                   onClick={this.setAnalysis}/>
                 </div>
                 <div className="element2 col-md-6">
                     <label className="nav-label text-light font-weight-bold">
-                        {this.state.isYearly ? "Година:" : "Гас:"}
+                        {this.props.isYearly ? "Година:" : "Гас:"}
                     </label><br/>
-                    <Dropdown items={this.state.isYearly ? this.state.years : this.state.gasses}
+                    <Dropdown items={this.props.isYearly ? this.state.years : this.state.gasses}
                               onChange={this.setSelectedItem}
-                              isYearly={this.state.isYearly}/>
+                              isYearly={this.props.isYearly}/>
                 </div>
             </div>
         );
@@ -502,7 +496,7 @@ class Navigation extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return{
+    return {
         analysis: state.analysisReducer.analysis
     }
 };

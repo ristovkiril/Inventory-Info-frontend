@@ -1,6 +1,35 @@
 import React, {Component} from 'react';
+import * as analysisActionCreator from "../redux/actions/gas_year_category";
+import {connect} from "react-redux";
 
-export default class Table extends Component {
+export class Table extends Component {
+
+    getCategories = () => {
+        return [...new Set(this.props.selected.map(row => row.category.name))]
+    };
+
+    getAnalysis = () => {
+        if (this.props.isYearly){
+            return [...new Set(this.props.selected.map(row => row.gas.name))]
+        } else {
+            return [...new Set(this.props.selected.map(row => row.analysis.year))]
+        }
+    };
+
+    findByCategoryAndGas = (cat, gas) => {
+        const row = this.props.selected
+            .find((e) => e.category.name === cat && e.gas.name === gas);
+        return row.concentrate.toFixed(2)
+    };
+
+    findByCategoryAndYear = (cat, year) => {
+        const row = this.props.selected
+            .find((e) => e.category.name === cat && e.analysis.year === year);
+        return row.concentrate.toFixed(2)
+
+    };
+
+
 
     render() {
         return (
@@ -8,32 +37,31 @@ export default class Table extends Component {
                 <thead className="">
                 <tr>
                     <th>Категории</th>
-                    <th>2011</th>
-                    <th>2012</th>
-                    <th>2013</th>
+                    {
+                        this.getAnalysis().map(analysis => <th key={analysis}>{analysis}</th>)
+                    }
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th>Вкупни емисии и отстранувања</th>
-                    <td>1.21</td>
-                    <td>1.30</td>
-                    <td>1.34</td>
-                </tr>
-                <tr>
-                    <th>1 - Енергија</th>
-                    <td>1.21</td>
-                    <td>1.30</td>
-                    <td>1.34</td>
-                </tr>
-                <tr>
-                    <th>2 - Индустриски процеси и користење на производи</th>
-                    <td>1.21</td>
-                    <td>1.30</td>
-                    <td>1.34</td>
-                </tr>
+                {
+                    this.getCategories().map((name) =>
+                        <tr key={name}>
+                            <td>{name}</td>
+                            {
+                                this.getAnalysis().map(analysis => <td key={analysis + name}>
+                                        { this.props.isYearly ?
+                                    this.findByCategoryAndGas(name, analysis) : this.findByCategoryAndYear(name, analysis)
+                                        }
+                                </td>
+                                )
+                            }
+                        </tr>
+                    )
+                }
+
                 </tbody>
             </table>
         )
     }
 }
+export default Table;

@@ -1,1 +1,2 @@
 export const SET_ANALYSIS = 'SET_ANALYSIS';
+export const INIT_SELECTED = 'INIT_SELECTED';

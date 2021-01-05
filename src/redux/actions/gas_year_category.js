@@ -8,6 +8,15 @@ export const setAnalysis = (analysis) => {
     }
 };
 
+export const setSelected = (analysis) => {
+    return {
+        type: actionTYPE.INIT_SELECTED,
+        selected: analysis
+    }
+};
+
+
+
 //async
 export const loadAnalysis = () => {
     return (dispatch) => {
@@ -15,5 +24,15 @@ export const loadAnalysis = () => {
             dispatch(setAnalysis(response.data));
         })
     }
+
+};
+
+export const loadSelected = (gasses, categories, analysis) => {
+    return (dispatch) => {
+        service.getAllByIds(gasses, categories, analysis).then(response => {
+            dispatch(setSelected(response.data));
+        })
+    }
+
 };
 

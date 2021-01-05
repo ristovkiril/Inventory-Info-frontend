@@ -10,12 +10,15 @@ import {correctHeight, detectBody} from './helpers/helpers';
 
 import '../assets/dependencies';
 import Table from "./table";
+import * as analysisActionCreator from "../redux/actions/gas_year_category";
+import {connect} from "react-redux";
 
-export default class Main extends Component {
+export class Main extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
+            isYearly: false,
             tableView: true
         }
     }
@@ -42,6 +45,18 @@ export default class Main extends Component {
         });
     };
 
+    setAnalysis = () => {
+        this.setState((prevState) => {
+            const newValue = {
+                'isYearly': !prevState.isYearly
+            };
+
+            return {
+                ...prevState,
+                ...newValue
+            }
+        })
+    };
 
     render() {
         return (
@@ -49,7 +64,9 @@ export default class Main extends Component {
                 <BrowserRouter>
                     <div>
                         <Progress/>
-                        <Navigation/>
+                        <Navigation isYearly={this.state.isYearly}
+                                    setAnalysis={this.setAnalysis}
+                                    onSelected={this.props.onSelected}/>
                         <div id="page-wrapper" className="gray-bg">
                             <TopHeader/>
                             <div className="animated fadeInDown">
@@ -66,7 +83,8 @@ export default class Main extends Component {
                                     <div className="ibox-content">
                                         {
                                             this.state.tableView ? (
-                                                <Table/>
+                                                <Table isYearly={this.state.isYearly}
+                                                       selected={this.props.selected}/>
                                             ) : (
                                                 <h1>Angela</h1>
                                             )
@@ -82,3 +100,19 @@ export default class Main extends Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    return{
+        // analysis: state.analysisReducer.analysis
+        selected: state.analysisReducer.selected
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // getAnalysis: () => dispatch(analysisActionCreator.loadAnalysis()),
+        onSelected: (gasses, categories, analysis) => dispatch (analysisActionCreator.loadSelected(gasses, categories, analysis))
+    };
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
