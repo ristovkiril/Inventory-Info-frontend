@@ -31,19 +31,21 @@ export class Main extends Component {
         });
     }
 
-    seTableView = () => {
-        this.setState({
-            tableView: true
+    setTableView = () => {
+        this.setState((prevState) => {
+            const newValue = {
+                'tableView': !prevState.tableView
+            }
+
+            return {
+                ...prevState,
+                ...newValue
+            }
         });
         // $('li .fa-table').addClass('active')
 
     };
 
-    setChartView = () => {
-        this.setState({
-            tableView: false
-        });
-    };
 
     setAnalysis = () => {
         this.setState((prevState) => {
@@ -71,13 +73,14 @@ export class Main extends Component {
                             <TopHeader/>
                             <div className="animated fadeInDown">
                                 <div className="body wrapper wrapper-content animated">
-                                        <ul className="nav nav-tabs">
+                                        <ul className="nav nav-tabs border-0">
                                             <li className={this.state.tableView === true ? "nav-item active bg-white":"nav-item"}>
-                                                <a href="#" className="nav-link" onClick={this.seTableView}><i className="fa fa-table"/>Табели</a>
+                                                <a href="#" className={this.state.tableView === true ? "nav-link active bg-white border-0 ":"nav-link"} onClick={this.setTableView}>
+                                                    <i className="fa fa-table"/>Табели</a>
                                             </li>
                                             <li className={this.state.tableView === false ? "nav-item active bg-white":"nav-item"}>
-                                                <a href="#" className="nav-link" onClick={this.setChartView}><i
-                                                    className="fa fa-bar-chart"/>Графици</a>
+                                                <a href="#" className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link"} onClick={this.setTableView}>
+                                                    <i className="fa fa-bar-chart"/>Графици</a>
                                             </li>
                                         </ul>
                                     <div className="ibox-content">
