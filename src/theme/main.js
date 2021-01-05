@@ -6,10 +6,11 @@ import Progress from './progress';
 import Navigation from './navigation';
 import TopHeader from './topHeader';
 import Footer from './footer';
+import Table from "./table";
+import Charts from "./Charts";
 import {correctHeight, detectBody} from './helpers/helpers';
 
 import '../assets/dependencies';
-import Table from "./table";
 import * as analysisActionCreator from "../redux/actions/gas_year_category";
 import {connect} from "react-redux";
 
@@ -73,24 +74,24 @@ export class Main extends Component {
                             <TopHeader/>
                             <div className="animated fadeInDown">
                                 <div className="body wrapper wrapper-content animated">
-                                        <ul className="nav nav-tabs border-0">
-                                            <li className={this.state.tableView === true ? "nav-item active bg-white":"nav-item"}>
-                                                <a href="#" className={this.state.tableView === true ? "nav-link active bg-white border-0 ":"nav-link"} onClick={this.setTableView}>
+                                        <ul className="nav nav-tabs border-bottom-0">
+                                            <li className={this.state.tableView === true ? "nav-item active bg-white rounded-top border-bottom-0":"nav-item bg-light rounded-top"}>
+                                                <a href="#" className={this.state.tableView === true ? "nav-link active bg-white border-bottom-0 ":"nav-link bg-light rounded-top"} onClick={this.setTableView}>
                                                     <i className="fa fa-table"/>Табели</a>
                                             </li>
-                                            <li className={this.state.tableView === false ? "nav-item active bg-white":"nav-item"}>
-                                                <a href="#" className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link"} onClick={this.setTableView}>
+                                            <li className={this.state.tableView === false ? "nav-item active bg-white rounded-top":"nav-item bg-light rounded-top"}>
+                                                <a href="#" className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link bg-light rounded-top"} onClick={this.setTableView}>
                                                     <i className="fa fa-bar-chart"/>Графици</a>
                                             </li>
                                         </ul>
-                                    <div className="ibox-content">
+                                    <div className="ibox-content p-3 m-0">
                                         {
                                             this.state.tableView ? (
                                                 <Table isYearly={this.state.isYearly}
                                                        selected={this.props.selected}/>
                                             ) : (
-                                                <h1>Angela</h1>
-                                            )
+                                                <Charts isYearly={this.state.isYearly}
+                                                       selected={this.props.selected}/>                                            )
                                         }
                                     </div>
                                     </div>

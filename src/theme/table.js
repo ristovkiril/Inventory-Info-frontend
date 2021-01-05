@@ -34,11 +34,11 @@ export class Table extends Component {
     render() {
         return (
             <table className="table table-hover">
-                <thead className="">
+                <thead className="bg-light m-0 p-0">
                 <tr>
-                    <th>Категории</th>
+                    <th className="font-weight-bold">Категории</th>
                     {
-                        this.getAnalysis().map(analysis => <th key={analysis}>{analysis}</th>)
+                        this.getAnalysis().map(analysis => <th key={analysis} className="font-weight-bold border-light border-left text-center">{analysis}</th>)
                     }
                 </tr>
                 </thead>
@@ -46,13 +46,14 @@ export class Table extends Component {
                 {
                     this.getCategories().map((name) =>
                         <tr key={name}>
-                            <td>{name}</td>
+                            <td className="bg-light font-weight-bold">{name}</td>
                             {
-                                this.getAnalysis().map(analysis => <td key={analysis + name}>
-                                        { this.props.isYearly ?
-                                    this.findByCategoryAndGas(name, analysis) : this.findByCategoryAndYear(name, analysis)
-                                        }
-                                </td>
+                                this.getAnalysis().map(analysis =>
+                                        <td key={analysis + name} className="border-light border-left text-center">
+                                            { this.props.isYearly ?
+                                                this.findByCategoryAndGas(name, analysis) : this.findByCategoryAndYear(name, analysis)
+                                            }
+                                        </td>
                                 )
                             }
                         </tr>
