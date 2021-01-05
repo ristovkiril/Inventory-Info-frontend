@@ -1,5 +1,9 @@
+import $ from 'jquery';
+
 import React, { Component } from 'react';
 import { Bar } from 'react-chartjs-2';
+import { toBlob, saveAs } from "file-saver";
+
 
 export class Charts extends Component {
 
@@ -76,27 +80,65 @@ export class Charts extends Component {
 
     };
 
+    getMainAnalysis = () => {
+        return this.props.isYearly && this.props.selected.length > 0? this.props.selected[0].year.year : this.props.selected[0].gas.name;
+    }
+
+    saveAsPng = (e) => {
+        e.preventDefault();
+        const type = e.target.name;
+        if (type.toLowerCase() === "png") {
+            $("canvas").get(0).toBlob((blob) => {
+                saveAs(blob, this.getMainAnalysis() + ".png");
+            })
+        }
+        else if (type.toLowerCase() === "jpg") {
+            $("canvas").get(0).toBlob((blob) => {
+                saveAs(blob, this.getMainAnalysis() + ".jpg");
+            })
+        }
+        else if (type.toLowerCase() === "svg") {
+            $("canvas").get(0).toBlob((blob) => {
+                saveAs(blob, "chart.svg");
+            })
+        }
+        else if (type.toLowerCase() === "pdf") {
+            $("canvas").get(0).toBlob((blob) => {
+                saveAs(blob, "chart.pdf");
+            })
+        }
+    }
+
     render() {
         return (
             <div className="chart">
-                <Bar data={{
-                            labels: this.getCategories(),
-                            datasets: this.getChartDataset()
-                        }}
-                     width={100}
-                     height={50}
-                     options={{
-                         title: {
-                             display: true,
-                             text: "Емисии на стаклени гасови",
-                             fontSize: 24
-                         },
-                         legend: {
-                             display: true,
-                             position: "bottom"
-                         }
-                     }}
-                     />
+                <div className="row p-3 float-right">
+                    <button onClick={this.saveAsPng} name="png" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as PNG</button>
+                    <button onClick={this.saveAsPng} name="jpg" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as JPG</button>
+                    {/*<button onClick={this.saveAsPng} name="svg" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as SVG</button>*/}
+                    {/*<button onClick={this.saveAsPng} name="pdf" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as PDF</button>*/}
+                </div>
+                <div className="row block">
+                    <Bar data={{
+                        labels: this.getCategories(),
+                        datasets: this.getChartDataset()
+                    }}
+                         width={100}
+                         height={50}
+                         options={{
+                             id: "chart",
+                             title: {
+                                 display: true,
+                                 text: "Емисии на стаклени гасови " + this.getMainAnalysis(),
+                                 fontSize: 24
+                             },
+                             legend: {
+                                 display: true,
+                                 position: "bottom"
+                             }
+                         }}
+                    />
+                </div>
 
             </div>
         )
