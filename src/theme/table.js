@@ -12,7 +12,7 @@ export class Table extends Component {
         if (this.props.isYearly){
             return [...new Set(this.props.selected.map(row => row.gas.name))]
         } else {
-            return [...new Set(this.props.selected.map(row => row.analysis.year))]
+            return [...new Set(this.props.selected.map(row => row.year.year))]
         }
     };
 
@@ -24,7 +24,7 @@ export class Table extends Component {
 
     findByCategoryAndYear = (cat, year) => {
         const row = this.props.selected
-            .find((e) => e.category.name === cat && e.analysis.year === year);
+            .find((e) => e.category.name === cat && e.year.year === year);
         return row.concentrate.toFixed(2)
 
     };
