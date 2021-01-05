@@ -85,7 +85,17 @@ export class Charts extends Component {
                         }}
                      width={100}
                      height={50}
-                     options={{maintainAspectRation: false}}
+                     options={{
+                         title: {
+                             display: true,
+                             text: "Емисии на стаклени гасови",
+                             fontSize: 24
+                         },
+                         legend: {
+                             display: true,
+                             position: "bottom"
+                         }
+                     }}
                      />
 
             </div>

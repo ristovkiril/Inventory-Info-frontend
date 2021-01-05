@@ -19,7 +19,7 @@ export class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isYearly: false,
+            isYearly: true,
             tableView: true
         }
     }
@@ -46,7 +46,6 @@ export class Main extends Component {
         // $('li .fa-table').addClass('active')
 
     };
-
 
     setAnalysis = () => {
         this.setState((prevState) => {

@@ -140,6 +140,7 @@ class Navigation extends Component {
                     el.parent = GAS_PARENT;
                 }
 
+
                 this.setState((prevState) => {
                     const newValue = {
                         'gasses': data
