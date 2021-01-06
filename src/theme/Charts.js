@@ -111,22 +111,21 @@ export class Charts extends Component {
 
     render() {
         return (
-            <div className="chart">
+            <div className="chart h-100 " >
                 <div className="row p-3 float-right">
                     <button onClick={this.saveAsPng} name="png" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as PNG</button>
                     <button onClick={this.saveAsPng} name="jpg" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as JPG</button>
                     {/*<button onClick={this.saveAsPng} name="svg" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as SVG</button>*/}
                     {/*<button onClick={this.saveAsPng} name="pdf" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as PDF</button>*/}
                 </div>
-                <div className="row block">
+                <div className="canvas-container mb-5 pb-5 block">
                     <Bar data={{
                         labels: this.getCategories(),
                         datasets: this.getChartDataset()
                     }}
-                         width={100}
-                         height={50}
+                         // width={100}
+                         // height={50}
                          options={{
-                             id: "chart",
                              title: {
                                  display: true,
                                  text: "Емисии на стаклени гасови " + this.getMainAnalysis(),
@@ -135,7 +134,12 @@ export class Charts extends Component {
                              legend: {
                                  display: true,
                                  position: "bottom"
-                             }
+                             },
+                             // responsive: true,
+                             barValueSpacing: 2,
+                             animationEnabled: true,
+                             maintainAspectRatio : false
+
                          }}
                     />
                 </div>

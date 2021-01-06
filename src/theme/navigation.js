@@ -413,7 +413,7 @@ class Navigation extends Component {
     profile = () => {
         return (
             <div className="row">
-                <div className="element1 col-md-pull-1">
+                <div className=" col-md-6 element1 col-md-pull-1">
                     <label className="nav-label text-light font-weight-bold">Анализа:</label><br/>
                     <ToggleSwitch isChecked={this.props.isYearly}
                                   onClick={this.setAnalysis}/>

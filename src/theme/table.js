@@ -33,7 +33,7 @@ export class Table extends Component {
 
     render() {
         return (
-            <table className="table table-hover">
+            <table className="table table-hover table-responsive">
                 <thead className="bg-light m-0 p-0">
                 <tr>
                     <th className="font-weight-bold">Категории</th>
