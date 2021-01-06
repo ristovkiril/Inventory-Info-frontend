@@ -1,13 +1,13 @@
 import React from 'react'
 
-const ToogleSwitch = (props) => {
+const ToggleSwitch = (props) => {
     return (
                <div className="onoffswitch">
                    <input type="checkbox"
                           name="onoffswitch"
                           className="onoffswitch-checkbox"
                           id="myonoffswitch"
-                          onClick={props.onClick}
+                          onChange={props.onClick}
                           checked={props.isChecked}
                    />
                        <label className="onoffswitch-label" htmlFor="myonoffswitch">
@@ -18,4 +18,4 @@ const ToogleSwitch = (props) => {
     );
 };
 
-export default ToogleSwitch
+export default ToggleSwitch

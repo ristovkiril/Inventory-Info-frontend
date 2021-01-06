@@ -13,7 +13,7 @@ import $ from 'jquery';
 import list from '../constants/list';
 import {getTreeMenu} from '../helpers/permissions';
 import axios from '../axios/axios-repository';
-import ToogleSwitch from "./toogleSwitch";
+import ToggleSwitch from "./toggleSwitch";
 import Dropdown from "./dropdown";
 
 
@@ -415,7 +415,7 @@ class Navigation extends Component {
             <div className="row">
                 <div className="element1 col-md-pull-1">
                     <label className="nav-label text-light font-weight-bold">Анализа:</label><br/>
-                    <ToogleSwitch isChecked={this.props.isYearly}
+                    <ToggleSwitch isChecked={this.props.isYearly}
                                   onClick={this.setAnalysis}/>
                 </div>
                 <div className="element2 col-md-6">
