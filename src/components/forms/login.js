@@ -1,5 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
+import * as authorization from '../../helpers/auth'
 
 const AUTH_TOKEN = 'auth_token';
 
@@ -17,8 +18,14 @@ const LoginForm = (props) => {
         };
 
         props.login(auth, (response)=>{
+
+            console.log(response.data)
+
             localStorage.setItem(AUTH_TOKEN, response.data);
             localStorage.setItem("EMAIL", auth.username);
+
+            authorization.login(response.data, auth.username);
+
             history.push("/");
         });
     };

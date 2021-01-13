@@ -17,18 +17,18 @@ const Login = lazy(() => import('./components/common/login'));
 const Lock = lazy(() => import('./components/common/lock'));
 const Activate = lazy(() => import('./components/common/activate'));
 const Register = lazy(() => import('./components/common/register'));
-const AppRoutes = lazy(() => import('./appRoutes'));
+// const AppRoutes = lazy(() => import('./appRoutes'));
 
 export default class Routes extends Component {
   render() {
     return (
       <div>
         <Switch>
-          <PublicRoute path="/" exact component={Main} />
-          <PublicRoute path="/login" component={WaitingComponent(Login)} />
+          <Route path="/" exact component={Main} />
+          <Route path="/login" component={WaitingComponent(Login)} />
           <PublicRoute path="/lock" component={WaitingComponent(Lock)} />
           <PublicRoute path="/activate" component={WaitingComponent(Activate)} />
-          <PrivateRoute path="/app" component={WaitingComponent(AppRoutes)} />
+          {/*<PrivateRoute path="/app" component={WaitingComponent(AppRoutes)} />*/}
           <PublicRoute path="/register" component={WaitingComponent(Register)} />
           <Route component={NotFound}/>
         </Switch>

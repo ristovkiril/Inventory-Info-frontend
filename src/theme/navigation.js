@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import {isEmpty} from 'lodash';
 import * as analysisActionCreator from "../redux/actions/gas_year_category";
 
@@ -8,9 +7,7 @@ import NewMenuItem from './newMenuItem';
 import NewMenuTree from './newMenuTree';
 import MenuItem from './menuItem';
 import MenuTree from './menuTree';
-import {smoothlyMenu} from './helpers/helpers';
 import $ from 'jquery';
-import list from '../constants/list';
 import {getTreeMenu} from '../helpers/permissions';
 import axios from '../axios/axios-repository';
 import ToggleSwitch from "./toggleSwitch";
@@ -219,7 +216,7 @@ class Navigation extends Component {
 
     setCategories = (data, id) => {
         for (const el of data) {
-            if (el.id == id) {
+            if (el.id === id) {
                 el.checked = !el.checked;
                 break;
             } else if (!isEmpty(el.tree)) {
@@ -251,7 +248,7 @@ class Navigation extends Component {
                 let selected = {}
                 for (const el of data) {
                     el.checked = false;
-                    if (el.id == id) {
+                    if (el.id === id) {
                         selected = el;
                         el.checked = true
                     }
@@ -272,11 +269,11 @@ class Navigation extends Component {
         } else {
             this.setState((prevState) => {
                 const data = prevState.gasses;
-                let selected = {}
+                let selected = {};
                 for (const el of data) {
                     el.checked = false;
-                    if (el.id == id) {
-                        el.checked = true
+                    if (el.id === id) {
+                        el.checked = true;
                         selected = el;
                     }
                 }
@@ -321,7 +318,7 @@ class Navigation extends Component {
         this.setState((prevState) => {
             const data = prevState.gasses;
             for (const el of data) {
-                if (el.id == id) {
+                if (el.id === id) {
                     el.checked = !el.checked;
                 }
             }
@@ -344,7 +341,7 @@ class Navigation extends Component {
         this.setState((prevState) => {
             const data = prevState.years;
             for (const el of data) {
-                if (el.id == id) {
+                if (el.id === id) {
                     el.checked = !el.checked;
                 }
             }

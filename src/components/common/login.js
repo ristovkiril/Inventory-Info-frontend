@@ -38,14 +38,13 @@ class Login extends Component {
     });
   }
 
-  // static getDerivedStateFromProps(nextProps) {
-  //   if (!isEmpty(get(nextProps, 'user.auth')) && auth.isAuth()) {
-  //     nextProps.history.push('/app/home');
-  //   }
-  //   return null;
-  // }
+  login = (authInfo, callback) => {
+    axios.login(authInfo).then((response) => {
+      callback(response);
+    })
+  };
 
-  render() {
+render() {
     if (this.props.loading) {
       return <Loading/>;
     }
@@ -75,25 +74,5 @@ class Login extends Component {
     );
   }
 
-  login = (authInfo, callback) => {
-    axios.login(authInfo).then((response) => {
-      callback(response);
-    })
-  };
 }
-
-// Login.propTypes = {
-//   login: PropTypes.func.isRequired,
-//   history: PropTypes.object.isRequired,
-//   loading: PropTypes.bool.isRequired,
-//   error: PropTypes.string.isRequired
-// };
-//
-// const loadingSelector = createLoadingSelector(['AUTH']);
-// const errorSelector = createErrorMessageSelector(['AUTH']);
-//
-// const mapStoreToProps = (state) => ({ user: state.user, loading: loadingSelector(state), error: errorSelector(state) });
-// const mapDispatchToProps = (dispatch) => bindActionCreators({ login }, dispatch);
-//
-// export default withRouter(connect(mapStoreToProps, mapDispatchToProps)(Login));
 export default Login
