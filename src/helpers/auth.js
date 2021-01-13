@@ -16,7 +16,7 @@ export function isAuth() {
 export function login(token = {}) {
   localStorage.setItem('userAuth', JSON.stringify(token));
   localStorage.setItem('isAuth', true);
-  toastr.success('Get Hired!', 'Welcome to Get Hired!');
+  toastr.success('InventoryInfo!', 'Welcome to InventoryInfo!');
   return true;
 }
 

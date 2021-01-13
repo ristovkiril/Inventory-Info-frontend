@@ -22,6 +22,9 @@ const service = {
   },
   getAllByIds: (gasses, categories, analysis) => {
     return axios.get(`api/analysis/all/data?gasIds=${gasses}&categoryIds=${categories}&analysisIds=${analysis}`)
+  },
+  login: (authInfo) => {
+    return axios.post('/login', authInfo)
   }
 };
 

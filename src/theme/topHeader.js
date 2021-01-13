@@ -20,7 +20,7 @@ class TopHeader extends Component {
           </div>
           <ul className="nav navbar-top-links navbar-right">
             <li>
-              <a onClick={this.logout}> <i className="fa fa-sign-in"/>Најавете се</a>
+              <a href={"/react-inspinia#/login"}> <i className="fa fa-sign-in"/>Најавете се</a>
             </li>
           </ul>
         </nav>

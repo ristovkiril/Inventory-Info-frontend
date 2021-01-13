@@ -105,14 +105,12 @@ export class Main extends Component {
 }
 const mapStateToProps = (state) => {
     return{
-        // analysis: state.analysisReducer.analysis
         selected: state.analysisReducer.selected
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // getAnalysis: () => dispatch(analysisActionCreator.loadAnalysis()),
         onSelected: (gasses, categories, analysis) => dispatch (analysisActionCreator.loadSelected(gasses, categories, analysis))
     };
 

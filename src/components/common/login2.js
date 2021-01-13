@@ -1,21 +1,35 @@
 import React, { Component } from 'react';
+import Loading from "../../theme/loading";
+import {toastr} from "react-redux-toastr";
+import {Link} from "react-router-dom";
+import CopyRight from "../../theme/copyRight";
+import LoginForm from '../forms/login';
 
-class LoginForm extends Component{
+export class Login extends Component{
+
     render() {
-        return(
-            <form className="m-t" role="form" action="#">
-                <div className="form-group">
-                    <input type="email" name="email" className="form-control" placeholder={'Email'} required=""/>
-                </div>
-                <div className="form-group">
-                    <input type="password" name="password" className="form-control" placeholder={'Password'} required=""/>
-                </div>
+        if (this.props.loading) {return <Loading/>;}
+        if (this.props.error) {toastr.error('!', this.props.error);}
 
-                <button type="button" id="btnLogin" className="btn btn-primary block full-width m-b">{'Login'}</button>
-                <a href="#">
-                    <small>Forgot Password</small>
-                </a>
-            </form>
-        )
+        return (
+            <div className="gray-bg">
+                <div className="middle-box text-center loginscreen animated fadeInDown" style={{ paddingBottom: '40px' }}>
+
+                    <LoginForm onSubmit={this.login} />
+
+                    <Link to="/activate">
+                        <small>Forgot Password?</small>
+                    </Link>
+
+                    {/*<p className="text-muted text-center">*/}
+                    {/*  <Link to="/register">Don't have an account?</Link>*/}
+                    {/*</p>*/}
+                    <Link className="btn btn-sm btn-white btn-block" to="/activate">Activate Account</Link>
+                    <Link className="btn btn-sm btn-white btn-block" to="/register">Register</Link>
+                    <br/>
+                    <CopyRight/>
+                </div>
+            </div>
+        );
     }
 }

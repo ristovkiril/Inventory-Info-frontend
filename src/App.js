@@ -34,7 +34,10 @@ function App() {
             forceRefresh={false}
             basename="/">
             <div className="body">
-                <Routes appData={{data, setData}} appIsYearly={{isYearly, setIsYearly}} appGasses={{gasses, setGasses}} appCategories={{categories, setCategories}} />
+                <Routes appData={{data, setData}}
+                        appIsYearly={{isYearly, setIsYearly}}
+                        appGasses={{gasses, setGasses}}
+                        appCategories={{categories, setCategories}} />
             </div>
         </Router>
     );

@@ -57,10 +57,10 @@ class Navigation extends Component {
     }
 
 
-    componentWillUpdate() {
-        // $('body').toggleClass('mini-navbar');
-        // smoothlyMenu();
-    }
+    // componentWillUpdate() {
+    //     $('body').toggleClass('mini-navbar');
+    //     smoothlyMenu();
+    // }
 
     //So vaa ce gi citame site selektirani
     loadAllByIds = () => {
@@ -78,29 +78,13 @@ class Navigation extends Component {
                         recursive(el.tree)
                     }
                 }
-            }(temp))
+            }(temp));
 
             return data;
         }());
 
         if (gasses.length > 0 && analysis.length > 0 && categories.length > 0) {
-            // // axios.getAllByIds(gasses, categories, analysis).then((response) => {
-            // //     console.log(response.data);
-            // //     this.setState((prevState) => {
-            // //         const newValue = {
-            // //             'analysis': response.data
-            // //         };
-            // //         return {
-            // //             ...prevState,
-            // //             ...newValue
-            // //         }
-            // //     }, () => {
-            // //         console.log(this.state)
-            // //     })
-            // });
-
             this.props.onSelected(gasses, categories, analysis);
-
         }
     };
 
