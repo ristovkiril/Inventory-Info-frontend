@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <Router
         forceRefresh={false}
-        basename="/">
+        >
         <div className="body">
           <Routes/>
         </div>

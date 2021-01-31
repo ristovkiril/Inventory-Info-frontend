@@ -75,12 +75,12 @@ export class Main extends Component {
                                 <div className="body wrapper wrapper-content animated">
                                         <ul className="nav nav-tabs border-bottom-0">
                                             <li className={this.state.tableView === true ? "nav-item active bg-white rounded-top border-bottom-0":"nav-item bg-light rounded-top"}>
-                                                <a href="#" className={this.state.tableView === true ? "nav-link active bg-white border-bottom-0 ":"nav-link bg-light rounded-top"} onClick={this.setTableView}>
-                                                    <i className="fa fa-table"/>Табели</a>
+                                                <div className={this.state.tableView === true ? "nav-link active bg-white border-bottom-0 ":"nav-link bg-light rounded-top"} onClick={this.setTableView}>
+                                                    <i className="fa fa-table pr-1"/>Табели</div>
                                             </li>
                                             <li className={this.state.tableView === false ? "nav-item active bg-white rounded-top":"nav-item bg-light rounded-top"}>
-                                                <a href="#" className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link bg-light rounded-top"} onClick={this.setTableView}>
-                                                    <i className="fa fa-bar-chart"/>Графици</a>
+                                                <div className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link bg-light rounded-top"} onClick={this.setTableView}>
+                                                    <i className="fa fa-bar-chart pr-1"/>Графици</div>
                                             </li>
                                         </ul>
                                     <div className="ibox-content p-3 m-0">
@@ -90,7 +90,7 @@ export class Main extends Component {
                                                        selected={this.props.selected}/>
                                             ) : (
                                                 <Charts isYearly={this.state.isYearly}
-                                                       selected={this.props.selected}/>                                            )
+                                                       selected={this.props.selected}/>)
                                         }
                                     </div>
                                     </div>
