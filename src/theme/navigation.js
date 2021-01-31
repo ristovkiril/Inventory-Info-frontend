@@ -295,7 +295,7 @@ class Navigation extends Component {
 
     onCategoriesChange = (e) => {
         // e.preventDefault();
-        const id = e.target.id;
+        const id = parseInt(e.target.id);
         const data = this.setCategories(this.state.categories, id);
 
         this.setState((prevState) => {
@@ -314,7 +314,7 @@ class Navigation extends Component {
     };
 
     onGasChange = (e) => {
-        const id = e.target.id;
+        const id = parseInt(e.target.id);
         this.setState((prevState) => {
             const data = prevState.gasses;
             for (const el of data) {
@@ -337,7 +337,7 @@ class Navigation extends Component {
     };
 
     onYearChange = (e) => {
-        const id = e.target.id;
+        const id = parseInt(e.target.id);
         this.setState((prevState) => {
             const data = prevState.years;
             for (const el of data) {
@@ -374,8 +374,7 @@ class Navigation extends Component {
                             </MenuTree>
                         }
                         {
-                            <MenuTree active={true} key={YEAR_PARENT} show={!this.props
-                                .isYearly} label="Years">
+                            <MenuTree active={true} key={YEAR_PARENT} show={!this.props.isYearly} label="Years">
                                 {this.state.years ? this.categories(this.state.years, this.onYearChange) : " "}
                             </MenuTree>
                         }
