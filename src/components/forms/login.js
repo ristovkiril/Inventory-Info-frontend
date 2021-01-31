@@ -46,7 +46,7 @@ const LoginForm = (props) => {
       <div>
         <input
           className="form-control"
-          placeholder="******"
+          placeholder="Password"
           name="password"
           type="password"
           // fa="fa fa-key"

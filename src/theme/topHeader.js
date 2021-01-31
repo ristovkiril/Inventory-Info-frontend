@@ -8,6 +8,14 @@ import * as auth from '../helpers/auth';
 import PropTypes from 'prop-types';
 
 class TopHeader extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      match: props.match
+    }
+  }
+
   render() {
     return (
       <div className="row border-bottom">
@@ -15,22 +23,27 @@ class TopHeader extends Component {
           <div className="navbar-header">
             <span className="navbar-minimalize minimalize-styl-2 btn btn-primary" onClick={(e) => this.toggleNavigation(e)} style={{ cursor: 'pointer' }}><i className="fa fa-bars"/> </span>
           </div>
-          <ul className="nav navbar-top-links navbar-right">
-            <li>
                 {localStorage.getItem('auth_token') == null ? (
-                    <a href={"/react-inspinia#/login"}>
-                      <i className="fa fa-sign-in"/>
-                      Најавете се</a>
+                    <ul className="nav navbar-top-links navbar-right">
+                      <li>
+                        <a href={`/#/login`}>
+                          <i className="fa fa-sign-in"/>
+                          Најавете се</a>
+                      </li>
+                    </ul>
                 ) : (
-                    <div>
-                        <a onClick={this.logout}>
-                            <span className="p-3"> {localStorage.getItem('user')}</span>
-                            <i className="fa fa-sign-out"/>
-                            <span className="checkbox-label">Одјавете се</span></a>
-                    </div>
+                    <ul className="nav navbar-top-links navbar-right">
+                      <li>
+                        <a href={"/#/create"}>Create Analysis</a>
+                      </li>
+                      <li>
+                          <a onClick={this.logout}>
+                              {/*<span className="p-3"> {localStorage.getItem('user')}</span>*/}
+                              <i className="fa fa-sign-out"/>
+                              <span className="checkbox-label">Одјавете се</span></a>
+                      </li>
+                    </ul>
                 )}
-            </li>
-          </ul>
         </nav>
       </div>
     );

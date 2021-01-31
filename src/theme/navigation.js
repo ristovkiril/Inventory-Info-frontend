@@ -117,9 +117,10 @@ class Navigation extends Component {
 
                 //site gasovi da bidat checked vo menito
                 for (const el of data) {
-                    el.checked = true;
+                    el.checked = false;
                     el.parent = GAS_PARENT;
                 }
+                data[0].checked = true;
 
 
                 this.setState((prevState) => {
@@ -132,6 +133,7 @@ class Navigation extends Component {
                         ...newValue
                     }
                 }, () => {
+                    console.log(this.state)
                     this.loadAllByIds();
                 })
 
@@ -142,7 +144,7 @@ class Navigation extends Component {
     loadYears = (gasId = null) => {
         if (gasId === null) {
             axios.getYears().then((response) => {
-                const data = response.data;
+                const data = response.data.sort((a, b) => b.year - a.year);
                 for (const el of data) {
                     el.checked = false;
                     el.name = el.year;
@@ -167,13 +169,15 @@ class Navigation extends Component {
             })
         } else {
             axios.getYearsByGas(gasId).then((response) => {
-                const data = response.data;
+                const data = response.data.sort((b, a) => a.year - b.year);
+
                 //site godini da bidat vkluceni, moze da go promenime
                 for (const el of data) {
-                    el.checked = true;
+                    el.checked = false;
                     el.name = el.year;
                     el.parent = YEAR_PARENT;
                 }
+                data[0].checked = true;
 
                 this.setState((prevState) => {
                     const newValue = {

@@ -1,22 +1,15 @@
 import $ from 'jquery';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { get, isEmpty } from 'lodash';
-import { bindActionCreators } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 import EnhancedSwitch from 'react-icheck/lib/EnhancedSwitch';
 import axios from '../../axios/axios-repository';
 
 import '../../assets/dependencies';
-import config from '../../config';
 import LoginForm from '../forms/login';
 import CopyRight from '../../theme/copyRight';
 import Loading from '../../theme/loading';
-import { login } from '../../redux/actions/user';
-import * as auth from '../../helpers/auth';
 import { correctHeight, detectBody } from '../../theme/helpers/helpers';
-import { createLoadingSelector, createErrorMessageSelector } from '../../redux/api/selectors';
 import { toastr } from 'react-redux-toastr';
 
 EnhancedSwitch.propTypes = {

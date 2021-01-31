@@ -34,17 +34,23 @@ export class Charts extends Component {
     getChartDataset = () => {
         const dataset = [];
         const allAnalysis = this.getAnalysis();
+        const categories = this.getCategories();
         for (const analysis of allAnalysis) {
-            const categories = this.getCategories();
-            const concentrates = [];
-            const colors = [];
 
+            const colors = [];
+            const concentrates = [];
+
+            const color = `#${Math.random().toString(16).substr(-6)}`;
             for (const category of categories) {
                 const concentrate = this.props.isYearly ?
                     this.findByCategoryAndGas(category, analysis) : this.findByCategoryAndYear(category, analysis);
+
                 concentrates.push(concentrate);
-                colors.push('#'+Math.random().toString(16).substr(-6));
+
+                colors.push(color);
             }
+
+            console.log(colors)
             dataset.push({
                 label: analysis,
                 data: concentrates,

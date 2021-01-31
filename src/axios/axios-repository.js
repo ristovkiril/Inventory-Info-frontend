@@ -1,5 +1,7 @@
 import axios from './axios';
 
+const AUTH_TOKEN = 'auth_token';
+
 const service = {
 
   getCategories: () => {
@@ -25,6 +27,14 @@ const service = {
   },
   login: (authInfo) => {
     return axios.post('/login', authInfo)
+  },
+  createAnalysis: (year, file) => {
+    return axios.post(`api/analysis/upload/${year}`, file, {
+      headers: {
+        'Content-Type': "multipart/form-data",
+        'Authorization': `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
+      }
+    })
   }
 };
 
