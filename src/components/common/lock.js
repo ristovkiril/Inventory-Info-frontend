@@ -51,7 +51,7 @@ class Lock extends Component {
         <div className="middle-box text-center lockscreen animated fadeInDown" style={{ paddingBottom: '40px' }}>
           <div>
             <div className="m-b-md">
-              <img alt="image" className="img-circle circle-border"
+              <img alt="image aws" className="img-circle circle-border"
                 src="https://s3.amazonaws.com/uifaces/faces/twitter/ok/128.jpg" />
             </div>
             <h3>John Smith</h3>

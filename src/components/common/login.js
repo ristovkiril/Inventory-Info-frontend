@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import EnhancedSwitch from 'react-icheck/lib/EnhancedSwitch';
 import axios from '../../axios/axios-repository';
 

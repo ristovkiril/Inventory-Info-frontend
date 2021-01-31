@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import * as analysisActionCreator from "../redux/actions/gas_year_category";
-import {connect} from "react-redux";
 
 export class Table extends Component {
 
@@ -33,7 +31,7 @@ export class Table extends Component {
 
     render() {
         return (
-            <table className="table table-hover table-responsive">
+            <table className="table table-hover table-responsive-lg">
                 <thead className="bg-light m-0 p-0">
                 <tr>
                     <th className="font-weight-bold">Категории</th>

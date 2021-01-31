@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 import React, { Component } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { toBlob, saveAs } from "file-saver";
+import { saveAs } from "file-saver";
 
 
 export class Charts extends Component {

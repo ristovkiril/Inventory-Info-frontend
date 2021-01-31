@@ -133,7 +133,6 @@ class Navigation extends Component {
                         ...newValue
                     }
                 }, () => {
-                    console.log(this.state)
                     this.loadAllByIds();
                 })
 

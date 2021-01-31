@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import jQuery from 'jquery';
 import axios from '../axios/axios-repository';
-import {browserHistory} from 'react-router-dom';
 window.$ = jQuery;
 
 class CreateAnalysis extends Component {
