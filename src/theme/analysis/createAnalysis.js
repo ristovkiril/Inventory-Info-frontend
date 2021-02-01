@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import jQuery from 'jquery';
-import axios from '../axios/axios-repository';
+import axios from '../../axios/axios-repository';
 window.$ = jQuery;
 
 class CreateAnalysis extends Component {

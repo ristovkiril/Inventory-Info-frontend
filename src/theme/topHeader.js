@@ -26,7 +26,7 @@ class TopHeader extends Component {
                 {localStorage.getItem('auth_token') == null ? (
                     <ul className="nav navbar-top-links navbar-right">
                       <li>
-                        <a href={`/#/login`}>
+                        <a href={`/login`}>
                           <i className="fa fa-sign-in"/>
                           Најавете се</a>
                       </li>
@@ -34,7 +34,7 @@ class TopHeader extends Component {
                 ) : (
                     <ul className="nav navbar-top-links navbar-right">
                       <li>
-                        <a href={"/#/create"}>Create Analysis</a>
+                        <a href={"/analysis"}>Analysis</a>
                       </li>
                       <li>
                           <a onClick={this.logout}>

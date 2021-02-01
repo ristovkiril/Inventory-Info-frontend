@@ -10,6 +10,25 @@ const service = {
   getGasses: () => {
     return axios.get('/api/gas');
   },
+  editYear: (year, newYear) => {
+    return axios.put(`api/analysis/${year}/edit`, newYear, {
+      headers: {
+        'Content-Type': "application/json",
+        'Authorization': `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
+      }
+    })
+  },
+  deleteYear: (id) => {
+    return axios.delete(`/api/analysis/${id}`, {
+      headers: {
+        'Content-Type': "application/json",
+        'Authorization': `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
+      }
+    });
+  },
+  getYear: (year) => {
+    return axios.get(`/api/analysis/${year}`);
+  },
   getYears: () => {
     return axios.get('/api/analysis');
   },
@@ -35,7 +54,8 @@ const service = {
         'Authorization': `Bearer ${localStorage.getItem(AUTH_TOKEN)}`
       }
     })
-  }
+  },
+
 };
 
 export default service;

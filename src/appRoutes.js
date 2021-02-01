@@ -42,16 +42,15 @@ export default class AppRoutes extends Component {
         <div id="page-wrapper" className="gray-bg">
           <TopHeader />
           <Switch>
-            <Route path={`${this.state.match.url}`} exact component={Home} />
-            {console.log(this.state.match.url)}
-            <Route path={`${this.state.match.url}/inbox`} exact component={WaitingComponent(Inbox)} />
-            <Route path={`${this.state.match.url}/compose`} exact component={WaitingComponent(Compose)} />
-            <Route path={`${this.state.match.url}/contacts`} exact component={WaitingComponent(Contacts)} />
-            <Route path={`${this.state.match.url}/profile`} exact component={WaitingComponent(Profile)} />
-            <Route path={`${this.state.match.url}/dashboard`} exact component={WaitingComponent(Dashboard)} />
-            <Route path={`${this.state.match.url}/home`} exact component={WaitingComponent(Home)} />
-            <Route path={`${this.state.match.url}/permissions`} exact component={WaitingComponent(Permissions)} />
-            <Route component={NotFound}/>
+            <Route path={`/`} exact component={Home} />
+            <Route path={`/inbox`} exact component={WaitingComponent(Inbox)} />
+            <Route path={`/compose`} exact component={WaitingComponent(Compose)} />
+            <Route path={`/contacts`} exact component={WaitingComponent(Contacts)} />
+            <Route path={`/profile`} exact component={WaitingComponent(Profile)} />
+            <Route path={`/dashboard`} exact component={WaitingComponent(Dashboard)} />
+            <Route path={`/home`} exact component={WaitingComponent(Home)} />
+            <Route path={`/permissions`} exact component={WaitingComponent(Permissions)} />
+            <Route component={Home}/>
           </Switch>
           <Footer />
         </div>
