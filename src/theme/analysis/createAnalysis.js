@@ -40,7 +40,7 @@ class CreateAnalysis extends Component {
                 console.log(this.state)
             })
         }
-    }
+    };
 
     createAnalysis = (e) => {
         e.preventDefault();
@@ -51,30 +51,30 @@ class CreateAnalysis extends Component {
         this.setState((prevState) => {
             const newValue = {
                 loading: true
-            }
+            };
             return {
                 ...prevState,
                 ...newValue
             }
-        })
+        });
 
         axios.createAnalysis(this.state.year, files).then((response)=>{
             console.log(response.status);
             this.setState((prevState) => {
                 const newValue = {
                     loading: false
-                }
+                };
                 return {
                     ...prevState,
                     ...newValue
                 }
-            })
+            });
             this.props.history.push('/');
         }, (error) => {
             alert("Error, try again!");
             console.log(error);
         })
-    }
+    };
 
     render() {
         return (
