@@ -2,6 +2,7 @@ import $ from 'jquery';
 import React, {Component} from 'react';
 import {BrowserRouter} from 'react-router-dom';
 
+import Loading from './loading';
 import Progress from './progress';
 import Navigation from './navigation';
 import TopHeader from './topHeader';
@@ -69,6 +70,7 @@ export class Main extends Component {
                         <Navigation isYearly={this.state.isYearly}
                                     setAnalysis={this.setAnalysis}
                                     onSelected={this.props.onSelected}/>
+
                         <div id="page-wrapper" className="gray-bg">
                             <TopHeader/>
                             <div className="animated fadeInDown">
@@ -85,13 +87,16 @@ export class Main extends Component {
                                         </ul>
                                     <div className="ibox-content p-3 m-0">
                                         {
-                                            this.state.tableView ? (
-                                                <Table isYearly={this.state.isYearly}
-                                                       selected={this.props.selected}/>
-                                            ) : (
-                                                <Charts isYearly={this.state.isYearly}
-                                                       selected={this.props.selected}/>)
+                                            !this.props.selected || this.props.selected.length === 0 ? <Loading/>
+                                            :
+                                                    this.state.tableView ? (
+                                                        <Table isYearly={this.state.isYearly}
+                                                               selected={this.props.selected}/>
+                                                    ) : (
+                                                        <Charts isYearly={this.state.isYearly}
+                                                                selected={this.props.selected}/>)
                                         }
+
                                     </div>
                                     </div>
                             </div>

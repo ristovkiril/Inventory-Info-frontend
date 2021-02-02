@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import Loading from '../loading'
+
 import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
 window.$ = jQuery;
@@ -9,7 +11,8 @@ class CreateAnalysis extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            analysis: []
+            analysis: [],
+            loading: true
         }
     }
 
@@ -21,7 +24,8 @@ class CreateAnalysis extends Component {
         axios.getYears().then((response) => {
             this.setState((prevState) => {
                 const newValue = {
-                    analysis: response.data
+                    analysis: response.data,
+                    loading: false
                 }
                 return {
                     ...prevState,
@@ -34,15 +38,25 @@ class CreateAnalysis extends Component {
     deleteAnalysis = (e) => {
         const id = e.target.name;
         if (window.confirm("Do you want to delete this analysis?")){
+            this.setState((prevState) => {
+                const newValue = {
+                    loading: true
+                }
+                return {
+                    ...prevState,
+                    ...newValue
+                }
+            })
             axios.deleteYear(id).then(response => {
                 const analysis = this.state.analysis.filter(a => a.id !== parseInt(id));
                 this.setState((prevState) => {
                     const newValue = {
-                        analysis: analysis
+                        analysis: analysis,
+                        loading: false
                     }
                     return {
                         ...prevState,
-                        ...analysis
+                        ...newValue
                     }
                 })
             })
@@ -57,7 +71,7 @@ class CreateAnalysis extends Component {
                     <a href={"/analysis/create"} className="btn btn-primary">Add new Analysis</a>
                 </div>
                 {
-                    this.state.analysis.length > 0 ?
+                    this.state.analysis.length > 0 && !this.state.loading ?
                          <table className="table table-hover table-responsive-lg table-light">
                             <thead>
                                 <tr>
@@ -81,7 +95,7 @@ class CreateAnalysis extends Component {
                                     }) : ""
                             }
                             </tbody>
-                            </table> : ""
+                            </table> : <Loading/>
 
                 }
             </div>

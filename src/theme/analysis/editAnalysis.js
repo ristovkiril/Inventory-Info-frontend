@@ -12,7 +12,8 @@ class CreateAnalysis extends Component {
         this.state = {
             year: '',
             analysis: {},
-            file: []
+            file: [],
+            loading: true
         }
     }
 
@@ -23,11 +24,11 @@ class CreateAnalysis extends Component {
 
     loadAnalysis = (year) => {
         axios.getYear(year).then((response) => {
-            console.log(response.data);
             this.setState((prevState) => {
                 const newValue = {
                     year: year,
-                    analysis: response.data
+                    analysis: response.data,
+                    loading: false
                 }
 
                 return {
@@ -66,25 +67,38 @@ class CreateAnalysis extends Component {
 
     saveAnalysis = (e) => {
         e.preventDefault();
-        if (this.state.analysis.year !== this.state.year){
-            axios.editYear(this.state.year, this.state.analysis.year).then((response) => {
-                if (this.state.file !== [] && this.state.file !== undefined) {
-                    this.saveFile();
-                } else {
-                    this.props.history.push('/analysis');
-                }
-            })
-        }
-        else if (this.state.file !== [] && this.state.file !== undefined) {
-            this.saveFile();
-        }
+        //Loading while waiting to upload
+        this.setState((prevState) => {
+            const newValue = {
+                loading: true
+            }
+            return {
+                ...prevState,
+                ...newValue
+            }
+        })
+
+
+        this.saveFile();
     }
 
     saveFile = () => {
         const files = new FormData();
-        files.append("file", this.state.file);
-        axios.createAnalysis(this.state.analysis.year, files).then((response) => {
-            this.props.history.push('/');
+        if (this.state.file !== [] && this.state.file !== undefined) {
+            files.append("file", this.state.file);
+        }
+        files.append('newYear', this.state.analysis.year)
+        axios.editYear(this.state.year, files).then((response) => {
+            this.setState((prevState) => {
+                const newValue = {
+                    loading: false
+                }
+                return {
+                    ...prevState,
+                    ...newValue
+                }
+            })
+            this.props.history.push('/analysis');
         }, (error) => {
             alert("Error, try again!");
             console.log(error);

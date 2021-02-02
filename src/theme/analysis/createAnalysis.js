@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 
+import Loading from '../loading';
+
 import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
+
 window.$ = jQuery;
 
 class CreateAnalysis extends Component {
@@ -10,7 +13,8 @@ class CreateAnalysis extends Component {
         super(props);
         this.state = {
             year: '',
-            file: []
+            file: [],
+            loading: false
         }
     }
 
@@ -42,8 +46,29 @@ class CreateAnalysis extends Component {
         e.preventDefault();
         const files = new FormData();
         files.append("file", this.state.file);
+        files.append("year", this.state.year);
+
+        this.setState((prevState) => {
+            const newValue = {
+                loading: true
+            }
+            return {
+                ...prevState,
+                ...newValue
+            }
+        })
+
         axios.createAnalysis(this.state.year, files).then((response)=>{
             console.log(response.status);
+            this.setState((prevState) => {
+                const newValue = {
+                    loading: false
+                }
+                return {
+                    ...prevState,
+                    ...newValue
+                }
+            })
             this.props.history.push('/');
         }, (error) => {
             alert("Error, try again!");
@@ -54,28 +79,33 @@ class CreateAnalysis extends Component {
     render() {
         return (
             <div className="container p-5 m-auto bg-white">
-                <form onSubmit={this.createAnalysis}>
-                    <div className="form-group">
-                        <input className="form-control"
-                                type="text"
-                                name="year"
-                                placeholder="Year"
-                                value={this.state.year}
-                                onChange={this.onChange}
-                                required={true}/>
-                    </div>
-                    <div className="form-group">
-                        <input id="file"
-                               name="file"
-                               type="file"
-                               className="form-control-file"
-                               onChange={this.onChange}
-                               required={true} />
-                    </div>
-                    <div className="form-group">
-                        <button type={"submit"} className="btn btn-primary" >Create</button>
-                    </div>
-                </form>
+                {
+                    this.state.loading ?
+                        <Loading />
+                        :
+                        <form onSubmit={this.createAnalysis}>
+                            <div className="form-group">
+                                <input className="form-control"
+                                       type="text"
+                                       name="year"
+                                       placeholder="Year"
+                                       value={this.state.year}
+                                       onChange={this.onChange}
+                                       required={true}/>
+                            </div>
+                            <div className="form-group">
+                                <input id="file"
+                                       name="file"
+                                       type="file"
+                                       className="form-control-file"
+                                       onChange={this.onChange}
+                                       required={true} />
+                            </div>
+                            <div className="form-group">
+                                <button type={"submit"} className="btn btn-primary" >Create</button>
+                            </div>
+                        </form>
+                }
             </div>
 
         );

@@ -2,7 +2,7 @@ import React from 'react';
 
 export default () => (
   <div className="flex-center">
-    <div className="lds-roller">
-      <div/><div/><div/><div/><div/><div/><div/><div/></div>
+        <i className="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+        <span className="sr-only">Loading...</span>
   </div>
 );
