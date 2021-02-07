@@ -4,6 +4,7 @@ import Loading from '../loading';
 
 import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
+import TopHeader from "../topHeader";
 
 window.$ = jQuery;
 
@@ -78,34 +79,38 @@ class CreateAnalysis extends Component {
 
     render() {
         return (
-            <div className="container p-5 m-auto bg-white">
-                {
-                    this.state.loading ?
-                        <Loading />
-                        :
-                        <form onSubmit={this.createAnalysis}>
-                            <div className="form-group">
-                                <input className="form-control"
-                                       type="text"
-                                       name="year"
-                                       placeholder="Year"
-                                       value={this.state.year}
-                                       onChange={this.onChange}
-                                       required={true}/>
-                            </div>
-                            <div className="form-group">
-                                <input id="file"
-                                       name="file"
-                                       type="file"
-                                       className="form-control-file"
-                                       onChange={this.onChange}
-                                       required={true} />
-                            </div>
-                            <div className="form-group">
-                                <button type={"submit"} className="btn btn-primary" >Create</button>
-                            </div>
-                        </form>
-                }
+            <div>
+                <TopHeader/>
+
+                <div className="container p-5 mt-3 bg-white shadow">
+                    {
+                        this.state.loading ?
+                            <Loading />
+                            :
+                            <form onSubmit={this.createAnalysis}>
+                                <div className="form-group">
+                                    <input className="form-control"
+                                           type="text"
+                                           name="year"
+                                           placeholder="Year"
+                                           value={this.state.year}
+                                           onChange={this.onChange}
+                                           required={true}/>
+                                </div>
+                                <div className="form-group">
+                                    <input id="file"
+                                           name="file"
+                                           type="file"
+                                           className="form-control-file"
+                                           onChange={this.onChange}
+                                           required={true} />
+                                </div>
+                                <div className="form-group">
+                                    <button type={"submit"} className="btn btn-primary" >Create</button>
+                                </div>
+                            </form>
+                    }
+                </div>
             </div>
 
         );

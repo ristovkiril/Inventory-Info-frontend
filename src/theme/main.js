@@ -33,10 +33,10 @@ export class Main extends Component {
         });
     }
 
-    setTableView = () => {
+    setTableView = (tableView) => {
         this.setState((prevState) => {
             const newValue = {
-                'tableView': !prevState.tableView
+                'tableView': tableView
             }
 
             return {
@@ -63,7 +63,7 @@ export class Main extends Component {
 
     render() {
         return (
-            <div id="wrapper">
+            <div id="wrapper" className="shadow">
                 <BrowserRouter>
                     <div>
                         <Progress/>
@@ -77,11 +77,11 @@ export class Main extends Component {
                                 <div className="body wrapper wrapper-content animated">
                                         <ul className="nav nav-tabs border-bottom-0">
                                             <li className={this.state.tableView === true ? "nav-item active bg-white rounded-top border-bottom-0":"nav-item bg-light rounded-top"}>
-                                                <div className={this.state.tableView === true ? "nav-link active bg-white border-bottom-0 ":"nav-link bg-light rounded-top"} onClick={this.setTableView}>
+                                                <div className={this.state.tableView === true ? "nav-link active bg-white border-bottom-0 ":"nav-link bg-light rounded-top"} onClick={() => this.setTableView(true)}>
                                                     <i className="fa fa-table pr-1"/>Табели</div>
                                             </li>
                                             <li className={this.state.tableView === false ? "nav-item active bg-white rounded-top":"nav-item bg-light rounded-top"}>
-                                                <div className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link bg-light rounded-top"} onClick={this.setTableView}>
+                                                <div className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link bg-light rounded-top"} onClick={() => this.setTableView(false)}>
                                                     <i className="fa fa-bar-chart pr-1"/>Графици</div>
                                             </li>
                                         </ul>

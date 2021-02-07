@@ -67,10 +67,10 @@ class CreateAnalysis extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <TopHeader/>
-                <div className="container p-5 m-auto bg-white mx-auto text-center">
-                    <div className="row pl-5 pb-3 pull-right">
+                <div className="container p-5  bg-white mx-auto text-center shadow mt-3">
+                    <div className="row pl-5 pb-3 pull-right ">
                     <span className="pr-2">
                         <a href={"/analysis/create"} className="btn btn-primary font-weight-bolder">Add new Analysis</a>
                     </span>
