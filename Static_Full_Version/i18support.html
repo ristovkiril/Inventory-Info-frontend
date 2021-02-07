@@ -860,22 +860,22 @@ $('.set_es').on('click', function ()
 
     $(document).ready(function (){
 
-        $.i18n.init({
+        $.i18next.init({
             resGetPath: 'locales/__lng__.json',
             load: 'unspecific',
             fallbackLng: false,
             lng: 'en'
         }, function (t){
-            $('.i18container').i18n();
-            $('#side-menu').i18n();
-            $('.navbar-top-links').i18n();
+            $('.i18container').i18next();
+            $('#side-menu').i18next();
+            $('.navbar-top-links').i18next();
         });
 
         $('.set_en').on('click', function (){
             i18n.setLng('en', function(){
-                $('.i18container').i18n();
-                $('#side-menu').i18n();
-                $('.navbar-top-links').i18n();
+                $('.i18container').i18next();
+                $('#side-menu').i18next();
+                $('.navbar-top-links').i18next();
 
                 $('.set_en').addClass('active');
                 $('.set_es').removeClass('active');
@@ -884,9 +884,9 @@ $('.set_es').on('click', function ()
 
         $('.set_es').on('click', function (){
             i18n.setLng('es', function(){
-                $('.i18container').i18n();
-                $('#side-menu').i18n();
-                $('.navbar-top-links').i18n();
+                $('.i18container').i18next();
+                $('#side-menu').i18next();
+                $('.navbar-top-links').i18next();
 
                 $('.set_es').addClass('active');
                 $('.set_en').removeClass('active');
