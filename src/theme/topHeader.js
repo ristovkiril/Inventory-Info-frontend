@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
@@ -38,35 +39,41 @@ const TopHeader = (props) => {
                 {localStorage.getItem('auth_token') == null ? (
                     <ul className="nav navbar-top-links navbar-right">
                         <li>
-                            <a href={"/"} onClick={() => handleClick('en')}>EN</a>
+                            <button className="border-right btn btn-link m-0" onClick={() => handleClick('en')}>EN</button>
+                        </li>
+                        <li className="mr-5">
+                            <button className="btn btn-link m-0" onClick={() => handleClick('mk')}>MK</button>
                         </li>
                         <li>
-                            <a href={"/"} onClick={() => handleClick('mk')}>MK</a>
-                        </li>
-                        <li>
-                            <a href={`/login`}>
+                            <Link to={`/login`}>
                                 <i className="fa fa-sign-in"/>
                                 {t('Log in.1')}
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 ) : (
                     <ul className="nav navbar-top-links navbar-right">
                         <li>
-                            <a href={"/"} onClick={() => handleClick('en')}>EN</a> |
+                            <button className="border-right btn btn-link " onClick={() => handleClick('en')}>EN</button>
+                        </li>
+                        <li className="mr-5">
+                            <button className="btn btn-link m-0" onClick={() => handleClick('mk')}>MK</button>
                         </li>
                         <li>
-                            <a href={"/"} onClick={() => handleClick('mk')}>MK</a>
+                            <a href={"/"}>Home</a>
                         </li>
-
                         <li>
-                            <a href={"/analysis"}>{t('Upload.1')}</a>
+                            <a href={"/analysis"} >
+                                {t('Upload.1')}
+                            </a>
                         </li>
                         <li>
                             <a onClick={logout}>
                                 {/*<span className="p-3"> {localStorage.getItem('user')}</span>*/}
                                 <i className="fa fa-sign-out"/>
-                                <span className="checkbox-label">{t('Log out.1')}</span></a>
+                                <span className="checkbox-label">
+                                    {t('Log out.1')}
+                                </span></a>
                         </li>
                     </ul>
                 )}
@@ -74,5 +81,9 @@ const TopHeader = (props) => {
         </div>
     );
 };
+
+// TopHeader.propTypes = {
+//     history: PropTypes.object.isRequired
+// };
 
 export default TopHeader

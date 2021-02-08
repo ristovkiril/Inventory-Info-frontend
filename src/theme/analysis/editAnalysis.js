@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
 import analysis from "../../redux/reducers/analysis";
+import TopHeader from "../topHeader";
 window.$ = jQuery;
 
 class CreateAnalysis extends Component {
@@ -107,29 +108,32 @@ class CreateAnalysis extends Component {
 
     render() {
         return (
-            <div className="container p-5 m-auto bg-white">
-                <form onSubmit={this.saveAnalysis}>
-                    <div className="form-group">
-                        <input className="form-control"
-                               type="text"
-                               name="year"
-                               placeholder="Year"
-                               value={this.state.analysis.year}
-                               onChange={this.onChange}
-                               required={true}/>
-                    </div>
-                    <div className="form-group">
-                        <input id="file"
-                               name="file"
-                               type="file"
-                               className="form-control-file"
-                               onChange={this.onChange}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <button type={"submit"} className="btn btn-primary" >Save</button>
-                    </div>
-                </form>
+            <div>
+                <TopHeader/>
+                <div className="container p-5 mt-3 bg-white shadow">
+                    <form onSubmit={this.saveAnalysis}>
+                        <div className="form-group">
+                            <input className="form-control"
+                                   type="text"
+                                   name="year"
+                                   placeholder="Year"
+                                   value={this.state.analysis.year}
+                                   onChange={this.onChange}
+                                   required={true}/>
+                        </div>
+                        <div className="form-group">
+                            <input id="file"
+                                   name="file"
+                                   type="file"
+                                   className="form-control-file"
+                                   onChange={this.onChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <button type={"submit"} className="btn btn-primary" >Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
         );
