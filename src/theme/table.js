@@ -32,7 +32,7 @@ export class Table extends Component {
 
     render() {
         return (
-            <table className="table table-hover table-responsive-lg">
+            <table className="table table-hover table-responsive-lg table_font">
                 <thead className="bg-light m-0 p-0">
                 <tr>
                     <th className="font-weight-bold">

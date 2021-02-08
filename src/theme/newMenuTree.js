@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const NewMenuTree = (props) => (
     <li className="nav-link">
         <input id={props.id}
-               className="float-left"
+               className="float-left checkbox-round"
                type="checkbox"
                name={props.id}
                checked={props.checked}

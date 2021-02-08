@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const NewMenuItem = (props) => (
     <li className="nav-link">
-        <input id={props.id} className="float-left" type="checkbox" name={props.id} checked={props.checked} onChange={props.onChange} />
+        <input id={props.id} className="float-left checkbox-round" type="checkbox" name={props.id} checked={props.checked} onChange={props.onChange} />
         <a href={""} className="p-0 ml-1">
             <label htmlFor={props.id}>
                 <span className="nav-label p-1 m-0 ml-1">{props.label}</span>
