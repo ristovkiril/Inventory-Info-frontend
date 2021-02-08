@@ -3,9 +3,10 @@ import $ from 'jquery';
 import React, { Component } from 'react';
 import { Bar } from 'react-chartjs-2';
 import { saveAs } from "file-saver";
+import { withTranslation } from 'react-i18next';
 
 
-export class Charts extends Component {
+class Charts extends Component {
 
     // obraten slucaj
     getDataset = () => {
@@ -52,7 +53,7 @@ export class Charts extends Component {
 
             console.log(colors)
             dataset.push({
-                label: analysis,
+                label: this.props.t(analysis + '.1'),
                 data: concentrates,
                 backgroundColor: colors
             })
@@ -134,7 +135,7 @@ export class Charts extends Component {
                          options={{
                              title: {
                                  display: true,
-                                 text: "Емисии на стаклени гасови " + this.getMainAnalysis(),
+                                 text: this.props.t('Greenhouse gas emissions.1') + " " + this.getMainAnalysis(),
                                  fontSize: 24
                              },
                              legend: {
@@ -154,4 +155,4 @@ export class Charts extends Component {
         )
     }
 }
-export default Charts;
+export default withTranslation()(Charts);

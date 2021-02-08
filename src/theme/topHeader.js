@@ -60,13 +60,13 @@ const TopHeader = (props) => {
                         </li>
 
                         <li>
-                            <a href={"/analysis"}>Analysis</a>
+                            <a href={"/analysis"}>{t('Upload.1')}</a>
                         </li>
                         <li>
                             <a onClick={logout}>
                                 {/*<span className="p-3"> {localStorage.getItem('user')}</span>*/}
                                 <i className="fa fa-sign-out"/>
-                                <span className="checkbox-label">Одјавете се</span></a>
+                                <span className="checkbox-label">{t('Log out.1')}</span></a>
                         </li>
                     </ul>
                 )}
@@ -74,9 +74,5 @@ const TopHeader = (props) => {
         </div>
     );
 };
-
-// TopHeader.propTypes = {
-//     history: PropTypes.object.isRequired
-// };
 
 export default TopHeader

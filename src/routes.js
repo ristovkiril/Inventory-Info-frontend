@@ -32,7 +32,7 @@ export default class Routes extends Component {
           <PrivateRoute path={"/analysis/:year"} component={WaitingComponent(EditAnalysis)} />
           <PrivateRoute path="/analysis" component={WaitingComponent(ListAnalysis)} />
           {/*<PrivateRoute path="/app" component={WaitingComponent(AppRoutes)} />*/}
-          {/*<Redirect to={"/"} />*/}
+          <Redirect to={"/"} />
         </Switch>
       </div>
     );

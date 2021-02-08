@@ -17,7 +17,7 @@ i18n
     // init i18next
     .init({
         fallbackLng: fallbackLng,
-        debug: true,
+        debug: false,
         whitelist: availableLanguages,
 
         interpolation: {

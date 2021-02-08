@@ -10,6 +10,7 @@ import Footer from './footer';
 import Table from "./table";
 import Charts from "./Charts";
 import {correctHeight, detectBody} from './helpers/helpers';
+import { withTranslation } from 'react-i18next';
 
 import '../assets/dependencies';
 import * as analysisActionCreator from "../redux/actions/gas_year_category";
@@ -120,5 +121,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Main));

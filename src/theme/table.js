@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withTranslation } from 'react-i18next';
 
 export class Table extends Component {
 
@@ -34,22 +35,28 @@ export class Table extends Component {
             <table className="table table-hover table-responsive-lg">
                 <thead className="bg-light m-0 p-0">
                 <tr>
-                    <th className="font-weight-bold">Категории</th>
+                    <th className="font-weight-bold">
+                        {this.props.t('sectors.1')}
+                    </th>
                     {
-                        this.getAnalysis().map(analysis => <th key={analysis} className="font-weight-bold border-light border-left text-center">{analysis}</th>)
+                        this.getAnalysis().map(analysis => <th key={analysis} className="font-weight-bold border-light border-left text-center">
+                            {analysis}
+                        </th>)
                     }
                 </tr>
                 </thead>
                 <tbody>
                 {
-                    this.getCategories().map((name) =>
-                        <tr key={name}>
-                            <td className="bg-light font-weight-bold">{name}</td>
+                    this.getCategories().map((category) =>
+                        <tr key={category}>
+                            <td className="bg-light font-weight-bold">
+                                {this.props.t(category + '.1')}
+                            </td>
                             {
                                 this.getAnalysis().map(analysis =>
-                                        <td key={analysis + name} className="border-light border-left text-center">
+                                        <td key={analysis + category} className="border-light border-left text-center">
                                             { this.props.isYearly ?
-                                                this.findByCategoryAndGas(name, analysis) : this.findByCategoryAndYear(name, analysis)
+                                                this.findByCategoryAndGas(category, analysis) : this.findByCategoryAndYear(category, analysis)
                                             }
                                         </td>
                                 )
@@ -63,4 +70,4 @@ export class Table extends Component {
         )
     }
 }
-export default Table;
+export default withTranslation() (Table);

@@ -1,27 +1,27 @@
 {
     "year": {
-        "1": "year"
+        "1": "Year"
     },
     "years": {
-        "1": "years"
+        "1": "Years"
     },
     "gas": {
-        "1": "gas"
+        "1": "Gas"
     },
     "gasses": {
-        "1": "gasses"
+        "1": "Gasses"
     },
     "Analysis": {
         "1": "Analysis"
     },
     "tables": {
-        "1": "tables"
+        "1": "Tables"
     },
     "charts": {
-        "1": "charts"
+        "1": "Charts"
     },
     "sectors": {
-        "1": "sectors"
+        "1": "Categories"
     },
     "Units": {
         "1": "Units"
@@ -371,13 +371,13 @@
     "5.B - Other": {
         "1": "5.B - Other"
     },
-    "6 - Memo Items (5)": {
+    "Memo Items (5)": {
         "1": "6 - Memo Items (5)"
     },
-    "7 - International Bunkers": {
+    "International Bunkers": {
         "1": "7 - International Bunkers"
     },
-    "7.A -  1.A.3.a.i - International Aviation (International Bunkers)": {
+    "1.A.3.a.i - International Aviation (International Bunkers)": {
         "1": "7.A -  1.A.3.a.i - International Aviation (International Bunkers)"
     },
     "7.B -  1.A.3.d.i - International water-borne navigation (International bunkers)": {

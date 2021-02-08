@@ -15,6 +15,7 @@ import Dropdown from "./dropdown";
 
 
 import jQuery from 'jquery';
+import {withTranslation} from "react-i18next";
 
 window.$ = jQuery;
 
@@ -372,18 +373,21 @@ class Navigation extends Component {
                         </li>
 
                         {
-                            <MenuTree active={true} key={GAS_PARENT} show={this.props.isYearly} label="Gasses">
+                            <MenuTree active={true} key={GAS_PARENT} show={this.props.isYearly}
+                                      label={this.props.t('gasses.1')}>
                                 {this.state.gasses ? this.categories(this.state.gasses, this.onGasChange) : " "}
                             </MenuTree>
                         }
                         {
-                            <MenuTree active={true} key={YEAR_PARENT} show={!this.props.isYearly} label="Years">
+                            <MenuTree active={true} key={YEAR_PARENT} show={!this.props.isYearly}
+                                      label={this.props.t('years.1')}>
                                 {this.state.years ? this.categories(this.state.years, this.onYearChange) : " "}
                             </MenuTree>
                         }
 
                         {
-                            <MenuTree active={false} key={CATEGORY_PARENT} show={true} label="Category">
+                            <MenuTree active={false} key={CATEGORY_PARENT} show={true}
+                                      label={this.props.t('sectors.1')}>
                                 {this.state.categories ? this.categories(this.state.categories, this.onCategoriesChange) : " "}
                             </MenuTree>
                         }
@@ -397,13 +401,15 @@ class Navigation extends Component {
         return (
             <div className="row">
                 <div className=" col-md-6 element1 col-md-pull-1">
-                    <label className="nav-label text-light font-weight-bold">Анализа:</label><br/>
+                    <label className="nav-label text-light font-weight-bold">{}
+                        {this.props.t('Analysis.1') + ":"}
+                    </label><br/>
                     <ToggleSwitch isChecked={this.props.isYearly}
                                   onClick={this.setAnalysis}/>
                 </div>
                 <div className="element2 col-md-6">
                     <label className="nav-label text-light font-weight-bold">
-                        {this.props.isYearly ? "Година:" : "Гас:"}
+                        {this.props.isYearly ? this.props.t('year.1') : this.props.t('gas.1')}
                     </label><br/>
                     <Dropdown items={this.props.isYearly ? this.state.years : this.state.gasses}
                               onChange={this.setSelectedItem}
@@ -423,20 +429,35 @@ class Navigation extends Component {
                                          onChange={onChange}/>)
                 } else {
                     return (
-                        <NewMenuTree key={index} id={item.id} label={item.name} checked={item.checked} level={2}
+                        <NewMenuTree key={index}
+                                     id={item.id}
+                                     label={this.props.t(item.name + '.1')}
+                                     checked={item.checked}
+                                     level={2}
                                      onChange={onChange}>
                             {
                                 item.tree.map((treeItem, treeIndex) => {
                                     if (isEmpty(treeItem.tree)) {
-                                        return (<NewMenuItem key={treeIndex} id={treeItem.id} label={treeItem.name}
-                                                             checked={treeItem.checked} onChange={onChange}/>)
+                                        return (<NewMenuItem
+                                            key={treeIndex}
+                                            id={treeItem.id}
+                                            label={this.props.t(treeItem.name + '.1')}
+                                            checked={treeItem.checked}
+                                            onChange={onChange}/>)
                                     }
                                     return (
-                                        <NewMenuTree key={treeItem.id} id={treeItem.id} label={treeItem.name}
-                                                     checked={treeItem.checked} level={3} onChange={onChange}>
+                                        <NewMenuTree key={treeItem.id}
+                                                     id={treeItem.id}
+                                                     label={this.props.t(treeItem.name + '.1')}
+                                                     checked={treeItem.checked}
+                                                     level={3}
+                                                     onChange={onChange}>
                                             {treeItem.tree.map((subItem, subIndex) => {
-                                                return (<NewMenuItem key={subIndex} id={subItem.id} label={subItem.name}
-                                                                     checked={subItem.checked} onChange={onChange}/>);
+                                                return (<NewMenuItem key={subIndex}
+                                                                     id={subItem.id}
+                                                                     label={this.props.t(subItem.name + '.1')}
+                                                                     checked={subItem.checked}
+                                                                     onChange={onChange}/>);
                                             })}
                                         </NewMenuTree>
                                     )
@@ -492,4 +513,4 @@ const mapDispatchToProps = (dispatch) => {
 
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default connect(mapStateToProps, mapDispatchToProps)(withTranslation()(Navigation));
