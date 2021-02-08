@@ -60,7 +60,9 @@ const TopHeader = (props) => {
                             <button className="btn btn-link m-0" onClick={() => handleClick('mk')}>MK</button>
                         </li>
                         <li>
-                            <a href={"/"}>Home</a>
+                            <a href={"/"}>
+                                {t('Home.1')}
+                            </a>
                         </li>
                         <li>
                             <a href={"/analysis"} >

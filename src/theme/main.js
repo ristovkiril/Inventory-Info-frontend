@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import React, {Component} from 'react';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Link} from 'react-router-dom';
 
 import Loading from './loading';
 import Progress from './progress';
@@ -79,11 +79,15 @@ export class Main extends Component {
                                         <ul className="nav nav-tabs border-bottom-0">
                                             <li className={this.state.tableView === true ? "nav-item active bg-white rounded-top border-bottom-0":"nav-item bg-light rounded-top"}>
                                                 <div className={this.state.tableView === true ? "nav-link active bg-white border-bottom-0 ":"nav-link bg-light rounded-top"} onClick={() => this.setTableView(true)}>
-                                                    <i className="fa fa-table pr-1"/>Табели</div>
+                                                    <i className="fa fa-table pr-1"/>
+                                                    {this.props.t('tables.1')}
+                                                </div>
                                             </li>
                                             <li className={this.state.tableView === false ? "nav-item active bg-white rounded-top":"nav-item bg-light rounded-top"}>
                                                 <div className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link bg-light rounded-top"} onClick={() => this.setTableView(false)}>
-                                                    <i className="fa fa-bar-chart pr-1"/>Графици</div>
+                                                    <i className="fa fa-bar-chart pr-1"/>
+                                                    {this.props.t('charts.1')}
+                                                </div>
                                             </li>
                                         </ul>
                                     <div className="ibox-content p-3 m-0">
