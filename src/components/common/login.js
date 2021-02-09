@@ -51,15 +51,6 @@ render() {
 
             <LoginForm login={this.login}/>
 
-            <Link to="/activate">
-              <small>Forgot Password?</small>
-            </Link>
-
-            {/*<p className="text-muted text-center">*/}
-            {/*  <Link to="/register">Don't have an account?</Link>*/}
-            {/*</p>*/}
-            <Link className="btn btn-sm btn-white btn-block" to="/activate">Activate Account</Link>
-            <Link className="btn btn-sm btn-white btn-block" to="/register">Register</Link>
             <br/>
             <CopyRight/>
           </div>

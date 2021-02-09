@@ -8,12 +8,15 @@ import $ from 'jquery';
 import * as auth from '../helpers/auth';
 import PropTypes from 'prop-types';
 import {useTranslation} from 'react-i18next';
+import { useHistory } from "react-router-dom";
 
 const TopHeader = (props) => {
 
+    const history = useHistory();
+
     const logout = () => {
         auth.logout();
-        // props.history.push('/');
+        history.push('/');
     };
 
     const toggleNavigation = (e) => {
@@ -51,9 +54,9 @@ const TopHeader = (props) => {
                                 <a className="m-0 nav-link" onClick={() => handleClick('mk')}>MK</a>
                             </li>
 
-                            <li className={"nav-item"}>
+                            <li className={"nav-item pr-5"}>
                                 <NavLink to={"/login"} className={'nav-link'} activeClassName='active'>
-                                    <i className="fa fa-sign-in pr-1"/>
+                                    <i className="fa fa-sign-in pr-2"/>
                                     {t('Log in')}
                                 </NavLink>
                             </li>
