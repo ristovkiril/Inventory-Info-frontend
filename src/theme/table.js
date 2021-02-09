@@ -32,41 +32,48 @@ export class Table extends Component {
 
     render() {
         return (
-            <table className="table table-hover table-responsive-lg table_font">
-                <thead className="bg-light m-0 p-0">
-                <tr>
-                    <th className="font-weight-bold">
-                        {this.props.t('Categories')}
-                    </th>
+            <div>
+                <div className="mr-auto p-1">
+                    <small>
+                        {this.props.t("Units")}: [Gg]
+                    </small>
+                </div>
+                <table className="table table-hover table-responsive-lg table_font">
+                    <thead className="bg-light m-0 p-0">
+                    <tr>
+                        <th className="font-weight-bold">
+                            {this.props.t('Categories')}
+                        </th>
+                        {
+                            this.getAnalysis().map(analysis => <th key={analysis} className="font-weight-bold border-light border-left text-center">
+                                {analysis}
+                            </th>)
+                        }
+                    </tr>
+                    </thead>
+                    <tbody>
                     {
-                        this.getAnalysis().map(analysis => <th key={analysis} className="font-weight-bold border-light border-left text-center">
-                            {analysis}
-                        </th>)
-                    }
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    this.getCategories().map((category) =>
-                        <tr key={category}>
-                            <td className="bg-light font-weight-bold">
-                                {this.props.t(category)}
-                            </td>
-                            {
-                                this.getAnalysis().map(analysis =>
+                        this.getCategories().map((category) =>
+                            <tr key={category}>
+                                <td className="bg-light font-weight-bold">
+                                    {this.props.t(category)}
+                                </td>
+                                {
+                                    this.getAnalysis().map(analysis =>
                                         <td key={analysis + category} className="border-light border-left text-center">
                                             { this.props.isYearly ?
                                                 this.findByCategoryAndGas(category, analysis) : this.findByCategoryAndYear(category, analysis)
                                             }
                                         </td>
-                                )
-                            }
-                        </tr>
-                    )
-                }
+                                    )
+                                }
+                            </tr>
+                        )
+                    }
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         )
     }
 }
