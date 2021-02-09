@@ -474,20 +474,23 @@ class Navigation extends Component {
     menu = () => {
         return this.state.menu.map((item, index) => {
             if (isEmpty(item.tree)) {
-                return (<MenuItem key={index} path={item.path} icon={item.icon} label={item.label}/>);
+                return (<MenuItem key={index} path={item.path} icon={item.icon} label={this.props.t(item.label)}/>);
             }
             return (
                 <MenuTree key={index} icon={item.icon} label={item.label}>
                     {
                         item.tree.map((treeItem, treeIndex) => {
                             if (isEmpty(treeItem.tree)) {
-                                return (<MenuItem key={treeIndex} path={treeItem.path} label={treeItem.label}
+                                return (<MenuItem key={treeIndex} path={treeItem.path}
+                                                  label={this.props.t(treeItem.label)}
                                                   icon={treeItem.icon} tree/>);
                             }
                             return (
                                 <MenuTree key={treeIndex} icon={treeItem.icon} label={treeItem.label}>
                                     {treeItem.tree.map((subItem, subIndex) => {
-                                        return (<MenuItem key={subIndex} path={subItem.path} label={subItem.label}
+                                        return (<MenuItem key={subIndex}
+                                                          path={subItem.path}
+                                                          label={this.props.t(subItem.label)}
                                                           icon={subItem.icon}/>);
                                     })}
                                 </MenuTree>
