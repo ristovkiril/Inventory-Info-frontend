@@ -14,17 +14,15 @@ const NewMenuTree = (props) => {
                onChange={props.onChange} />
 
         <a href="#"
-           onClick={event => {
-            event.preventDefault();
-            setShow((prevState => !prevState))
-            console.log(show)
-            }}
            aria-expanded={show}
            className="p-0 my-0 ml-1">
             <label htmlFor={props.id} className={"nav-label has-arrow"}>
                 <span className=" p-1 m-0 ml-1">{props.label}</span>
             </label>
-            <span className="float-right">{show ? "v" : "<"}</span>
+            <span  onClick={event => {
+                // event.preventDefault();
+                setShow((prevState => !prevState))
+            }} className="float-right">{show ? "v" : "<"}</span>
         </a>
         {
             show ?
