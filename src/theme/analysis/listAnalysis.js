@@ -95,12 +95,12 @@ class CreateAnalysis extends Component {
                                                 </td>
                                                 <td>
                                                     <a href={`/analysis/${analysis.year}`}
-                                                       className="btn btn-warning mx-2"> Edit
-                                                        <i className="pl-2 fa fa-file-text"/>
+                                                       className="btn btn-link mx-2">
+                                                        <i className="fa fa-file-text bg-light"/>
                                                     </a>
-                                                    <button className={"btn btn-danger mx-2"} name={analysis.id}
+                                                    <button className={"btn btn-link mx-2"} name={analysis.id}
                                                             onClick={this.deleteAnalysis} title="Delete">
-                                                        <i className="fa fa-trash"/>
+                                                        <i className="fa fa-trash "/>
                                                     </button>
                                                 </td>
                                             </tr>

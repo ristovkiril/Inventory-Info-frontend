@@ -63,7 +63,7 @@ export class Main extends Component {
 
     render() {
         return (
-            <div id="wrapper" className="shadow">
+            <div id="wrapper">
                     <div>
                         <Progress/>
                         <Navigation isYearly={this.state.isYearly}
@@ -88,7 +88,7 @@ export class Main extends Component {
                                                 </div>
                                             </li>
                                         </ul>
-                                    <div className="ibox-content p-3 m-0">
+                                    <div className="ibox-content p-3 m-0 shadow">
                                         {
                                             !this.props.selected || this.props.selected.length === 0 ? <Loading/>
                                             :
