@@ -37,7 +37,11 @@ const TopHeader = (props) => {
                               onClick={(e) => toggleNavigation(e)} style={{cursor: 'pointer'}}><i
                             className="fa fa-bars"/> </span>
                 </div>
-                <div className="ml-auto">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="ml-auto collapse navbar-collapse" id="navbarText">
                     {localStorage.getItem('auth_token') == null ? (
                         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                             <li className={"nav-item"}>

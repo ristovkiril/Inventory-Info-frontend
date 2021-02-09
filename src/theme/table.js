@@ -46,7 +46,7 @@ export class Table extends Component {
                         </th>
                         {
                             this.getAnalysis().map(analysis => <th key={analysis} className="font-weight-bold border-light border-left text-center">
-                                {analysis}
+                                {this.props.t(analysis)}
                             </th>)
                         }
                     </tr>

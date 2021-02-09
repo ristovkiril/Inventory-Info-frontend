@@ -46,13 +46,11 @@ class Charts extends Component {
                 const concentrate = this.props.isYearly ?
                     this.findByCategoryAndGas(category, analysis) : this.findByCategoryAndYear(category, analysis);
 
-                console.log(categories)
                 concentrates.push(concentrate);
 
                 colors.push(color);
             }
 
-            console.log(analysis)
             dataset.push({
                 label: this.props.t(analysis),
                 data: concentrates,

@@ -19,7 +19,7 @@ i18n
         fallbackLng: fallbackLng,
         debug: true,
         whitelist: availableLanguages,
-
+        keySeparator: '_',
         interpolation: {
             escapeValue: false, // not needed for react as it escapes by default
         },
