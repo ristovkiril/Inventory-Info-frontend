@@ -54,8 +54,8 @@ const TopHeader = (props) => {
                                 <a className="m-0 nav-link" onClick={() => handleClick('mk')}>MK</a>
                             </li>
 
-                            <li className={"nav-item pr-5"}>
-                                <NavLink to={"/login"} className={'nav-link'} activeClassName='active'>
+                            <li className={"nav-item pr-3"}>
+                                <NavLink to={"/login"} className='nav-link custom_font' activeClassName='active'>
                                     <i className="fa fa-sign-in pr-2"/>
                                     {t('Log in')}
                                 </NavLink>
@@ -79,7 +79,7 @@ const TopHeader = (props) => {
                                     {t('Analysis')}
                                 </NavLink>
                             </li>
-                            <li className={"nav-item"}>
+                            <li className={"nav-item "}>
                                 <a onClick={logout} className={"nav-link"}>
                                     {/*<span className="p-3"> {localStorage.getItem('user')}</span>*/}
                                     <i className="fa fa-sign-out"/>
