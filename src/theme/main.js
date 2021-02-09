@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import React, {Component} from 'react';
-import {BrowserRouter, Link} from 'react-router-dom';
 
 import Loading from './loading';
 import Progress from './progress';
@@ -64,8 +63,7 @@ export class Main extends Component {
 
     render() {
         return (
-            <div id="wrapper" className="shadow">
-                <BrowserRouter>
+            <div id="wrapper">
                     <div>
                         <Progress/>
                         <Navigation isYearly={this.state.isYearly}
@@ -80,17 +78,17 @@ export class Main extends Component {
                                             <li className={this.state.tableView === true ? "nav-item active bg-white rounded-top border-bottom-0":"nav-item bg-light rounded-top"}>
                                                 <div className={this.state.tableView === true ? "nav-link active bg-white border-bottom-0 ":"nav-link bg-light rounded-top"} onClick={() => this.setTableView(true)}>
                                                     <i className="fa fa-table pr-1"/>
-                                                    {this.props.t('tables.1')}
+                                                    {this.props.t('tables')}
                                                 </div>
                                             </li>
                                             <li className={this.state.tableView === false ? "nav-item active bg-white rounded-top":"nav-item bg-light rounded-top"}>
                                                 <div className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link bg-light rounded-top"} onClick={() => this.setTableView(false)}>
                                                     <i className="fa fa-bar-chart pr-1"/>
-                                                    {this.props.t('charts.1')}
+                                                    {this.props.t('charts')}
                                                 </div>
                                             </li>
                                         </ul>
-                                    <div className="ibox-content p-3 m-0">
+                                    <div className="ibox-content p-3 m-0 shadow">
                                         {
                                             !this.props.selected || this.props.selected.length === 0 ? <Loading/>
                                             :
@@ -108,7 +106,6 @@ export class Main extends Component {
                             <Footer/>
                         </div>
                     </div>
-                </BrowserRouter>
             </div>
         );
     }

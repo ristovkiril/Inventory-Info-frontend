@@ -46,7 +46,7 @@ class Navigation extends Component {
 
         // eslint-disable-next-line func-names
         $(function () {
-            $(menu).metisMenu({
+            $("#side-menu").metisMenu({
                 toggle: true
             });
         });
@@ -374,20 +374,20 @@ class Navigation extends Component {
 
                         {
                             <MenuTree active={true} key={GAS_PARENT} show={this.props.isYearly}
-                                      label={this.props.t('gasses.1')}>
+                                      label={this.props.t('Gasses')}>
                                 {this.state.gasses ? this.categories(this.state.gasses, this.onGasChange) : " "}
                             </MenuTree>
                         }
                         {
                             <MenuTree active={true} key={YEAR_PARENT} show={!this.props.isYearly}
-                                      label={this.props.t('years.1')}>
+                                      label={this.props.t('Years')}>
                                 {this.state.years ? this.categories(this.state.years, this.onYearChange) : " "}
                             </MenuTree>
                         }
 
                         {
                             <MenuTree active={false} key={CATEGORY_PARENT} show={true}
-                                      label={this.props.t('sectors.1')}>
+                                      label={this.props.t('Categories')}>
                                 {this.state.categories ? this.categories(this.state.categories, this.onCategoriesChange) : " "}
                             </MenuTree>
                         }
@@ -400,16 +400,16 @@ class Navigation extends Component {
     profile = () => {
         return (
             <div className="row">
-                <div className=" col-md-6 element1 col-md-pull-1 pl-1">
+                <div className=" col-md-6 element1 col-md-pull-1 pl-2">
                     <label className="nav-label text-light font-weight-bold">{}
-                        {this.props.t('Analysis.1') + ":"}
+                        {this.props.t('Analysis') + ":"}
                     </label><br/>
                     <ToggleSwitch isChecked={this.props.isYearly}
                                   onClick={this.setAnalysis}/>
                 </div>
                 <div className="element2 col-md-6">
                     <label className="nav-label text-light font-weight-bold">
-                        {this.props.isYearly ? this.props.t('year.1') + ":" : this.props.t('gas.1') + ":"}
+                        {this.props.isYearly ? this.props.t('Year') + ":" : this.props.t('Gas') + ":"}
                     </label><br/>
                     <Dropdown items={this.props.isYearly ? this.state.years : this.state.gasses}
                               onChange={this.setSelectedItem}
@@ -425,13 +425,13 @@ class Navigation extends Component {
         return data.map((item, index) => {
             if (item.name != null) {
                 if (isEmpty(item.tree)) {
-                    return (<NewMenuItem key={index} id={item.id} label={item.name} checked={item.checked}
+                    return (<NewMenuItem key={index} id={item.id} label={this.props.t(item.name)} checked={item.checked}
                                          onChange={onChange}/>)
                 } else {
                     return (
                         <NewMenuTree key={index}
                                      id={item.id}
-                                     label={this.props.t(item.name + '.1')}
+                                     label={this.props.t(item.name)}
                                      checked={item.checked}
                                      level={2}
                                      onChange={onChange}>
@@ -441,21 +441,21 @@ class Navigation extends Component {
                                         return (<NewMenuItem
                                             key={treeIndex}
                                             id={treeItem.id}
-                                            label={this.props.t(treeItem.name + '.1')}
+                                            label={this.props.t(treeItem.name)}
                                             checked={treeItem.checked}
                                             onChange={onChange}/>)
                                     }
                                     return (
                                         <NewMenuTree key={treeItem.id}
                                                      id={treeItem.id}
-                                                     label={this.props.t(treeItem.name + '.1')}
+                                                     label={this.props.t(treeItem.name)}
                                                      checked={treeItem.checked}
                                                      level={3}
                                                      onChange={onChange}>
                                             {treeItem.tree.map((subItem, subIndex) => {
                                                 return (<NewMenuItem key={subIndex}
                                                                      id={subItem.id}
-                                                                     label={this.props.t(subItem.name + '.1')}
+                                                                     label={this.props.t(subItem.name)}
                                                                      checked={subItem.checked}
                                                                      onChange={onChange}/>);
                                             })}

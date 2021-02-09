@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 
 import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
-import analysis from "../../redux/reducers/analysis";
 import TopHeader from "../topHeader";
+import {withTranslation} from "react-i18next";
 window.$ = jQuery;
 
 class CreateAnalysis extends Component {
@@ -111,26 +111,33 @@ class CreateAnalysis extends Component {
             <div>
                 <TopHeader/>
                 <div className="container p-5 mt-3 bg-white shadow">
+                    <div className="mr-auto py-3">
+                        <a href={'/analysis'} className="h5">{this.props.t("Back")}</a>
+                    </div>
                     <form onSubmit={this.saveAnalysis}>
-                        <div className="form-group">
+                        <div className="form-group py-2">
+                            <label htmlFor="year">{this.props.t("Year")}</label>
                             <input className="form-control"
                                    type="text"
                                    name="year"
-                                   placeholder="Year"
+                                   placeholder={this.props.t("Year")}
                                    value={this.state.analysis.year}
                                    onChange={this.onChange}
                                    required={true}/>
                         </div>
                         <div className="form-group">
+                            <label htmlFor="file">{this.props.t("Year")}</label>
                             <input id="file"
                                    name="file"
                                    type="file"
                                    className="form-control-file"
                                    onChange={this.onChange}
                             />
+                            <small>* {this.props.t("Upload Excel")}</small><br/>
+                            <small>* {this.props.t("The field is optional")}</small>
                         </div>
                         <div className="form-group">
-                            <button type={"submit"} className="btn btn-primary" >Save</button>
+                            <button type={"submit"} className="btn btn-primary" >{this.props.t("Save")}</button>
                         </div>
                     </form>
                 </div>
@@ -142,4 +149,4 @@ class CreateAnalysis extends Component {
 
 
 
-export default CreateAnalysis;
+export default withTranslation()(CreateAnalysis);

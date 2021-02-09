@@ -2779,16 +2779,15 @@ select.form-control:not([size]):not([multiple]) {
 .onoffswitch-label {
   display: block; overflow: hidden; cursor: pointer;
   background: #1AB394;
-  border: 2px solid #1AB394;
-  border-radius: 2px;
+  border: 2px solid #1AB394; border-radius: 2px;
 }
-.onoffswitch-inner {
+.onoffswitch-inner-mk, .onoffswitch-inner-en {
   display: block;
   width: 200%;
   margin-left: -100%;
   transition: margin 0.3s ease-in 0s;
 }
-.onoffswitch-inner:before, .onoffswitch-inner:after {
+.onoffswitch-inner-mk:before, .onoffswitch-inner-mk:after, .onoffswitch-inner-en:before, .onoffswitch-inner-en:after {
   display: block;
   float: left;
   width: 50%;
@@ -2801,31 +2800,46 @@ select.form-control:not([size]):not([multiple]) {
   font-weight: bold;
   box-sizing: border-box;
 }
-.onoffswitch-inner:before {
+.onoffswitch-inner-mk:before {
   content: "Годишна";
   padding-left: 10px;
   background-color: #1AB394;
   color: #FFFFFF;
-  -webkit-box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
 }
-.onoffswitch-inner:after{
+.onoffswitch-inner-mk:after {
   content: "Меѓугодишна";
   padding-right: 10px;
   background-color: #FFFFFF;
   color: #999999;
   text-align: right;
 }
-
+.onoffswitch-inner-en:before {
+  content: "Annual";
+  padding-left: 10px;
+  background-color: #1AB394;
+  color: #FFFFFF;
+}
+.onoffswitch-inner-en:after {
+  content: "Time series";
+  padding-right: 10px;
+  background-color: #FFFFFF;
+  color: #999999;
+  text-align: right;
+}
 .onoffswitch-switch {
   display: block;
   width: 19px; margin: 0px;
   background: #FFFFFF;
   position: absolute; top: 0; bottom: 0;
   right: 106px;
-  border: 2px solid #1AB394; border-radius: 2px;
+  border: 2px solid #1AB394;
+  border-radius: 2px;
   transition: all 0.3s ease-in 0s;
 }
-.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner-mk {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner-en {
   margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
