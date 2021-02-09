@@ -1,392 +1,143 @@
 {
-    "year": {
-        "1": "Година"
-    },
-    "years": {
-        "1": "Години"
-    },
-    "gas": {
-        "1": "Гас"
-    },
-    "gasses": {
-        "1": "Гасови"
-    },
-    "Analysis": {
-        "1": "Анализа"
-    },
-    "tables": {
-        "1": "Табели"
-    },
-    "charts": {
-        "1": "Графици"
-    },
-    "sectors": {
-        "1": "Категории"
-    },
-    "Units": {
-        "1": "Единица мерка"
-    },
-    "Upload Excel": {
-        "1": "Прикачи ексел"
-    },
-    "Upload": {
-        "1": "Прикачи"
-    },
-    "Log in": {
-        "1": "Најавете се"
-    },
-    "Log out": {
-        "1": "Одјавете се"
-    },
-    "Select file": {
-        "1": "Избери фајл"
-    },
-    "Change": {
-        "1": "Измени"
-    },
-    "Remove": {
-        "1": "Одстрани"
-    },
-    "Route Not Found": {
-        "1": "Страницата не е пронајдена"
-    },
-    "You can go back to main page": {
-        "1": "Може да се вратите на главната страна"
-    },
-    "Go to main page": {
-        "1": "Оди на главна страна"
-    },
-    "Home": {
-        "1": "Почетна"
-    },
-    "Greenhouse gas emissions": {
-        "1": "Емисии на стакленички гасови"
-    },
-    "modal header": {
-        "1": "Ажурирање на инвентарот на стакленички гасови"
-    },
-    "Excel 1 message": {
-        "1": "Ексел 1: Годишни извештаи"
-    },
-    "Excel 2 message": {
-        "1": "Ексел 2: Временски серии по гас"
-    },
-    "Total National Emissions and Removals": {
-        "1": "Вкупни емисии и отстранувања"
-    },
-    "1 - Energy": {
-        "1": "1 - Енергија"
-    },
-    "1.A - Fuel Combustion Activities": {
-        "1": "1.А - Активности при кои се согорува гориво"
-    },
-    "1.A.1 - Energy Industries": {
-        "1": "1.A.1 - Енергетски индустрии"
-    },
-    "1.A.2 - Manufacturing Industries and Construction": {
-        "1": "1.A.2 - Производствени индустрии и градежништво"
-    },
-    "1.A.3 - Transport": {
-        "1": "1.A.3 - Транспорт"
-    },
-    "1.A.4 - Other Sectors": {
-        "1": "1.A.4 - Други сектори"
-    },
-    "1.A.5 - Non-Specified": {
-        "1": "1.A.5 - Неспецифицирани"
-    },
-    "1.B - Fugitive emissions from fuels": {
-        "1": "1.B - Фугитивни емисии од горива"
-    },
-    "1.B.1 - Solid Fuels": {
-        "1": "1.B.1 - Цврсти горива"
-    },
-    "1.B.2 - Oil and Natural Gas": {
-        "1": "1.B.2 - Нафта и природен гас"
-    },
-    "1.B.3 - Other emissions from Energy Production": {
-        "1": "1.B.3 - Други емисии од производство на енергија"
-    },
-    "1.C - Carbon dioxide Transport and Storage": {
-        "1": "1.C - Пренос и складирање на јаглерод диоксид"
-    },
-    "1.C.1 - Transport of CO2": {
-        "1": "1.C.1 - Пренос на CO2"
-    },
-    "1.C.2 - Injection and Storage": {
-        "1": "1.C.2 - Вбризгување и складирање"
-    },
-    "1.C.3 - Other": {
-        "1": "1.C.3 - Други"
-    },
-    "2 - Industrial Processes and Product Use": {
-        "1": "2 - Индустриски процеси и користење на производи"
-    },
-    "2.A - Mineral Industry": {
-        "1": "2.A - Минерална индустрија"
-    },
-    "2.A.1 - Cement production": {
-        "1": "2.A.1 - Производство на цемент"
-    },
-    "2.A.2 - Lime production": {
-        "1": "2.A.2 - Производство на вар"
-    },
-    "2.A.3 - Glass Production": {
-        "1": "2.A.3 - Производство на стакло"
-    },
-    "2.A.4 - Other Process Uses of Carbonates": {
-        "1": "2.A.4 -Други процеси што користат карбонати"
-    },
-    "2.A.5 - Other": {
-        "1": "2.A.5 - Друго"
-    },
-    "2.B - Chemical Industry": {
-        "1": "2.B - Хемиска индустрија"
-    },
-    "2.B.1 - Ammonia Production": {
-        "1": "2.B.1 - Производство на амонијак"
-    },
-    "2.B.2 - Nitric Acid Production": {
-        "1": "2.B.2 - Производство на азотна киселина"
-    },
-    "2.B.3 - Adipic Acid Production": {
-        "1": "2.B.3 - Производство на адипична киселина"
-    },
-    "2.B.4 - Caprolactam, Glyoxal and Glyoxylic Acid Production": {
-        "1": "2.B.4 - Производство на глиоксилна киселина"
-    },
-    "2.B.5 - Carbide Production": {
-        "1": "2.B.5 - Производство на карбид"
-    },
-    "2.B.6 - Titanium Dioxide Production": {
-        "1": "2.B.6 - Производство на титаниум"
-    },
-    "2.B.7 - Soda Ash Production": {
-        "1": "2.B.7 - Користење на сода карбонат"
-    },
-    "2.B.8 - Petrochemical and Carbon Black Production": {
-        "1": "2.B.8 - Петрохемија и производство на црн јаглен"
-    },
-    "2.B.9 - Fluorochemical Production": {
-        "1": "2.B.9 - Производство на флуорохемиски супстанци"
-    },
-    "2.B.10 - Other": {
-        "1": "2.B.10 - Друго"
-    },
-    "2.C - Metal Industry": {
-        "1": "2.C - Метална индустрија"
-    },
-    "2.C.1 - Iron and Steel Production": {
-        "1": "2.C.1 - Производство на железо и челик"
-    },
-    "2.C.2 - Ferroalloys Production": {
-        "1": "2.C.2 - Производство на феролегури"
-    },
-    "2.C.3 - Aluminium production": {
-        "1": "2.C.3 - Производство на алуминиум"
-    },
-    "2.C.4 - Magnesium production": {
-        "1": "2.C.4 - Производство на магнезиум"
-    },
-    "2.C.5 - Lead Production": {
-        "1": "2.C.5 - Производство на олово"
-    },
-    "2.C.6 - Zinc Production": {
-        "1": "2.C.6 - Производство на цинк"
-    },
-    "2.C.7 - Other": {
-        "1": "2.C.7 - Друго"
-    },
-    "2.D - Non-Energy Products from Fuels and Solvent Use": {
-        "1": "2.D - Не-енергетски производи од горива и користење на разредувачи"
-    },
-    "2.D.1 - Lubricant Use": {
-        "1": "2.D.1 - Користење на лубриканти"
-    },
-    "2.D.2 - Paraffin Wax Use": {
-        "1": "2.D.2 - Користење на парафин"
-    },
-    "2.D.3 - Solvent Use": {
-        "1": "2.D.3 - Користење на разредувачи"
-    },
-    "2.D.4 - Other": {
-        "1": "2.D.4 - Друго"
-    },
-    "2.E - Electronics Industry": {
-        "1": "2.E - Индустрија за електроника"
-    },
-    "2.E.1 - Integrated Circuit or Semiconductor": {
-        "1": "2.E.1 - Интегрирани кола и полуспроводници"
-    },
-    "2.E.2 - TFT Flat Panel Display": {
-        "1": "2.E.2 - TFT рамни панели"
-    },
-    "2.E.3 - Photovoltaics": {
-        "1": "2.E.3 - Фотоволтаици"
-    },
-    "2.E.4 - Heat Transfer Fluid": {
-        "1": "2.E.4 - Флуиди за пренос на топлина"
-    },
-    "2.E.5 - Other": {
-        "1": "2.E.5 - Друго"
-    },
-    "2.F - Product Uses as Substitutes for Ozone Depleting Substances": {
-        "1": "2.F - Користење на производи како замена за супстанци кои го оштетуваат озонот"
-    },
-    "2.F.1 - Refrigeration and Air Conditioning": {
-        "1": "2.F.1 - Уреди за разладување"
-    },
-    "2.F.2 - Foam Blowing Agents": {
-        "1": "2.F.2 - Дување на пена"
-    },
-    "2.F.3 - Fire Protection": {
-        "1": "2.F.3 - Заштита од пожар"
-    },
-    "2.F.4 - Aerosols": {
-        "1": "2.F.4 - Аеросоли"
-    },
-    "2.F.5 - Solvents": {
-        "1": "2.F.5 - Разредувачи"
-    },
-    "2.F.6 - Other Applications": {
-        "1": "2.F.6 - Друго"
-    },
-    "2.G - Other Product Manufacture and Use": {
-        "1": "2.G - Друго"
-    },
-    "2.G.1 - Electrical Equipment": {
-        "1": "2.G.1 - Електрична опрема"
-    },
-    "2.G.2 - SF6 and PFCs from Other Product Uses": {
-        "1": "2.G.2 - SF6 и PFCs од користење на производи"
-    },
-    "2.G.3 - N2O from Product Uses": {
-        "1": "2.G.3 - N2O од користење на производи"
-    },
-    "2.G.4 - Other": {
-        "1": "2.G.4 - Друго"
-    },
-    "2.H - Other": {
-        "1": "2.H - Друго"
-    },
-    "2.H.1 - Pulp and Paper Industry": {
-        "1": "2.H.1 - Индустрија за пулпа и хартија"
-    },
-    "2.H.2 - Food and Beverages Industry": {
-        "1": "2.H.2 - Индустрија за храна и пијалаци"
-    },
-    "2.H.3 - Other": {
-        "1": "2.H.3 - Друго"
-    },
-    "3 - Agriculture, Forestry, and Other Land Use": {
-        "1": "3 - Земјоделство, шумарство и друго користење на земјиштето"
-    },
-    "3.A - Livestock": {
-        "1": "3.A - Добиток"
-    },
-    "3.A.1 - Enteric Fermentation": {
-        "1": "3.A.1 - Ентерична ферментација"
-    },
-    "3.A.2 - Manure Management": {
-        "1": "3.A.2 - Управување со добиточно ѓубре"
-    },
-    "3.B - Land": {
-        "1": "3.B - Земјиште"
-    },
-    "3.B.1 - Forest land": {
-        "1": "3.B.1 - Шумско земјиште"
-    },
-    "3.B.2 - Cropland": {
-        "1": "3.B.2 - Обработливи површини"
-    },
-    "3.B.3 - Grassland": {
-        "1": "3.B.3 - Пасишта"
-    },
-    "3.B.4 - Wetlands": {
-        "1": "3.B.4 - Мочуришта"
-    },
-    "3.B.5 - Settlements": {
-        "1": "3.B.5 - Населени места"
-    },
-    "3.B.6 - Other Land": {
-        "1": "3.B.6 - Друго земјиште"
-    },
-    "3.C - Aggregate sources and non-CO2 emissions sources on land": {
-        "1": "3.C - Вкупни извори и извори на емисии на други гасови од земјиштето"
-    },
-    "3.C.1 - Emissions from biomass burning": {
-        "1": "3.C.1 - Емисии од горење на биомаса"
-    },
-    "3.C.2 - Liming": {
-        "1": "3.C.2 - Примена на вар"
-    },
-    "3.C.3 - Urea application": {
-        "1": "3.C.3 - Примена на уреа"
-    },
-    "3.C.4 - Direct N2O Emissions from managed soils": {
-        "1": "3.C.4 - Директни N2O емисии од обработени почви"
-    },
-    "3.C.5 - Indirect N2O Emissions from managed soils": {
-        "1": "3.C.5 - Индиректни N2O емисии од обработени почви"
-    },
-    "3.C.6 - Indirect N2O Emissions from manure management": {
-        "1": "3.C.6 - Индиректни N2O емисии од шталско ѓубре"
-    },
-    "3.C.7 - Rice cultivations": {
-        "1": "3.C.7 - Површини под ориз"
-    },
-    "3.C.8 - Other": {
-        "1": "3.C.8 - Друго"
-    },
-    "3.D - Other": {
-        "1": "3.D - Друго"
-    },
-    "3.D.1 - Harvested Wood Products": {
-        "1": "3.D.1 - Сеча на дрвна маса"
-    },
-    "3.D.2 - Other": {
-        "1": "3.D.2 - Друго"
-    },
-    "4 - Waste": {
-        "1": "4 - Отпад"
-    },
-    "4.A - Solid Waste Disposal": {
-        "1": "4.A - Депонии за цврст отпад"
-    },
-    "4.B - Biological Treatment of Solid Waste": {
-        "1": "4.B - Биолошки третман на цврст отпад"
-    },
-    "4.C - Incineration and Open Burning of Waste": {
-        "1": "4.C - Согорување и отворено горење на отпадот"
-    },
-    "4.D - Wastewater Treatment and Discharge": {
-        "1": "4.D - Третман и испуштање на отпадни води"
-    },
-    "4.E - Other": {
-        "1": "4.E - Друго"
-    },
-    "5 - Other": {
-        "1": "5 - Друго"
-    },
-    "5.A - Indirect N2O emissions from the atmospheric deposition of nitrogen in NOx and NH3": {
-        "1": "5.A - Индиректни N2O емисии од атмосферско депонирање на азот како NOx и NH3"
-    },
-    "5.B - Other": {
-        "1": "5.B - Друго"
-    },
-    "Memo Items (5)": {
-        "1": "6 - Мемо ставки (5)"
-    },
-    "International Bunkers": {
-        "1": "7 - Меѓународни резервоари"
-    },
-    "1.A.3.a.i - International Aviation (International Bunkers)": {
-        "1": "7.А - 1.A.3.a.i - Меѓународна авијација (Меѓународни резервоари)"
-    },
-    "1.A.3.d.i - International water-borne navigation (International bunkers)": {
-        "1": "7.B - 1.A.3.d.i - Меѓународна морнарица (Меѓународни резервоари)"
-    },
-    "7.C -  1.A.5.c - Multilateral Operations": {
-        "1": "7.C - 1.A.5.c - Мултилатерални операции"
-    }
+    "Home": "Почетна",
+    "Back": "Назад",
+    "File": "Документ",
+    "Year": "Година",
+    "Actions": "Акција",
+    "years": "Години",
+    "Yearly": "Годишна",
+    "Gas": "Гас",
+    "Gasses": "Гасови",
+    "Analysis": "Анализа",
+    "tables": "Табели",
+    "charts": "Графици",
+    "Categories": "Категории",
+    "Units": "Единица мерка",
+    "The field is optional": "Полето не е задолжително",
+    "Upload Excel": "Прикачи ексел",
+    "Upload": "Прикачи",
+    "Create": "Додади",
+    "Save": "Зачувај",
+    "Log in": "Најавете се",
+    "Log out": "Одјавете се",
+    "Select file": "Избери фајл",
+    "Change": "Измени",
+    "Remove": "Одстрани",
+    "Route Not Found": "Страницата не е пронајдена",
+    "You can go back to main page": "Може да се вратите на главната страна",
+    "Go to main page": "Оди на главна страна",
+    "Greenhouse gas emissions": "Емисии на стакленички гасови",
+    "modal header": "Ажурирање на инвентарот на стакленички гасови",
+    "Excel 1 message": "Ексел 1: Годишни извештаи",
+    "Excel 2 message": "Ексел 2: Временски серии по гас",
+    "Total National Emissions and Removals": "Вкупни емисии и отстранувања",
+    "1 - Energy": "1 - Енергија",
+    "1.A - Fuel Combustion Activities": "1.А - Активности при кои се согорува гориво",
+    "1.A.1 - Energy Industries": "1.A.1 - Енергетски индустрии",
+    "1.A.2 - Manufacturing Industries and Construction": "1.A.2 - Производствени индустрии и градежништво",
+    "1.A.3 - Transport": "1.A.3 - Транспорт",
+    "1.A.4 - Other Sectors": "1.A.4 - Други сектори",
+    "1.A.5 - Non-Specified": "1.A.5 - Неспецифицирани",
+    "1.B - Fugitive emissions from fuels": "1.B - Фугитивни емисии од горива",
+    "1.B.1 - Solid Fuels": "1.B.1 - Цврсти горива",
+    "1.B.2 - Oil and Natural Gas": "1.B.2 - Нафта и природен гас",
+    "1.B.3 - Other emissions from Energy Production": "1.B.3 - Други емисии од производство на енергија",
+    "1.C - Carbon dioxide Transport and Storage": "1.C - Пренос и складирање на јаглерод диоксид",
+    "1.C.1 - Transport of CO2": "1.C.1 - Пренос на CO2",
+    "1.C.2 - Injection and Storage": "1.C.2 - Вбризгување и складирање",
+    "1.C.3 - Other": "1.C.3 - Други",
+    "2 - Industrial Processes and Product Use": "2 - Индустриски процеси и користење на производи",
+    "2.A - Mineral Industry": "2.A - Минерална индустрија",
+    "2.A.1 - Cement production": "2.A.1 - Производство на цемент",
+    "2.A.2 - Lime production": "2.A.2 - Производство на вар",
+    "2.A.3 - Glass Production": "2.A.3 - Производство на стакло",
+    "2.A.4 - Other Process Uses of Carbonates": "2.A.4 -Други процеси што користат карбонати",
+    "2.A.5 - Other": "2.A.5 - Друго",
+    "2.B - Chemical Industry": "2.B - Хемиска индустрија",
+    "2.B.1 - Ammonia Production": "2.B.1 - Производство на амонијак",
+    "2.B.2 - Nitric Acid Production": "2.B.2 - Производство на азотна киселина",
+    "2.B.3 - Adipic Acid Production": "2.B.3 - Производство на адипична киселина",
+    "2.B.4 - Caprolactam, Glyoxal and Glyoxylic Acid Production": "2.B.4 - Производство на глиоксилна киселина",
+    "2.B.5 - Carbide Production": "2.B.5 - Производство на карбид",
+    "2.B.6 - Titanium Dioxide Production": "2.B.6 - Производство на титаниум",
+    "2.B.7 - Soda Ash Production": "2.B.7 - Користење на сода карбонат",
+    "2.B.8 - Petrochemical and Carbon Black Production": "2.B.8 - Петрохемија и производство на црн јаглен",
+    "2.B.9 - Fluorochemical Production": "2.B.9 - Производство на флуорохемиски супстанци",
+    "2.B.10 - Other": "2.B.10 - Друго",
+    "2.C - Metal Industry": "2.C - Метална индустрија",
+    "2.C.1 - Iron and Steel Production": "2.C.1 - Производство на железо и челик",
+    "2.C.2 - Ferroalloys Production": "2.C.2 - Производство на феролегури",
+    "2.C.3 - Aluminium production": "2.C.3 - Производство на алуминиум",
+    "2.C.4 - Magnesium production": "2.C.4 - Производство на магнезиум",
+    "2.C.5 - Lead Production": "2.C.5 - Производство на олово",
+    "2.C.6 - Zinc Production": "2.C.6 - Производство на цинк",
+    "2.C.7 - Other": "2.C.7 - Друго",
+    "2.D - Non-Energy Products from Fuels and Solvent Use": "2.D - Не-енергетски производи од горива и користење на разредувачи",
+    "2.D.1 - Lubricant Use": "2.D.1 - Користење на лубриканти",
+    "2.D.2 - Paraffin Wax Use": "2.D.2 - Користење на парафин",
+    "2.D.3 - Solvent Use": "2.D.3 - Користење на разредувачи",
+    "2.D.4 - Other": "2.D.4 - Друго",
+    "2.E - Electronics Industry": "2.E - Индустрија за електроника",
+    "2.E.1 - Integrated Circuit or Semiconductor": "2.E.1 - Интегрирани кола и полуспроводници",
+    "2.E.2 - TFT Flat Panel Display": "2.E.2 - TFT рамни панели",
+    "2.E.3 - Photovoltaics": "2.E.3 - Фотоволтаици",
+    "2.E.4 - Heat Transfer Fluid": "2.E.4 - Флуиди за пренос на топлина",
+    "2.E.5 - Other": "2.E.5 - Друго",
+    "2.F - Product Uses as Substitutes for Ozone Depleting Substances": "2.F - Користење на производи како замена за супстанци кои го оштетуваат озонот",
+    "2.F.1 - Refrigeration and Air Conditioning": "2.F.1 - Уреди за разладување",
+    "2.F.2 - Foam Blowing Agents": "2.F.2 - Дување на пена",
+    "2.F.3 - Fire Protection": "2.F.3 - Заштита од пожар",
+    "2.F.4 - Aerosols": "2.F.4 - Аеросоли",
+    "2.F.5 - Solvents": "2.F.5 - Разредувачи",
+    "2.F.6 - Other Applications": "2.F.6 - Друго",
+    "2.G - Other Product Manufacture and Use": "2.G - Друго",
+    "2.G.1 - Electrical Equipment": "2.G.1 - Електрична опрема",
+    "2.G.2 - SF6 and PFCs from Other Product Uses": "2.G.2 - SF6 и PFCs од користење на производи",
+    "2.G.3 - N2O from Product Uses": "2.G.3 - N2O од користење на производи",
+    "2.G.4 - Other": "2.G.4 - Друго",
+    "2.H - Other": "2.H - Друго",
+    "2.H.1 - Pulp and Paper Industry": "2.H.1 - Индустрија за пулпа и хартија",
+    "2.H.2 - Food and Beverages Industry": "2.H.2 - Индустрија за храна и пијалаци",
+    "2.H.3 - Other": "2.H.3 - Друго",
+    "3 - Agriculture, Forestry, and Other Land Use": "3 - Земјоделство, шумарство и друго користење на земјиштето",
+    "3.A - Livestock": "3.A - Добиток",
+    "3.A.1 - Enteric Fermentation": "3.A.1 - Ентерична ферментација",
+    "3.A.2 - Manure Management": "3.A.2 - Управување со добиточно ѓубре",
+    "3.B - Land": "3.B - Земјиште",
+    "3.B.1 - Forest land": "3.B.1 - Шумско земјиште",
+    "3.B.2 - Cropland": "3.B.2 - Обработливи површини",
+    "3.B.3 - Grassland": "3.B.3 - Пасишта",
+    "3.B.4 - Wetlands": "3.B.4 - Мочуришта",
+    "3.B.5 - Settlements": "3.B.5 - Населени места",
+    "3.B.6 - Other Land": "3.B.6 - Друго земјиште",
+    "3.C - Aggregate sources and non-CO2 emissions sources on land": "3.C - Вкупни извори и извори на емисии на други гасови од земјиштето",
+    "3.C.1 - Emissions from biomass burning": "3.C.1 - Емисии од горење на биомаса",
+    "3.C.2 - Liming": "3.C.2 - Примена на вар",
+    "3.C.3 - Urea application": "3.C.3 - Примена на уреа",
+    "3.C.4 - Direct N2O Emissions from managed soils": "3.C.4 - Директни N2O емисии од обработени почви",
+    "3.C.5 - Indirect N2O Emissions from managed soils": "3.C.5 - Индиректни N2O емисии од обработени почви",
+    "3.C.6 - Indirect N2O Emissions from manure management": "3.C.6 - Индиректни N2O емисии од шталско ѓубре",
+    "3.C.7 - Rice cultivations": "3.C.7 - Површини под ориз",
+    "3.C.8 - Other": "3.C.8 - Друго",
+    "3.D - Other": "3.D - Друго",
+    "3.D.1 - Harvested Wood Products": "3.D.1 - Сеча на дрвна маса",
+    "3.D.2 - Other": "3.D.2 - Друго",
+    "4 - Waste": "4 - Отпад",
+    "4.A - Solid Waste Disposal": "4.A - Депонии за цврст отпад",
+    "4.B - Biological Treatment of Solid Waste": "4.B - Биолошки третман на цврст отпад",
+    "4.C - Incineration and Open Burning of Waste": "4.C - Согорување и отворено горење на отпадот",
+    "4.D - Wastewater Treatment and Discharge": "4.D - Третман и испуштање на отпадни води",
+    "4.E - Other": "4.E - Друго",
+    "5 - Other": "5 - Друго",
+    "5.A - Indirect N2O emissions from the atmospheric deposition of nitrogen in NOx and NH3": "5.A - Индиректни N2O емисии од атмосферско депонирање на азот како NOx и NH3",
+    "5.B - Other": "5.B - Друго",
+    "6 - Memo Items (5)": "6 - Мемо ставки (5)",
+    "Memo Items (5)": "Мемо ставки (5)",
+    "7 - International Bunkers": "7 - Меѓународни резервоари",
+    "International Bunkers": "Меѓународни резервоари",
+    "1.A.3.a.i - International Aviation (International Bunkers)": "1.A.3.a.i - Меѓународна авијација (Меѓународни резервоари)",
+    "1.A.3.d.i - International water-borne navigation (International bunkers)": "1.A.3.d.i - Меѓународна морнарица (Меѓународни резервоари)",
+    "7.A -  1.A.3.a.i - International Aviation (International Bunkers)": "7.А - 1.A.3.a.i - Меѓународна авијација (Меѓународни резервоари)",
+    "7.B -  1.A.3.d.i - International water-borne navigation (International bunkers)": "7.B - 1.A.3.d.i - Меѓународна морнарица (Меѓународни резервоари)",
+    "7.C -  1.A.5.c - Multilateral Operations": "7.C - 1.A.5.c - Мултилатерални операции"
 }

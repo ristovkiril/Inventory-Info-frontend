@@ -23,6 +23,7 @@ const TopHeader = (props) => {
     };
 
     const {t, i18n} = useTranslation();
+
     function handleClick(lang) {
         i18n.changeLanguage(lang)
     }
@@ -42,13 +43,14 @@ const TopHeader = (props) => {
                             <li className={"nav-item"}>
                                 <a className="border-right nav-link" onClick={() => handleClick('en')}>EN</a>
                             </li>
-                            <li className="mr-5">
+                            <li className="mr-5 nav-item">
                                 <a className="m-0 nav-link" onClick={() => handleClick('mk')}>MK</a>
                             </li>
-                            <li className="nav-item">
-                                <NavLink to={`/login`} clasName="nav-link">
-                                    <i className="fa fa-sign-in"/>
-                                    {t('Log in.1')}
+
+                            <li className={"nav-item"}>
+                                <NavLink to={"/login"} className={'nav-link'} activeClassName='active'>
+                                    <i className="fa fa-sign-in pr-1"/>
+                                    {t('Log in')}
                                 </NavLink>
                             </li>
                         </ul>
@@ -62,12 +64,12 @@ const TopHeader = (props) => {
                             </li>
                             <li className="nav-item">
                                 <NavLink exact to={"/"} className={'nav-link'} activeClassName='active'>
-                                    {t('Home.1')}
+                                    {t('Home')}
                                 </NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to={"/analysis"} className={'nav-link'} activeClassName='active'>
-                                    {t('Upload.1')}
+                                    {t('Analysis')}
                                 </NavLink>
                             </li>
                             <li className={"nav-item"}>
@@ -75,7 +77,7 @@ const TopHeader = (props) => {
                                     {/*<span className="p-3"> {localStorage.getItem('user')}</span>*/}
                                     <i className="fa fa-sign-out"/>
                                     <span className="checkbox-label">
-                                    {t('Log out.1')}
+                                    {t('Log out')}
                                 </span></a>
                             </li>
                         </ul>

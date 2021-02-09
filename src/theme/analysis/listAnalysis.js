@@ -6,6 +6,8 @@ import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
 import TopHeader from "../topHeader";
 
+import {withTranslation} from "react-i18next";
+
 window.$ = jQuery;
 
 class CreateAnalysis extends Component {
@@ -70,19 +72,18 @@ class CreateAnalysis extends Component {
             <div >
                 <TopHeader/>
                 <div className="container p-5  bg-white mx-auto text-center shadow mt-3">
-                    <div className="row pl-5 pb-3 pull-right ">
-                    <span className="pr-2">
-                        <a href={"/analysis/create"} className="btn btn-primary font-weight-bolder">Add new Analysis</a>
-                    </span>
-                        <a href={"/"} className="btn btn-primary font-weight-bolder">Home</a>
+                    <div className="row pl-3 pb-3">
+                        <div className=" mr-auto">
+                            <a href={"/analysis/create"} className="btn btn-primary font-weight-bolder">{this.props.t('Upload')}</a>
+                        </div>
                     </div>
                     {
                         this.state.analysis.length > 0 && !this.state.loading ?
                             <table className="table table-hover table-responsive-lg table-light">
                                 <thead>
                                 <tr>
-                                    <td><h4>Year</h4></td>
-                                    <td><h4>Actions</h4></td>
+                                    <td><h4>{this.props.t("Year")}</h4></td>
+                                    <td><h4>{this.props.t("Actions")}</h4></td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -116,4 +117,4 @@ class CreateAnalysis extends Component {
 }
 
 
-export default CreateAnalysis;
+export default withTranslation()(CreateAnalysis);

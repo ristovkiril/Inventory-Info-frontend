@@ -36,7 +36,7 @@ export class Table extends Component {
                 <thead className="bg-light m-0 p-0">
                 <tr>
                     <th className="font-weight-bold">
-                        {this.props.t('sectors.1')}
+                        {this.props.t('Categories')}
                     </th>
                     {
                         this.getAnalysis().map(analysis => <th key={analysis} className="font-weight-bold border-light border-left text-center">
@@ -50,7 +50,7 @@ export class Table extends Component {
                     this.getCategories().map((category) =>
                         <tr key={category}>
                             <td className="bg-light font-weight-bold">
-                                {this.props.t(category + '.1')}
+                                {this.props.t(category)}
                             </td>
                             {
                                 this.getAnalysis().map(analysis =>

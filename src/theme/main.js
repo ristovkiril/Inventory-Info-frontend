@@ -78,13 +78,13 @@ export class Main extends Component {
                                             <li className={this.state.tableView === true ? "nav-item active bg-white rounded-top border-bottom-0":"nav-item bg-light rounded-top"}>
                                                 <div className={this.state.tableView === true ? "nav-link active bg-white border-bottom-0 ":"nav-link bg-light rounded-top"} onClick={() => this.setTableView(true)}>
                                                     <i className="fa fa-table pr-1"/>
-                                                    {this.props.t('tables.1')}
+                                                    {this.props.t('tables')}
                                                 </div>
                                             </li>
                                             <li className={this.state.tableView === false ? "nav-item active bg-white rounded-top":"nav-item bg-light rounded-top"}>
                                                 <div className={this.state.tableView === false ? "nav-link active bg-white border-0 ":"nav-link bg-light rounded-top"} onClick={() => this.setTableView(false)}>
                                                     <i className="fa fa-bar-chart pr-1"/>
-                                                    {this.props.t('charts.1')}
+                                                    {this.props.t('charts')}
                                                 </div>
                                             </li>
                                         </ul>

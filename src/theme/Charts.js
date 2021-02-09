@@ -46,14 +46,15 @@ class Charts extends Component {
                 const concentrate = this.props.isYearly ?
                     this.findByCategoryAndGas(category, analysis) : this.findByCategoryAndYear(category, analysis);
 
+                console.log(categories)
                 concentrates.push(concentrate);
 
                 colors.push(color);
             }
 
-            console.log(colors)
+            console.log(analysis)
             dataset.push({
-                label: this.props.t(analysis + '.1'),
+                label: this.props.t(analysis),
                 data: concentrates,
                 backgroundColor: colors
             })
@@ -62,8 +63,8 @@ class Charts extends Component {
         return dataset;
     }
 
-    getCategories = () => {
-        return [...new Set(this.props.selected.map(row => row.category.name))]
+    getCategories = (translated = false) => {
+        return [...new Set(this.props.selected.map(row => translated ? this.props.t(row.category.name) : row.category.name))]
     };
 
     getAnalysis = () => {
@@ -127,7 +128,7 @@ class Charts extends Component {
                 </div>
                 <div className="canvas-container mb-5 pb-5 block">
                     <Bar data={{
-                        labels: this.getCategories(),
+                        labels: this.getCategories(true),
                         datasets: this.getChartDataset()
                     }}
                          // width={100}
@@ -135,7 +136,7 @@ class Charts extends Component {
                          options={{
                              title: {
                                  display: true,
-                                 text: this.props.t('Greenhouse gas emissions.1') + " " + this.getMainAnalysis(),
+                                 text: this.props.t('Greenhouse gas emissions') + " " + this.getMainAnalysis(),
                                  fontSize: 24
                              },
                              legend: {
