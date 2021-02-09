@@ -5,7 +5,7 @@ const MenuTree = (props) => {
 
 
     return (
-        <li hidden={!props.show} className={props.active ? "mm-active" : ""}>
+        <li hidden={!props.show} className={"display-block"}>
             <a href="#">
                 <span className="nav-label">{props.label}</span>
                 <span className="fa arrow"/>

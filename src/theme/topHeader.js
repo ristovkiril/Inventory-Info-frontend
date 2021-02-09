@@ -42,7 +42,7 @@ const TopHeader = (props) => {
                 </div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <span className="navbar-toggler-icon" />
                 </button>
                 <div className="ml-auto collapse navbar-collapse" id="navbarText">
                     {localStorage.getItem('auth_token') == null ? (
@@ -50,7 +50,7 @@ const TopHeader = (props) => {
                             <li className={"nav-item"}>
                                 <a className="border-right nav-link" onClick={() => handleClick('en')}>EN</a>
                             </li>
-                            <li className="mr-5 nav-item">
+                            <li className="mr-2 nav-item">
                                 <a className="m-0 nav-link" onClick={() => handleClick('mk')}>MK</a>
                             </li>
 
@@ -66,7 +66,7 @@ const TopHeader = (props) => {
                             <li className={"nav-item"}>
                                 <a className="border-right nav-link" onClick={() => handleClick('en')}>EN</a>
                             </li>
-                            <li className="mr-5">
+                            <li className="mr-2">
                                 <a className="m-0 nav-link" onClick={() => handleClick('mk')}>MK</a>
                             </li>
                             <li className="nav-item">
