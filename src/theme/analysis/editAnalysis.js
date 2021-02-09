@@ -4,6 +4,9 @@ import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
 import TopHeader from "../topHeader";
 import {withTranslation} from "react-i18next";
+
+import AlertDialog from "../dialog/alertDialog";
+
 window.$ = jQuery;
 
 class CreateAnalysis extends Component {
@@ -14,7 +17,9 @@ class CreateAnalysis extends Component {
             year: '',
             analysis: {},
             file: [],
-            loading: true
+            loading: true,
+            error: false,
+            errorMessage: ""
         }
     }
 
@@ -37,7 +42,29 @@ class CreateAnalysis extends Component {
                     ...newValue
                 }
             })
+        }, (error) => {
+           this.setError("Year not found, please try again!");
+        }).catch((error) => {
+            this.setError("Year not found, please try again!");
         })
+    }
+
+    setError = (message = "") => {
+        this.setState(prevState => {
+            const newValue = {
+                error: !prevState.error,
+                errorMessage: message
+            }
+            return {
+                ...prevState,
+                ...newValue
+            }
+        })
+    }
+
+    handleError = () => {
+        this.setError();
+        this.props.history.push("/analysis");
     }
 
     onChange = (e) => {
@@ -101,8 +128,7 @@ class CreateAnalysis extends Component {
             })
             this.props.history.push('/analysis');
         }, (error) => {
-            alert("Error, try again!");
-            console.log(error);
+            this.setError("There was error, please try again!");
         })
     }
 
@@ -121,7 +147,7 @@ class CreateAnalysis extends Component {
                                    type="text"
                                    name="year"
                                    placeholder={this.props.t("Year")}
-                                   value={this.state.analysis.year}
+                                   value={this.state.analysis !== null ? this.state.analysis.year : ""}
                                    onChange={this.onChange}
                                    required={true}/>
                         </div>
@@ -141,6 +167,8 @@ class CreateAnalysis extends Component {
                         </div>
                     </form>
                 </div>
+
+                <AlertDialog error={this.state.error} message={this.state.errorMessage} handleError={this.handleError} />
             </div>
 
         );

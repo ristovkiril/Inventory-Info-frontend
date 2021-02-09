@@ -7,6 +7,7 @@ import axios from '../../axios/axios-repository';
 import TopHeader from "../topHeader";
 
 import {withTranslation} from "react-i18next";
+import AlertDialog from "../dialog/alertDialog";
 
 window.$ = jQuery;
 
@@ -17,7 +18,9 @@ class CreateAnalysis extends Component {
         this.state = {
             year: '',
             file: [],
-            loading: false
+            loading: false,
+            error: false,
+            errorMessage: ""
         }
     }
 
@@ -44,6 +47,24 @@ class CreateAnalysis extends Component {
             })
         }
     };
+
+    setError = (message = "") => {
+        this.setState(prevState => {
+            const newValue = {
+                error: !prevState.error,
+                errorMessage: message
+            }
+            return {
+                ...prevState,
+                ...newValue
+            }
+        })
+    }
+
+    handleError = () => {
+        this.setError();
+        this.props.history.push("/analysis");
+    }
 
     createAnalysis = (e) => {
         e.preventDefault();
@@ -74,8 +95,7 @@ class CreateAnalysis extends Component {
             });
             this.props.history.push('/');
         }, (error) => {
-            alert("Error, try again!");
-            console.log(error);
+            this.setError("There was error, please try again!");
         })
     };
 
@@ -123,6 +143,8 @@ class CreateAnalysis extends Component {
 
                     }
                 </div>
+                <AlertDialog error={this.state.error} message={this.state.errorMessage} handleError={this.handleError} />
+
             </div>
 
         );
