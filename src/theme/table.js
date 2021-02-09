@@ -38,7 +38,7 @@ export class Table extends Component {
                         {this.props.t("Units")}: [Gg]
                     </small>
                 </div>
-                <table className="table table-hover table-responsive-lg table_font">
+                <table className="table table-hover table-responsive-lg table_font table-bordered">
                     <thead className="bg-light m-0 p-0">
                     <tr>
                         <th className="font-weight-bold">
@@ -60,7 +60,7 @@ export class Table extends Component {
                                 </td>
                                 {
                                     this.getAnalysis().map(analysis =>
-                                        <td key={analysis + category} className="border-light border-left text-center">
+                                        <td key={analysis + category} className=" border-left text-center">
                                             { this.props.isYearly ?
                                                 this.findByCategoryAndGas(category, analysis) : this.findByCategoryAndYear(category, analysis)
                                             }
