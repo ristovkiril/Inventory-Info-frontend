@@ -46,7 +46,7 @@ const TopHeader = (props) => {
                         </li>
                         <li>
                             <Link to={`/login`}>
-                                <i className="fa fa-sign-in"/>
+                                <i className="pl-2 fa fa-sign-in"/>
                                 {t('Log in.1')}
                             </Link>
                         </li>

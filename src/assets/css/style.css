@@ -2779,7 +2779,8 @@ select.form-control:not([size]):not([multiple]) {
 .onoffswitch-label {
   display: block; overflow: hidden; cursor: pointer;
   background: #1AB394;
-  border: 2px solid #1AB394; border-radius: 4px;
+  border: 2px solid #1AB394;
+  border-radius: 2px;
 }
 .onoffswitch-inner {
   display: block;
@@ -2791,7 +2792,7 @@ select.form-control:not([size]):not([multiple]) {
   display: block;
   float: left;
   width: 50%;
-  height: 30px;
+  height: 28px;
   padding: 0;
   line-height: 30px;
   font-size: 13px;
@@ -2805,14 +2806,16 @@ select.form-control:not([size]):not([multiple]) {
   padding-left: 10px;
   background-color: #1AB394;
   color: #FFFFFF;
+  -webkit-box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
 }
-.onoffswitch-inner:after {
+.onoffswitch-inner:after{
   content: "Меѓугодишна";
   padding-right: 10px;
   background-color: #FFFFFF;
   color: #999999;
   text-align: right;
 }
+
 .onoffswitch-switch {
   display: block;
   width: 19px; margin: 0px;

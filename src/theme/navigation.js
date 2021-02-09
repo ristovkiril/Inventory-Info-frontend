@@ -400,7 +400,7 @@ class Navigation extends Component {
     profile = () => {
         return (
             <div className="row">
-                <div className=" col-md-6 element1 col-md-pull-1">
+                <div className=" col-md-6 element1 col-md-pull-1 pl-1">
                     <label className="nav-label text-light font-weight-bold">{}
                         {this.props.t('Analysis.1') + ":"}
                     </label><br/>
@@ -409,7 +409,7 @@ class Navigation extends Component {
                 </div>
                 <div className="element2 col-md-6">
                     <label className="nav-label text-light font-weight-bold">
-                        {this.props.isYearly ? this.props.t('year.1') : this.props.t('gas.1')}
+                        {this.props.isYearly ? this.props.t('year.1') + ":" : this.props.t('gas.1') + ":"}
                     </label><br/>
                     <Dropdown items={this.props.isYearly ? this.state.years : this.state.gasses}
                               onChange={this.setSelectedItem}
