@@ -6,6 +6,9 @@ import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
 import TopHeader from "../topHeader";
 
+import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@material-ui/core';
+
+
 import {withTranslation} from "react-i18next";
 
 window.$ = jQuery;
@@ -16,7 +19,9 @@ class CreateAnalysis extends Component {
         super(props);
         this.state = {
             analysis: [],
-            loading: true
+            loading: true,
+            showDialog: false,
+            deleteId: null
         }
     }
 
@@ -39,12 +44,13 @@ class CreateAnalysis extends Component {
         })
     };
 
-    deleteAnalysis = (e) => {
-        const id = e.target.name;
-        if (window.confirm("Do you want to delete this analysis?")) {
+    deleteAnalysis = (id) => {
+        if (id !== null) {
             this.setState((prevState) => {
                 const newValue = {
-                    loading: true
+                    loading: true,
+                    showDialog: false,
+                    deleteId: null
                 };
                 return {
                     ...prevState,
@@ -66,6 +72,19 @@ class CreateAnalysis extends Component {
             })
         }
     };
+
+    changeShowDialog = (id) => {
+        this.setState((prevState) => {
+            const newValue = {
+                showDialog: !prevState.showDialog,
+                deleteId: id
+            }
+            return {
+                ...prevState,
+                ...newValue
+            }
+        })
+    }
 
     render() {
         return (
@@ -99,8 +118,8 @@ class CreateAnalysis extends Component {
                                                        className="btn btn-link mx-2">
                                                         <i className="fa fa-file-text bg-light"/>
                                                     </a>
-                                                    <button className={"btn btn-link mx-2"} name={analysis.id}
-                                                            onClick={this.deleteAnalysis} title="Delete">
+                                                    <button className={"btn btn-link mx-2"} name={analysis.year}
+                                                            onClick={() => this.changeShowDialog(analysis.id)} title="Delete">
                                                         <i className="fa fa-trash "/>
                                                     </button>
                                                 </td>
@@ -111,6 +130,29 @@ class CreateAnalysis extends Component {
                             </table> : <Loading/>
                     }
                 </div>
+
+                <Dialog
+                    open={this.state.showDialog && this.state.deleteId !== null}
+                    onClose={this.changeShowDialog}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description">
+                    <DialogTitle id="alert-dialog-title">{"Please Confirm!"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Are you sure you want to delete analysis? This action is permanent,
+                            and we're totally not just flipping a field called "deleted" to
+                            "true" in our database, we're actually deleting something.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={() => this.changeShowDialog(null)} color="primary" autoFocus >
+                            Cancel
+                        </Button>
+                        <Button onClick={() => this.deleteAnalysis(this.state.deleteId)}  className="bg-danger text-white" >
+                            Delete
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </div>
         );
     }
