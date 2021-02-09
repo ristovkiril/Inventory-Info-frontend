@@ -121,8 +121,8 @@ class Charts extends Component {
         return (
             <div className="chart h-100 " >
                 <div className="row p-3 float-right">
-                    <button onClick={this.saveAsPng} name="png" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as PNG</button>
-                    <button onClick={this.saveAsPng} name="jpg" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as JPG</button>
+                    <button onClick={this.saveAsPng} name="png" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> {this.props.t("Save as")} PNG</button>
+                    <button onClick={this.saveAsPng} name="jpg" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> {this.props.t("Save as")} JPG</button>
                     {/*<button onClick={this.saveAsPng} name="svg" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as SVG</button>*/}
                     {/*<button onClick={this.saveAsPng} name="pdf" className="btn btn-xl btn-primary border-0 m-1"><i className="fa fa-save"></i> Save as PDF</button>*/}
                 </div>
