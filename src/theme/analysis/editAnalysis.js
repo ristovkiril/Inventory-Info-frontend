@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import jQuery from 'jquery';
 import axios from '../../axios/axios-repository';
-import analysis from "../../redux/reducers/analysis";
 import TopHeader from "../topHeader";
 window.$ = jQuery;
 

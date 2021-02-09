@@ -46,7 +46,7 @@ class Navigation extends Component {
 
         // eslint-disable-next-line func-names
         $(function () {
-            $(menu).metisMenu({
+            $("#side-menu").metisMenu({
                 toggle: true
             });
         });

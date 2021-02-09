@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react';
+import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
@@ -84,8 +84,9 @@ const TopHeader = (props) => {
     );
 };
 
-// TopHeader.propTypes = {
-//     history: PropTypes.object.isRequired
-// };
+TopHeader.propTypes = {
+    history: PropTypes.object.isRequired
+};
 
-export default TopHeader
+const mapDispatchToProps = (dispatch) => bindActionCreators({ }, dispatch);
+export default withRouter(connect(null, mapDispatchToProps)(TopHeader));

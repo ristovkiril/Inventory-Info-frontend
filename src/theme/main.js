@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import React, {Component} from 'react';
-import {BrowserRouter, Link} from 'react-router-dom';
 
 import Loading from './loading';
 import Progress from './progress';
@@ -65,7 +64,6 @@ export class Main extends Component {
     render() {
         return (
             <div id="wrapper" className="shadow">
-                <BrowserRouter>
                     <div>
                         <Progress/>
                         <Navigation isYearly={this.state.isYearly}
@@ -108,7 +106,6 @@ export class Main extends Component {
                             <Footer/>
                         </div>
                     </div>
-                </BrowserRouter>
             </div>
         );
     }
