@@ -367,7 +367,7 @@ class Navigation extends Component {
         return (
             <nav id="leftCol" className="navbar-default navbar-static-side h-100" role="navigation">
                 <div className=" h-100">
-                    <ul className="nav nav-header metismenu p-1 h-100 d-block" id="side-menu" ref="menu" style={{zIndex: 2000}}>
+                    <ul className="nav nav-header metismenu p-1 d-block" id="side-menu" ref="menu" style={{zIndex: 2000}}>
                         <li className="nav-header">
                             {this.profile()}
                         </li>

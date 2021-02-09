@@ -12,16 +12,42 @@
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg') format('svg');
 }
 
+.pointer{
+    cursor: pointer;
+}
+
 .canvas-container {
   height: 60vh;
 }
 
+a, button {
+    cursor: pointer;
+}
+
+
 #leftCol {
-  position: fixed;
-  overflow-y: scroll;
-  top: 0;
-  bottom: 0;
-  float: left;
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+    float: left;
+    background-color:#2f4050;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/*!* Track *!*/
+/*::-webkit-scrollbar-track {*/
+/*    box-shadow: inset 0 0 5px grey;*/
+/*    border-radius: 10px;*/
+/*}*/
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #2A2E36;
+    border-radius: 10px;
 }
 
 .glyphicon {
