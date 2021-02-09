@@ -1,6 +1,8 @@
 import React from 'react'
+import {useTranslation} from "react-i18next";
 
 const ToggleSwitch = (props) => {
+    const [t] = useTranslation();
     return (
                <div className="onoffswitch">
                    <input type="checkbox"
@@ -11,7 +13,7 @@ const ToggleSwitch = (props) => {
                           checked={props.isChecked}
                    />
                        <label className="onoffswitch-label" htmlFor="myonoffswitch">
-                           <span className="onoffswitch-inner"/>
+                           <span className={t("onoffswitch-inner")}/>
                            <span className="onoffswitch-switch"/>
                        </label>
                </div>
