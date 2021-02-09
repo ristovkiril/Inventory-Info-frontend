@@ -134,7 +134,7 @@ class CreateAnalysis extends Component {
                                    onChange={this.onChange}
                             />
                             <small>* {this.props.t("Upload Excel")}</small><br/>
-                            <small>* {this.props.t("The field is optional")}</small>
+                            <small>* {this.props.t("This field is optional")}</small>
                         </div>
                         <div className="form-group">
                             <button type={"submit"} className="btn btn-primary" >{this.props.t("Save")}</button>
