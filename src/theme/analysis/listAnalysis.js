@@ -108,14 +108,14 @@ class CreateAnalysis extends Component {
                                 <tbody>
                                 {
                                     this.state.analysis.length > 0 ?
-                                        this.state.analysis.map(analysis => {
+                                        this.state.analysis.sort((a, b)=> a.year - b.year).map(analysis => {
                                             return <tr key={analysis.year}>
                                                 <td>
                                                     {analysis.year}
                                                 </td>
                                                 <td>
                                                     <a href={`/analysis/${analysis.year}`}
-                                                       className="btn btn-link mx-2">
+                                                       className="btn btn-link mx-2" title="Edit">
                                                         <i className="fa fa-file-text bg-light"/>
                                                     </a>
                                                     <button className={"btn btn-link mx-2"} name={analysis.year}

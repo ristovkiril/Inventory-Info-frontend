@@ -93,7 +93,7 @@ class CreateAnalysis extends Component {
                     ...newValue
                 }
             });
-            this.props.history.push('/');
+            this.props.history.push('/analysis');
         }, (error) => {
             this.setError("There was error, please try again!");
         })
