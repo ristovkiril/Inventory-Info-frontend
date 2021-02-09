@@ -9374,7 +9374,7 @@ body.md-skin {
 
   #page-wrapper {
     position: inherit;
-    margin: 0 0 0 290px;
+    margin: 0 0 0 300px;
     min-height: 100vh;
   }
   .body-small .navbar-static-side {
@@ -9431,7 +9431,163 @@ body.md-skin {
     background-color: #f3f3f4;
   }
 }
-@media (max-width: 350px) {
+@media (max-width: 370px) {
+  body.mini-navbar #page-wrapper {
+    margin: 0 0 0 0;
+  }
+
+  #page-wrapper {
+    position: inherit;
+    margin: 0 0 0 250px;
+    min-height: 100vh;
+  }
+  .body-small .navbar-static-side {
+    z-index: 2001;
+    position: absolute;
+    width: 250px;
+    height: 100%;
+  }
+  .body-small.mini-navbar .navbar-static-side {
+    display: block;
+  }
+  .lock-word {
+    display: none;
+  }
+  .navbar-form-custom {
+    display: none;
+  }
+  .navbar-header {
+    display: inline;
+    float: left;
+  }
+  .sidebar-panel {
+    z-index: 2;
+    position: relative;
+    width: auto;
+    min-height: 100% !important;
+  }
+  .sidebar-content .wrapper {
+    padding-right: 0;
+    z-index: 1;
+  }
+  .fixed-sidebar.body-small .navbar-static-side {
+    z-index: 2001;
+    position: fixed;
+    width: 250px;
+  }
+  .fixed-sidebar.body-small.mini-navbar .navbar-static-side {
+    display: block;
+  }
+  .ibox-tools {
+    float: none;
+    text-align: right;
+    display: block;
+  }
+  .navbar-static-side {
+
+  }
+  body:not(.mini-navbar) {
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+    background-color: #f3f3f4;
+  }
+  .timeline-item .date {
+    text-align: left;
+    width: 110px;
+    position: relative;
+    padding-top: 30px;
+  }
+  .timeline-item .date i {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    padding: 5px;
+    width: 30px;
+    text-align: center;
+    border: 1px solid #e7eaec;
+    background: #f8f8f8;
+  }
+  .timeline-item .content {
+    border-left: none;
+    border-top: 1px solid #e7eaec;
+    padding-top: 10px;
+    min-height: 100px;
+  }
+  .nav.navbar-top-links li.dropdown {
+    display: none;
+  }
+  .ibox-tools {
+    float: none;
+    text-align: left;
+    display: inline-block;
+  }
+}
+@media (max-width: 310px) {
+  body.mini-navbar #page-wrapper {
+    margin: 0 0 0 0;
+  }
+
+  #page-wrapper {
+    position: inherit;
+    margin: 0 0 0 220px;
+    min-height: 100vh;
+  }
+  .body-small .navbar-static-side {
+    z-index: 2001;
+    position: absolute;
+    width: 220px;
+    height: 100%;
+  }
+  .body-small.mini-navbar .navbar-static-side {
+    display: block;
+  }
+  .lock-word {
+    display: none;
+  }
+  .navbar-form-custom {
+    display: none;
+  }
+  .navbar-header {
+    display: inline;
+    float: left;
+  }
+  .sidebar-panel {
+    z-index: 2;
+    position: relative;
+    width: auto;
+    min-height: 100% !important;
+  }
+  .sidebar-content .wrapper {
+    padding-right: 0;
+    z-index: 1;
+  }
+  .fixed-sidebar.body-small .navbar-static-side {
+    z-index: 2001;
+    position: fixed;
+    width: 220px;
+  }
+  .fixed-sidebar.body-small.mini-navbar .navbar-static-side {
+    display: block;
+  }
+  .ibox-tools {
+    float: none;
+    text-align: right;
+    display: block;
+  }
+  .navbar-static-side {
+
+  }
+  body:not(.mini-navbar) {
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+    background-color: #f3f3f4;
+  }
   .timeline-item .date {
     text-align: left;
     width: 110px;
