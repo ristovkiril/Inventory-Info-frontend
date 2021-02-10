@@ -6,7 +6,7 @@ import ptBR from 'antd/lib/locale-provider/pt_BR';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Messages from './theme/messages';
+import Messages from './components/Custom/theme/messages';
 
 import { Provider } from 'react-redux';
 import store from './redux/store/store';

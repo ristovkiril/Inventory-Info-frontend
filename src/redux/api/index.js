@@ -2,7 +2,7 @@ import axios from 'axios';
 import qs from 'qs';
 import config from '../../config';
 import { get } from 'lodash';
-import * as auth from '../../helpers/auth';
+import * as auth from '../../auth/auth';
 
 const { HOST, VERSION } = config.api;
 

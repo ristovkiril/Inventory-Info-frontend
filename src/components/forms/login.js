@@ -1,6 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import * as authorization from '../../helpers/auth'
+import * as authorization from '../../auth/auth'
 
 const AUTH_TOKEN = 'auth_token';
 
