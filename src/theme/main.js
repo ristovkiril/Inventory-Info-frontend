@@ -88,7 +88,7 @@ export class Main extends Component {
                                                 </div>
                                             </li>
                                         </ul>
-                                    <div className="ibox-content p-3 m-0 shadow">
+                                    <div className="ibox-content p-3 m-0 shadow font-weight-bold">
                                         {
                                             !this.props.selected || this.props.selected.length === 0 ? <Loading/>
                                             :

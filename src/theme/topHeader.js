@@ -33,7 +33,7 @@ const TopHeader = (props) => {
 
 
     return (
-        <div className="row border-bottom">
+        <div className="row border-bottom font-weight-bold">
             <nav className="navbar navbar-expand-lg navbar-light w-100" role="navigation" style={{marginBottom: 0}}>
                 <div className="navbar-header">
                         <span className="navbar-minimalize minimalize-styl-2 btn btn-primary"
