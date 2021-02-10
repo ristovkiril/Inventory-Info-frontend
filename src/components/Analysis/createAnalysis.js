@@ -94,7 +94,7 @@ class CreateAnalysis extends Component {
                 }
             });
             this.props.history.push('/analysis');
-        }, (error) => {
+        }).catch((error) => {
             if (error.response.status === 403){
                 localStorage.clear();
                 this.setError("Please login again.")

@@ -64,7 +64,7 @@ class CreateAnalysis extends Component {
 
     handleError = () => {
         this.setError();
-        this.props.history.push("/analysis");
+        // this.props.history.push("/analysis");
     }
 
     onChange = (e) => {
