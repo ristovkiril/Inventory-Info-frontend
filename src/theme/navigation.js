@@ -90,16 +90,18 @@ class Navigation extends Component {
     };
 
     setError = (message = '') => {
-        this.setState((prevState) => {
-            const newValue = {
-                message: message,
-                error: !prevState.error
-            }
-            return {
-                ...prevState,
-                ...newValue
-            }
-        })
+        if (this.state.error !== true){
+            this.setState((prevState) => {
+                const newValue = {
+                    message: message,
+                    error: !prevState.error
+                }
+                return {
+                    ...prevState,
+                    ...newValue
+                }
+            })
+        }
     }
     
     loadGas = (yearId = null) => {
@@ -429,7 +431,18 @@ class Navigation extends Component {
                         }
                     </ul>
                 </div>
-                <AlertDialog error={this.state.error} message={this.state.message} handleError={() => this.setError('')}/>
+                <AlertDialog error={this.state.error} message={this.state.message} handleError={() =>{
+                    this.setState((prevState) => {
+                        const newValue = {
+                            error: false,
+                            message: ''
+                        }
+                        return {
+                            ...prevState,
+                            ...newValue
+                        }
+                    })
+                }}/>
             </nav>
         );
     }
