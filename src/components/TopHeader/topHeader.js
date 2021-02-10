@@ -2,7 +2,7 @@
 import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Link, NavLink, withRouter} from 'react-router-dom';
+import {NavLink, withRouter} from 'react-router-dom';
 import {smoothlyMenu} from '../../helpers/helpers';
 import $ from 'jquery';
 import * as auth from '../../auth/auth';
@@ -80,7 +80,7 @@ const TopHeader = (props) => {
                                 </NavLink>
                             </li>
                             <li className={"nav-item "}>
-                                <a onClick={logout} className={"nav-link"}>
+                                <a href={"#"} onClick={logout} className={"nav-link"}>
                                     {/*<span className="p-3"> {localStorage.getItem('user')}</span>*/}
                                     <i className="fa fa-sign-out"/>
                                     <span className="checkbox-label">

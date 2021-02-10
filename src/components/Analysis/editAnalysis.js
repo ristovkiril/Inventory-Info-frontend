@@ -163,7 +163,7 @@ class CreateAnalysis extends Component {
                                    className="form-control-file"
                                    onChange={this.onChange}
                             />
-                            <small>* {this.props.t("Upload Excel")}</small><br/>
+                            <small>* {this.props.t("Upload Excel")} (*.xlsx)</small><br/>
                             <small>* {this.props.t("This field is optional")}</small>
                         </div>
                         <div className="form-group">

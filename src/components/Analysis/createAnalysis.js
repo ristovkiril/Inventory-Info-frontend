@@ -138,7 +138,7 @@ class CreateAnalysis extends Component {
                                                className="form-control-file"
                                                onChange={this.onChange}
                                                required={true} />
-                                        <small>* {this.props.t("Upload Excel")}</small>
+                                        <small>* {this.props.t("Upload Excel")} (*.xlsx)</small>
                                     </div>
                                     <div className="form-group">
                                         <button type={"submit"} className="btn btn-primary" >{this.props.t("Create")}</button>

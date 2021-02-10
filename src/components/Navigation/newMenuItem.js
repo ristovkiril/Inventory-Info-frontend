@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 
 
 const NewMenuItem = (props) => {
-    const {t, i18n} = useTranslation();
+    const { t } = useTranslation();
 
     return (
     <li className="nav-link">
