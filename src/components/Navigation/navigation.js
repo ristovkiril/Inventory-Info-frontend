@@ -16,7 +16,7 @@ import Dropdown from "../Custom/dropdown";
 
 import jQuery from 'jquery';
 import {withTranslation} from "react-i18next";
-import AlertDialog from "./dialog/alertDialog";
+import AlertDialog from "../Dialog/alertDialog.js";
 
 window.$ = jQuery;
 

@@ -51,7 +51,8 @@ class CreateAnalysis extends Component {
         this.setState(prevState => {
             const newValue = {
                 error: !prevState.error,
-                errorMessage: message
+                errorMessage: message,
+                loading: false
             }
             return {
                 ...prevState,
@@ -62,7 +63,7 @@ class CreateAnalysis extends Component {
 
     handleError = () => {
         this.setError();
-        this.props.history.push("/analysis");
+        // this.props.history.push("/analysis");
     }
 
     createAnalysis = (e) => {
