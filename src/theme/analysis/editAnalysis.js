@@ -88,7 +88,6 @@ class CreateAnalysis extends Component {
                     ...newValue
                 }
             }, () => {
-                console.log(this.state)
             })
         }
     }
@@ -128,7 +127,12 @@ class CreateAnalysis extends Component {
             })
             this.props.history.push('/analysis');
         }, (error) => {
-            this.setError("There was error, please try again!");
+            if (error.response.status === 403){
+                localStorage.clear();
+                this.setError("Please login again.")
+            }
+            else
+                this.setError("There was error, please try again!");
         })
     }
 

@@ -16,6 +16,7 @@ import Dropdown from "./dropdown";
 
 import jQuery from 'jquery';
 import {withTranslation} from "react-i18next";
+import AlertDialog from "./dialog/alertDialog";
 
 window.$ = jQuery;
 
@@ -30,7 +31,9 @@ class Navigation extends Component {
             categories: [],
             gasses: [],
             years: [],
-            analysis: []
+            analysis: [],
+            message: "",
+            error: false
         };
     }
 
@@ -86,9 +89,26 @@ class Navigation extends Component {
         }
     };
 
+    setError = (message = '') => {
+        this.setState((prevState) => {
+            const newValue = {
+                message: message,
+                error: !prevState.error
+            }
+            return {
+                ...prevState,
+                ...newValue
+            }
+        })
+    }
+    
     loadGas = (yearId = null) => {
         if (yearId === null) {
             axios.getGasses().then((response) => {
+                if (response.data.length === 0) {
+                    this.setError("There is no data to show");
+                    return;
+                }
                 const data = response.data;
                 //posledniot gas go pravime aktiven koga se bira od select menu
                 //site gasovi da bidat checked vo menito
@@ -114,6 +134,10 @@ class Navigation extends Component {
             })
         } else {
             axios.getGasByYear(yearId).then((response) => {
+                if (response.data.length === 0) {
+                    this.setError("There is no data to show");
+                    return;
+                }
                 const data = response.data;
 
                 //site gasovi da bidat checked vo menito
@@ -144,6 +168,10 @@ class Navigation extends Component {
     loadYears = (gasId = null) => {
         if (gasId === null) {
             axios.getYears().then((response) => {
+                if (response.data.length === 0) {
+                    this.setError("There is no data to show");
+                    return;
+                }
                 const data = response.data.sort((a, b) => b.year - a.year);
                 for (const el of data) {
                     el.checked = false;
@@ -169,6 +197,10 @@ class Navigation extends Component {
             })
         } else {
             axios.getYearsByGas(gasId).then((response) => {
+                if (response.data.length === 0) {
+                    this.setError("There is no data to show");
+                    return;
+                }
                 const data = response.data.sort((b, a) => a.year - b.year);
 
                 //site godini da bidat vkluceni, moze da go promenime
@@ -199,6 +231,10 @@ class Navigation extends Component {
     // eslint-disable-next-line react/sort-comp
     loadCategories = () => {
         axios.getCategories().then((response) => {
+            if (response.data.length === 0) {
+                this.setError("There is no data to show");
+                return;
+            }
             this.setState((prevState) => {
 
                 const newValue = {
@@ -375,24 +411,25 @@ class Navigation extends Component {
                         {
                             <MenuTree active={true} key={GAS_PARENT} show={this.props.isYearly}
                                       label={this.props.t('Gasses')}>
-                                {this.state.gasses ? this.categories(this.state.gasses, this.onGasChange) : " "}
+                                {this.state.gasses && this.state.gasses.length > 0 ? this.categories(this.state.gasses, this.onGasChange) : " "}
                             </MenuTree>
                         }
                         {
                             <MenuTree active={true} key={YEAR_PARENT} show={!this.props.isYearly}
                                       label={this.props.t('Years')}>
-                                {this.state.years ? this.categories(this.state.years, this.onYearChange) : " "}
+                                {this.state.years && this.state.years.length > 0 ? this.categories(this.state.years, this.onYearChange) : " "}
                             </MenuTree>
                         }
 
                         {
                             <MenuTree active={false} key={CATEGORY_PARENT} show={true}
                                       label={this.props.t('Categories')}>
-                                {this.state.categories ? this.categories(this.state.categories, this.onCategoriesChange) : " "}
+                                {this.state.categories && this.state.categories.length > 0 ? this.categories(this.state.categories, this.onCategoriesChange) : " "}
                             </MenuTree>
                         }
                     </ul>
                 </div>
+                <AlertDialog error={this.state.error} message={this.state.message} handleError={() => this.setError('')}/>
             </nav>
         );
     }

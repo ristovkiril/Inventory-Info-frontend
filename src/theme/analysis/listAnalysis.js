@@ -41,6 +41,8 @@ class CreateAnalysis extends Component {
                     ...newValue
                 }
             })
+            console.log(this.state)
+
         })
     };
 
@@ -57,19 +59,29 @@ class CreateAnalysis extends Component {
                     ...newValue
                 }
             });
-            axios.deleteYear(id).then(response => {
-                const analysis = this.state.analysis.filter(a => a.id !== parseInt(id));
-                this.setState((prevState) => {
-                    const newValue = {
-                        analysis: analysis,
-                        loading: false
-                    };
-                    return {
-                        ...prevState,
-                        ...newValue
-                    }
+            axios.deleteYear(id)
+                .then(response => {
+                    const analysis = this.state.analysis.filter(a => a.id !== parseInt(id));
+                    this.setState((prevState) => {
+                        const newValue = {
+                            analysis: analysis,
+                            loading: false
+                        };
+                        return {
+                            ...prevState,
+                            ...newValue
+                        }
+                    })
+                    console.log(this.state)
                 })
-            })
+                .catch((error) => {
+                    if (error.response.status === 403){
+                        localStorage.clear();
+                        this.setError("Please login again.")
+                    }
+                    else
+                        this.setError("Something went wrong, please try again.")
+                })
         }
     };
 
@@ -96,8 +108,13 @@ class CreateAnalysis extends Component {
                             <a href={"/analysis/create"} className="btn btn-primary font-weight-bolder">{this.props.t('Upload')}</a>
                         </div>
                     </div>
+                    <div>
+                        {
+                            this.state.analysis.length === 0 ?  <h3>No analysis yet</h3> : ""
+                        }
+                    </div>
                     {
-                        this.state.analysis.length > 0 && !this.state.loading ?
+                        !this.state.loading ?
                             <table className="table table-hover table-responsive-lg table-light">
                                 <thead>
                                 <tr>
@@ -107,7 +124,6 @@ class CreateAnalysis extends Component {
                                 </thead>
                                 <tbody>
                                 {
-                                    this.state.analysis.length > 0 ?
                                         this.state.analysis.sort((a, b)=> a.year - b.year).map(analysis => {
                                             return <tr key={analysis.year}>
                                                 <td>
@@ -124,7 +140,7 @@ class CreateAnalysis extends Component {
                                                     </button>
                                                 </td>
                                             </tr>
-                                        }) : ""
+                                        })
                                 }
                                 </tbody>
                             </table> : <Loading/>
