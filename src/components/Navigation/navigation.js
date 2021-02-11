@@ -411,11 +411,10 @@ class Navigation extends Component {
                         </li>
 
                         {
-                            this.props.isYearly ?
                             <MenuTree active={true} key={GAS_PARENT} show={this.props.isYearly}
                                       label={this.props.t('Gasses')}>
                                 {this.state.gasses && this.state.gasses.length > 0 ? this.categories(this.state.gasses, this.onGasChange) : " "}
-                            </MenuTree> : ""
+                            </MenuTree>
                         }
                         {
                             <MenuTree active={true} key={YEAR_PARENT} show={!this.props.isYearly}
