@@ -38,7 +38,7 @@ export class Table extends Component {
                         {this.props.t("Units")}: [Gg]
                     </small>
                 </div>
-                <table className="table table-hover table-responsive-lg table_font table-bordered">
+                <table className="table table-hover table-responsive-sm table_font table-bordered">
                     <thead className="bg-light m-0 p-0">
                     <tr>
                         <th className="font-weight-bold">

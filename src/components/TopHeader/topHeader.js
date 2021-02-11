@@ -44,7 +44,7 @@ const TopHeader = (props) => {
                         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
                 </button>
-                <div className="ml-auto collapse navbar-collapse" id="navbarText">
+                <div className="ml-auto pl-4 collapse navbar-collapse" id="navbarText">
                     {localStorage.getItem('auth_token') == null ? (
                         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                             <li className={"nav-item"}>

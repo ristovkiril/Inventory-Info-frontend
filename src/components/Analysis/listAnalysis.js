@@ -115,7 +115,7 @@ class CreateAnalysis extends Component {
                     </div>
                     {
                         !this.state.loading ?
-                            <table className="table table-hover table-responsive-lg table-light">
+                            <table className="table table-hover table-responsive-sm table-light ">
                                 <thead>
                                 <tr>
                                     <td><h4>{this.props.t("Year")}</h4></td>
@@ -125,7 +125,7 @@ class CreateAnalysis extends Component {
                                 <tbody>
                                 {
                                         this.state.analysis.sort((a, b)=> a.year - b.year).map(analysis => {
-                                            return <tr key={analysis.year}>
+                                            return <tr key={analysis.year} >
                                                 <td>
                                                     {analysis.year}
                                                 </td>

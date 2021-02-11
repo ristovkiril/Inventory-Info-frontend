@@ -8,6 +8,10 @@ import TopHeader from "../TopHeader/topHeader";
 
 import {withTranslation} from "react-i18next";
 import AlertDialog from "../Dialog/alertDialog";
+import Datetime from "react-datetime";
+
+import 'moment'
+import 'react-datetime/css/react-datetime.css';
 
 window.$ = jQuery;
 
@@ -16,12 +20,22 @@ class CreateAnalysis extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            year: '',
+            year: new Date().getUTCFullYear(),
             file: [],
             loading: false,
             error: false,
-            errorMessage: ""
+            errorMessage: "",
+            isOpen: false
         }
+    }
+
+    onChangeYear = (year) => {
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                year: new Date(year).getFullYear()
+            }
+        })
     }
 
     onChange = (e) => {
@@ -114,21 +128,19 @@ class CreateAnalysis extends Component {
                         this.state.loading ?
                             <Loading />
                             :
-                            <div>
+                            <div className={"col-sm-12 col-md-6"}>
                                 <div className="mr-auto py-3">
                                     <a href={'/analysis'} className="h5">{this.props.t("Back")}</a>
                                 </div>
                                 <form onSubmit={this.createAnalysis}>
                                     <div className="form-group py-2">
                                         <label htmlFor="year">{this.props.t("Year")}</label>
-                                        <input className="form-control"
-                                               id="year"
-                                               type="text"
-                                               name="year"
-                                               placeholder={this.props.t("Year")}
-                                               value={this.state.year}
-                                               onChange={this.onChange}
-                                               required={true}/>
+                                        <Datetime
+                                            onChange={this.onChangeYear}
+                                            dateFormat={"YYYY"}
+                                            timeFormat={false}
+                                            closeOnSelect={true}
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="file">{this.props.t("File")}</label>
