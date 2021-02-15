@@ -48,10 +48,10 @@ const TopHeader = (props) => {
                     {localStorage.getItem('auth_token') == null ? (
                         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                             <li className={"nav-item"}>
-                                <a className="border-right nav-link" onClick={() => handleClick('en')}>EN</a>
+                                <a className={i18n.language === "en" ? "border-right nav-link active" : "border-right nav-link "} onClick={() => handleClick('en')}>EN</a>
                             </li>
-                            <li className="mr-2 nav-item">
-                                <a className="m-0 nav-link" onClick={() => handleClick('mk')}>MK</a>
+                            <li className={"mr-2 nav-item"}>
+                                <a className={i18n.language === "mk" ? "nav-link active" : "nav-link "} onClick={() => handleClick('mk')}>MK</a>
                             </li>
 
                             <li className={"nav-item pr-3"}>
@@ -63,11 +63,11 @@ const TopHeader = (props) => {
                         </ul>
                     ) : (
                         <ul className="navbar-nav ml-auto mt-2 mt-lg-0 pr-3">
-                            <li className={"nav-item"}>
-                                <a className="border-right nav-link" onClick={() => handleClick('en')}>EN</a>
+                            <li className={"nav-item "}>
+                                <a className={i18n.language === "en" ? "border-right nav-link active" : "border-right nav-link "} onClick={() => handleClick('en')}>EN</a>
                             </li>
-                            <li className="mr-2">
-                                <a className="m-0 nav-link" onClick={() => handleClick('mk')}>MK</a>
+                            <li className={"mr-2 nav-item"}>
+                                <a  className={i18n.language === "mk" ? "nav-link active" : " nav-link "} onClick={() => handleClick('mk')}>MK</a>
                             </li>
                             <li className="nav-item">
                                 <NavLink exact to={"/"} className={'nav-link'} activeClassName='active'>
