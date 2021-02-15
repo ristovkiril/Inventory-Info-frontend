@@ -387,7 +387,6 @@ class Navigation extends Component {
                     el.checked = !el.checked;
                 }
             }
-            console.log(data)
             const newValue = {
                 'years': data
             };
