@@ -12,6 +12,7 @@ import Datetime from "react-datetime";
 
 import 'moment'
 import 'react-datetime/css/react-datetime.css';
+import Dropzone from "./Dropzone";
 
 window.$ = jQuery;
 
@@ -38,27 +39,17 @@ class CreateAnalysis extends Component {
         })
     }
 
-    onChange = (e) => {
-        const name = e.target.name;
-        let newValue = {};
-        if (name === 'year' && !isNaN(e.target.value)){
-            newValue = {
-                year: e.target.value
+    onChangeFile = (file) => {
+       this.setState((prevState) => {
+           const newValue = {
+               file: file[0]
+           }
+            return {
+                ...prevState,
+                ...newValue
             }
-        } else if (name === 'file') {
-           newValue = {
-                file: e.target.files[0]
-            }
-        }
-        if (newValue !== {}) {
-            this.setState((prevState) => {
-                return {
-                    ...prevState,
-                    ...newValue
-                }
-            }, () => {
-            })
-        }
+        }, () => {})
+
     };
 
     setError = (message = "") => {
@@ -143,14 +134,10 @@ class CreateAnalysis extends Component {
                                         />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="file">{this.props.t("File")}</label>
-                                        <input id="file"
-                                               name="file"
-                                               type="file"
-                                               className="form-control-file"
-                                               onChange={this.onChange}
-                                               required={true} />
-                                        <small>* {this.props.t("Upload Excel")} (*.xlsx)</small>
+                                        <Dropzone setFile={this.onChangeFile} files={this.state.file} />
+                                    </div>
+                                    <div className={"form-group"}>
+                                        <small>* {this.props.t("Upload Excel")} (*.xlsx)</small><br/>
                                     </div>
                                     <div className="form-group">
                                         <button type={"submit"} className="btn btn-primary" >{this.props.t("Create")}</button>

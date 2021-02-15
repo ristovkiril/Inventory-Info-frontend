@@ -2,6 +2,7 @@
     "Home": "Home",
     "Back": "Back",
     "File": "File",
+    "Files": "Files",
     "Actions": "Actions",
     "Year": "Year",
     "Years": "Years",
@@ -141,5 +142,6 @@
     "7.B -  1.A.3.d.i - International water-borne navigation (International bunkers)": "7.B -  1.A.3.d.i - International water-borne navigation (International bunkers)",
     "7.C -  1.A.5.c - Multilateral Operations": "7.C -  1.A.5.c - Multilateral Operations",
     "onoffswitch-inner": "onoffswitch-inner-en",
-    "Save as": "Save as"
+    "Save as": "Save as",
+    "Drag 'n' drop file here, or click to select file": "Drag 'n' drop file here, or click to select file"
 }

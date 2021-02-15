@@ -2,6 +2,7 @@
     "Home": "Почетна",
     "Back": "Назад",
     "File": "Документ",
+    "Files": "Документи",
     "Year": "Година",
     "Actions": "Акција",
     "Years": "Години",
@@ -141,6 +142,7 @@
     "7.B -  1.A.3.d.i - International water-borne navigation (International bunkers)": "7.B - 1.A.3.d.i - Меѓународна морнарица (Меѓународни резервоари)",
     "7.C -  1.A.5.c - Multilateral Operations": "7.C - 1.A.5.c - Мултилатерални операции",
     "onoffswitch-inner": "onoffswitch-inner-mk",
-    "Save as": "Зачувај како"
+    "Save as": "Зачувај како",
+    "Drag 'n' drop file here, or click to select file": "Повлечи и пушти некој фајл, или кликни за да одбереш"
 
 }
